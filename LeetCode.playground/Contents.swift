@@ -154,3 +154,31 @@ RotateArray().rotateByIndexes(&nums, 3)
 print(nums)
 
 // -------------------------------------------------------------------------------------------------------------------------
+
+
+// --------------------------------- 1143. Longest Common Subsequence-----------------------------------------------------
+
+class LongestCommonSubsequence {
+    func longestCommonSubsequence(_ text1: String, _ text2: String) -> Int {
+        var dp: [[Int]] = Array(repeating: Array(repeating: 0, count: text2.count+1), count: text1.count+1)
+        
+        for i in stride(from: text1.count-1, to: -1, by: -1) {
+            for j in stride(from: text2.count-1, to: -1, by: -1) {
+                if charEqualAtPosition(text1, i, text2, j) {
+                    dp[i][j] = 1 + dp[i+1][j+1]
+                } else {
+                    dp[i][j] = max(dp[i+1][j], dp[i][j+1])
+                }
+            }
+        }
+        return dp[0][0]
+    }
+    
+    func charEqualAtPosition(_ string1: String, _ position1: Int, _ string2: String, _ position2: Int) -> Bool {
+        return Array(string1)[position1] == Array(string2)[position2]
+    }
+}
+
+print(LongestCommonSubsequence().longestCommonSubsequence("abcde", "ace"))
+
+// -------------------------------------------------------------------------------------------------------------------------
