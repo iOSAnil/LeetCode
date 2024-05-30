@@ -13,4 +13,5 @@ https://leetcode.com/studyplan/leetcode-75/
 <b>Sample Problems<b><br>
 
 189. [Rotate Array](https://leetcode.com/problems/rotate-array/description/) MEDIUM
+1143. [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/description/) MEDIUM
 
