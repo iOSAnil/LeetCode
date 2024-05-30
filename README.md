@@ -1,7 +1,7 @@
 # LeetCode
 
 
-Solving the complex series of leet code
+<b>Solving the complex series of leet code</b>
 
 https://leetcode.com/studyplan/leetcode-75/
 
@@ -9,6 +9,8 @@ https://leetcode.com/studyplan/leetcode-75/
 11. [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75) MEDIUM
 1768. [Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75) EASY
 
-Sample Problems
+
+<b>Sample Problems<b><br>
+
 189. [Rotate Array](https://leetcode.com/problems/rotate-array/description/) MEDIUM
 
