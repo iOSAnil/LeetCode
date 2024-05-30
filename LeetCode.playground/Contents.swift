@@ -113,3 +113,44 @@ print(ContainerWithMostWater().maxArea([1,8,6,2,5,4,8,3,7]))
 // -------------------------------------------------------------------------------------------------------------------------
 
 
+// ---------------------------------11. rotate-array------------------------------------------------------
+
+class RotateArray {
+    //Time complexity is more
+    func rotate(_ nums: inout [Int], _ k: Int) {
+        var k = k % nums.count
+
+        var newArray = Array(repeating: 0, count: nums.count)
+        
+        for (index, _) in nums.enumerated() {
+            var newIndex = index + k
+            if newIndex >= nums.count {
+                newIndex -= nums.count
+            }
+            newArray[newIndex] = nums[index]
+        }
+        nums = newArray
+    }
+    
+    // Space complexity is more than time complexity
+    func rotateByShifting(_ nums: inout [Int], _ k: Int) {
+        if k < 0 { return }
+        for _ in 0..<k {
+            nums.insert(nums[nums.count-1], at: 0)
+            nums.removeLast()
+        }
+    }
+    
+    func rotateByIndexes(_ nums: inout [Int], _ k: Int) {
+        var k = k % nums.count
+        /*checking all the valid indexes before accessing in subscript*/
+        if nums.count-k < nums.count && nums.count-k > 0 && nums.count-k-1 < nums.count{
+            nums = Array(nums[nums.count-k...nums.count-1]) + Array(nums[0...nums.count-k-1])
+        }
+    }
+}
+var nums = [1,2,3,4,5,6,7,] //-> [5,6,7,1,2,3,4]
+RotateArray().rotateByIndexes(&nums, 3)
+print(nums)
+
+// -------------------------------------------------------------------------------------------------------------------------
