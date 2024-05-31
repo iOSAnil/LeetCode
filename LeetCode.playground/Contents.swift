@@ -182,3 +182,44 @@ class LongestCommonSubsequence {
 print(LongestCommonSubsequence().longestCommonSubsequence("abcde", "ace"))
 
 // -------------------------------------------------------------------------------------------------------------------------
+
+
+// --------------------------------- 215. Kth Largest Element in an Array-----------------------------------------------------
+
+class kThLargestElement {
+    func findKthLargestComplexityHighSolution(_ nums: [Int], _ k: Int) -> Int {
+        return nums.sorted()[nums.count - k]
+    }
+    
+    func findKthLargest(_ nums: [Int], _ k: Int) -> Int {
+        var k = nums.count - k
+        var nums = nums
+        
+        func quickSelect(left: Int, right: Int) -> Int  {
+            var pivot = left
+            for i in left..<right {
+                if nums[i] <= nums[right] {
+                    // Swap variables to acheive the left side are all smaller than nums[right]
+                    nums.swapAt(i, pivot)
+                    pivot += 1
+                }
+            }
+            
+            // Swap variables to acheive the nums[pivot] RHS is > values than  nums[pivot] and LHS values < than nums[pivot]
+            nums.swapAt(right, pivot)
+            
+            if pivot < k {
+                return quickSelect(left: pivot+1, right: right)
+            } else if pivot > k {
+                return quickSelect(left: left, right: pivot-1)
+            } else {
+                return nums[pivot]
+            }
+        }
+        return quickSelect(left: 0, right: nums.count-1)
+    }
+}
+
+print(kThLargestElement().findKthLargest([3,2,1,5,6,4], 2)) //Output: 5
+
+// -------------------------------------------------------------------------------------------------------------------------
