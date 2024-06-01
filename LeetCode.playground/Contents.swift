@@ -258,3 +258,58 @@ class BestTimeToBuySellStock2 {
 }
 print(BestTimeToBuySellStock2().maxProfit([1,2,3,4,5])) //Output: 4
 // -------------------------------------------------------------------------------------------------------------------------
+
+
+//-------------------------------- 123. best-time-to-buy-and-sell-stock-iii--------------------------------------------------
+/*
+buyPrice_1 = min(buyPrice_1, price[i])
+profit_1 = max(profit_1, price[i]-buyPrice_1)
+buyPrice_2 = min(buyPrice_2, price[i]-profit_1)
+profit_2 = max(profit_2, price[i]-buyPrice_2)
+*/
+
+class BestTimeToBuySellStock3 {
+    func maxProfit(_ prices: [Int]) -> Int {
+        var buyPrice1 = 100000
+        var profit1 = 0
+        var buyPrice2 = 100000
+        var profit2 = 0
+        for p in prices {
+            buyPrice1 = min(buyPrice1, p)
+            profit1 = max(profit1, p - buyPrice1)
+            buyPrice2 = min(buyPrice2, p-profit1)
+            profit2 = max(profit2, p - buyPrice2)
+        }
+        return profit2
+    }
+}
+print(BestTimeToBuySellStock3().maxProfit([3,3,5,0,0,3,1,4])) //Output: 6
+// -------------------------------------------------------------------------------------------------------------------------
+
+//-------------------------------- 188. best-time-to-buy-and-sell-stock-IV--------------------------------------------------
+
+class BestTimeToBuySellFourTimes {
+    func maxProfit(_ k: Int, _ prices: [Int]) -> Int {
+        var buyPrice = Array(repeating: 100000, count: k)
+        var profit = Array(repeating: 0, count: k)
+        
+        for i in 0..<prices.count {
+            for j in 0..<k {
+                if j == 0 {
+                    buyPrice[j] = min(buyPrice[j], prices[i])
+                    profit[j] = max(profit[j], prices[i] - buyPrice[j])
+                } else {
+                    buyPrice[j] = min(buyPrice[j], prices[i]-profit[j-1])
+                    profit[j] = max(profit[j], prices[i] - buyPrice[j])
+                }
+            }
+        }
+        return profit[k-1]
+    }
+}
+print(BestTimeToBuySellStock3().maxProfit([3,2,6,5,0,3])) //Output: 7
+/*
+ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4. Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+ */
+
+// -------------------------------------------------------------------------------------------------------------------------
