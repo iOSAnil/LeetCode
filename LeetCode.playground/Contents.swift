@@ -225,7 +225,7 @@ print(kThLargestElement().findKthLargest([3,2,1,5,6,4], 2)) //Output: 5
 // -------------------------------------------------------------------------------------------------------------------------
 
 // --------------------------------- 121. best-time-to-buy-and-sell-stock-----------------------------------------------------
-
+// Two pointer approach
 class BestTimeToBuySellStock {
     func maxProfit(_ prices: [Int]) -> Int {
         var l: Int = 0
@@ -244,4 +244,17 @@ class BestTimeToBuySellStock {
 }
 
 print(BestTimeToBuySellStock().maxProfit([7,1,5,3,6,4])) //Output: 5
+
+//-------------------------------- 122. best-time-to-buy-and-sell-stock-ii--------------------------------------------------
+// Dynamic programming approach
+class BestTimeToBuySellStock2 {
+    func maxProfit(_ prices: [Int]) -> Int {
+        var dp = Array(repeating: 0, count: prices.count)
+        for i in 1..<prices.count {
+            dp[i] = dp[i-1] + max(0, prices[i]-prices[i-1])
+        }
+        return dp[prices.count - 1]
+    }
+}
+print(BestTimeToBuySellStock2().maxProfit([1,2,3,4,5])) //Output: 4
 // -------------------------------------------------------------------------------------------------------------------------
