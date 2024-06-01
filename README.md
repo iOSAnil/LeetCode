@@ -15,5 +15,6 @@ https://leetcode.com/studyplan/leetcode-75/
 189. [Rotate Array](https://leetcode.com/problems/rotate-array/description/) MEDIUM
 1143. [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/description/) MEDIUM
 215. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/) MEDIUM
+121. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/) EASY
 
 
