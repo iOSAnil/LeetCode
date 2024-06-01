@@ -285,3 +285,31 @@ class BestTimeToBuySellStock3 {
 }
 print(BestTimeToBuySellStock3().maxProfit([3,3,5,0,0,3,1,4])) //Output: 6
 // -------------------------------------------------------------------------------------------------------------------------
+
+//-------------------------------- 188. best-time-to-buy-and-sell-stock-IV--------------------------------------------------
+
+class BestTimeToBuySellFourTimes {
+    func maxProfit(_ k: Int, _ prices: [Int]) -> Int {
+        var buyPrice = Array(repeating: 100000, count: k)
+        var profit = Array(repeating: 0, count: k)
+        
+        for i in 0..<prices.count {
+            for j in 0..<k {
+                if j == 0 {
+                    buyPrice[j] = min(buyPrice[j], prices[i])
+                    profit[j] = max(profit[j], prices[i] - buyPrice[j])
+                } else {
+                    buyPrice[j] = min(buyPrice[j], prices[i]-profit[j-1])
+                    profit[j] = max(profit[j], prices[i] - buyPrice[j])
+                }
+            }
+        }
+        return profit[k-1]
+    }
+}
+print(BestTimeToBuySellStock3().maxProfit([3,2,6,5,0,3])) //Output: 7
+/*
+ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4. Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+ */
+
+// -------------------------------------------------------------------------------------------------------------------------
