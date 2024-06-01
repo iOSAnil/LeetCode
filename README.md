@@ -18,4 +18,4 @@ https://leetcode.com/studyplan/leetcode-75/
 121. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/) EASY
 122. [Best Time to Buy and Sell Stock ii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/) MEDIUM
 123. [Best Time to Buy and Sell Stock iii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/) HARD
-188. [Best Time to Buy and Sell Stock iii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/) HARD
+188. [Best Time to Buy and Sell Stock iv](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/) HARD
