@@ -258,3 +258,30 @@ class BestTimeToBuySellStock2 {
 }
 print(BestTimeToBuySellStock2().maxProfit([1,2,3,4,5])) //Output: 4
 // -------------------------------------------------------------------------------------------------------------------------
+
+
+//-------------------------------- 123. best-time-to-buy-and-sell-stock-iii--------------------------------------------------
+/*
+buyPrice_1 = min(buyPrice_1, price[i])
+profit_1 = max(profit_1, price[i]-buyPrice_1)
+buyPrice_2 = min(buyPrice_2, price[i]-profit_1)
+profit_2 = max(profit_2, price[i]-buyPrice_2)
+*/
+
+class BestTimeToBuySellStock3 {
+    func maxProfit(_ prices: [Int]) -> Int {
+        var buyPrice1 = 100000
+        var profit1 = 0
+        var buyPrice2 = 100000
+        var profit2 = 0
+        for p in prices {
+            buyPrice1 = min(buyPrice1, p)
+            profit1 = max(profit1, p - buyPrice1)
+            buyPrice2 = min(buyPrice2, p-profit1)
+            profit2 = max(profit2, p - buyPrice2)
+        }
+        return profit2
+    }
+}
+print(BestTimeToBuySellStock3().maxProfit([3,3,5,0,0,3,1,4])) //Output: 6
+// -------------------------------------------------------------------------------------------------------------------------
