@@ -223,3 +223,25 @@ class kThLargestElement {
 print(kThLargestElement().findKthLargest([3,2,1,5,6,4], 2)) //Output: 5
 
 // -------------------------------------------------------------------------------------------------------------------------
+
+// --------------------------------- 121. best-time-to-buy-and-sell-stock-----------------------------------------------------
+
+class BestTimeToBuySellStock {
+    func maxProfit(_ prices: [Int]) -> Int {
+        var l: Int = 0
+        var r: Int = 0
+        var maxP = 0
+        while r <= prices.count - 1 {
+            if prices[l] < prices[r] {
+                maxP = max(maxP, prices[r]-prices[l])
+            } else {
+                l = r
+            }
+              r += 1
+        }
+        return maxP
+    }
+}
+
+print(BestTimeToBuySellStock().maxProfit([7,1,5,3,6,4])) //Output: 5
+// -------------------------------------------------------------------------------------------------------------------------
