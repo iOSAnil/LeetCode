@@ -313,3 +313,41 @@ print(BestTimeToBuySellStock3().maxProfit([3,2,6,5,0,3])) //Output: 7
  */
 
 // -------------------------------------------------------------------------------------------------------------------------
+
+
+//-------------------------------- 2706. Buy Two Chocolates-----------------------------------------------------------------
+class BuyChoclates {
+    // Complexity O(n2)
+    func buyChoco(_ prices: [Int], _ money: Int) -> Int {
+        let sortedPrice = prices.sorted()
+        if money - (sortedPrice[0] + sortedPrice[1]) >= 0 {
+            return money - (sortedPrice[0] + sortedPrice[1])
+        } else {
+            return  money
+        }
+    }
+    //Complexity O(n)
+    func buyChoco2(_ prices: [Int], _ money: Int) -> Int {
+        var a = Int.max
+        var b = Int.max
+
+        for p in prices {
+            if p < a {
+                b = a
+                a = p
+            } else if p < b {
+                b = p
+            }
+        }
+        
+        if money - (a+b) >= 0 {
+            return money - (a+b)
+        } else {
+            return  money
+        }
+    }
+}
+
+print(BuyChoclates().buyChoco2([1,2,2], 3)) //output 0
+//Explanation: Purchase the chocolates priced at 1 and 2 units respectively. You will have 3 - 3 = 0 units of money afterwards. Thus, we return 0.
+// -------------------------------------------------------------------------------------------------------------------------
