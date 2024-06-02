@@ -351,3 +351,28 @@ class BuyChoclates {
 print(BuyChoclates().buyChoco2([1,2,2], 3)) //output 0
 //Explanation: Purchase the chocolates priced at 1 and 2 units respectively. You will have 3 - 3 = 0 units of money afterwards. Thus, we return 0.
 // -------------------------------------------------------------------------------------------------------------------------
+
+
+//-------------------------------- 268. Missing number -----------------------------------------------------------------
+
+class MissingNumber {
+    func missingNumber(_ nums: [Int]) -> Int {
+        let totalValue = nums.reduce(0, +)
+        let totalValueExpected = (nums.count*(nums.count + 1))/2
+        return totalValueExpected - totalValue
+    }
+    
+    func missingNumberWithSets(_ nums: [Int]) -> Int {
+        Set(0...nums.count).subtracting(Set(nums)).first!
+    }
+}
+
+print(MissingNumber().missingNumber([9,6,4,2,3,5,7,0,1])) //output 8
+
+/*
+ Input: nums = [3,0,1]
+ Output: 2
+ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+ */
+// -------------------------------------------------------------------------------------------------------------------------
+
