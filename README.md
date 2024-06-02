@@ -20,3 +20,4 @@ https://leetcode.com/studyplan/leetcode-75/
 123. [Best Time to Buy and Sell Stock iii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/) HARD
 188. [Best Time to Buy and Sell Stock iv](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/) HARD
 2706. [Buy two choclates](https://leetcode.com/problems/buy-two-chocolates/description/) EASY
+268. [Missing number](https://leetcode.com/problems/missing-number/description/) EASY
