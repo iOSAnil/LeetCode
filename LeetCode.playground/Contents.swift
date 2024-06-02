@@ -376,3 +376,31 @@ print(MissingNumber().missingNumber([9,6,4,2,3,5,7,0,1])) //output 8
  */
 // -------------------------------------------------------------------------------------------------------------------------
 
+//-------------------------------- 347. Top K Frequent Elements-----------------------------------------------------------------
+
+class TopKFrequent {
+    func topKFrequent(_ nums: [Int], _ k: Int) -> [Int] {
+        var dict = [Int: Int]()
+        for num in nums {
+            dict[num, default: 0] += 1
+        }
+        return Array(dict.sorted(by: { $0.value > $1.value}).compactMap({$0.0}).prefix(k))
+    }
+}
+
+print(TopKFrequent().topKFrequent([1,1,1,2,2,3], 2)) //output [1,2]
+print(TopKFrequent().topKFrequent([1], 1)) //output [1]
+
+/*
+ Example 1:
+
+ Input: nums = [1,1,1,2,2,3], k = 2
+ Output: [1,2]
+ Example 2:
+
+ Input: nums = [1], k = 1
+ Output: [1]
+
+ */
+
+// -------------------------------------------------------------------------------------------------------------------------
