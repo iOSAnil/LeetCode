@@ -22,3 +22,7 @@ https://leetcode.com/studyplan/leetcode-75/
 2706. [Buy two choclates](https://leetcode.com/problems/buy-two-chocolates/description/) EASY
 268. [Missing number](https://leetcode.com/problems/missing-number/description/) EASY
 347. [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/description/) MEDIUM
+84. [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) HARD
+
+
+
