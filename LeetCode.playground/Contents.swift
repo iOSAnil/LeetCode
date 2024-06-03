@@ -416,14 +416,14 @@ class LargestRectangleAreaBruteForce {
         return maxArea
     }
     
-    func getAreaForIndex(_ index: Int, heights: [Int]) -> Int {
+    private func getAreaForIndex(_ index: Int, heights: [Int]) -> Int {
         let leftwidth = leftWidthSearch(index, heights: heights)
         let rightwidth = rightWidthSearch(index, heights: heights)
         let totalWidth = leftwidth + rightwidth + 1
         return totalWidth*heights[index]
     }
     
-    func leftWidthSearch(_ index: Int, heights: [Int]) -> Int {
+    private func leftWidthSearch(_ index: Int, heights: [Int]) -> Int {
         var width = 0
         var i = index - 1
         while i >= 0 {
@@ -437,7 +437,7 @@ class LargestRectangleAreaBruteForce {
         return width
     }
     
-    func rightWidthSearch(_ index: Int, heights: [Int]) -> Int {
+    private func rightWidthSearch(_ index: Int, heights: [Int]) -> Int {
         var width = 0
         var i = index + 1
         while i < heights.count {
