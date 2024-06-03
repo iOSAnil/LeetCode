@@ -404,3 +404,98 @@ print(TopKFrequent().topKFrequent([1], 1)) //output [1]
  */
 
 // -------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------ 84. Largest Rectangle in Histogram---------------------------------------------
+
+class LargestRectangleAreaBruteForce {
+    func largestRectangleArea(_ heights: [Int]) -> Int {
+        var maxArea = 0
+        for i in 0..<heights.count {
+            maxArea = max(maxArea, getAreaForIndex(i, heights: heights))
+        }
+        return maxArea
+    }
+    
+    func getAreaForIndex(_ index: Int, heights: [Int]) -> Int {
+        let leftwidth = leftWidthSearch(index, heights: heights)
+        let rightwidth = rightWidthSearch(index, heights: heights)
+        let totalWidth = leftwidth + rightwidth + 1
+        return totalWidth*heights[index]
+    }
+    
+    func leftWidthSearch(_ index: Int, heights: [Int]) -> Int {
+        var width = 0
+        var i = index - 1
+        while i >= 0 {
+            if heights[i] >= heights[index] {
+                width += 1
+            } else {
+                return width
+            }
+            i -= 1
+        }
+        return width
+    }
+    
+    func rightWidthSearch(_ index: Int, heights: [Int]) -> Int {
+        var width = 0
+        var i = index + 1
+        while i < heights.count {
+            if heights[i] >= heights[index] {
+                width += 1
+            } else {
+                return width
+            }
+            i += 1
+        }
+        return width
+    }
+}
+
+class LargestRectangleArea {
+    func largestRectangleArea(_ heights: [Int]) -> Int {
+        var stack = [Int]()
+        var leftArray = Array(repeating: 0, count: heights.count)
+        var rightArray = Array(repeating: 0, count: heights.count)
+
+        for i in stride(from: 0, through: heights.count-1, by: 1) {
+            if stack.isEmpty {
+                leftArray[i] = 0
+                stack.append(i)
+            } else {
+                while !stack.isEmpty && heights[stack.last!] >= heights[i] {
+                    stack.removeLast()
+                }
+                leftArray[i] = stack.isEmpty ? 0 : stack.last! + 1
+                stack.append(i)
+            }
+        }
+        stack.removeAll()
+        
+        for i in stride(from: heights.count-1, through: 0, by: -1) {
+            if stack.isEmpty {
+                rightArray[i] = heights.count-1
+                stack.append(i)
+            } else {
+                while !stack.isEmpty && heights[stack.last!] >= heights[i] {
+                    stack.removeLast()
+                }
+                rightArray[i] = stack.isEmpty ? heights.count-1 : stack.last! - 1
+                stack.append(i)
+            }
+        }
+        
+        var maxArea = 0
+        for i in 0..<leftArray.count {
+            maxArea = max(maxArea, heights[i]*(rightArray[i]-leftArray[i]+1))
+        }
+        
+        return maxArea
+    }
+}
+
+print(LargestRectangleArea().largestRectangleArea([2,1,5,6,2,3]))
+print(LargestRectangleAreaBruteForce().largestRectangleArea([2,1,5,6,2,3]))
+
+// https://leetcode.com/problems/largest-rectangle-in-histogram/description/
+// -------------------------------------------------------------------------------------------------------------------------
