@@ -23,6 +23,5 @@ https://leetcode.com/studyplan/leetcode-75/
 268. [Missing number](https://leetcode.com/problems/missing-number/description/) EASY
 347. [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/description/) MEDIUM
 84. [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) HARD
-
-
-
+85. [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/description/) HARD
+66. [Plus One](https://leetcode.com/problems/plus-one/description/) EASY
