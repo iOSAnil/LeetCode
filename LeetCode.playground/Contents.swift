@@ -499,3 +499,69 @@ print(LargestRectangleAreaBruteForce().largestRectangleArea([2,1,5,6,2,3]))
 
 // https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 // -------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------ 85. Maximal Rectangle----------------------------------------------------------
+
+class MaximumRectangle {
+    func maximalRectangle(_ matrix: [[Character]]) -> Int {
+        var maxArea = 0
+        var heights = [Int]()
+        
+        for i in 0..<matrix.count {
+            for j in 0..<matrix[i].count {
+                if i == 0 {
+                    heights.append(Int(matrix[i][j].description) ?? 0)
+                } else if (Int(matrix[i][j].description) ?? 0) != 0 {
+                    heights[j] += (Int(matrix[i][j].description) ?? 0)
+                } else {
+                    heights[j] = 0
+                }
+            }
+            maxArea = max(maxArea, largestRectangleArea(heights))
+        }
+        return maxArea
+    }
+    
+    func largestRectangleArea(_ heights: [Int]) -> Int {
+        var stack = [Int]()
+        var leftArray = Array(repeating: 0, count: heights.count)
+        var rightArray = Array(repeating: 0, count: heights.count)
+
+        for i in stride(from: 0, through: heights.count-1, by: 1) {
+            if stack.isEmpty {
+                leftArray[i] = 0
+                stack.append(i)
+            } else {
+                while !stack.isEmpty && heights[stack.last!] >= heights[i] {
+                    stack.removeLast()
+                }
+                leftArray[i] = stack.isEmpty ? 0 : stack.last! + 1
+                stack.append(i)
+            }
+        }
+        stack.removeAll()
+        
+        for i in stride(from: heights.count-1, through: 0, by: -1) {
+            if stack.isEmpty {
+                rightArray[i] = heights.count-1
+                stack.append(i)
+            } else {
+                while !stack.isEmpty && heights[stack.last!] >= heights[i] {
+                    stack.removeLast()
+                }
+                rightArray[i] = stack.isEmpty ? heights.count-1 : stack.last! - 1
+                stack.append(i)
+            }
+        }
+        
+        var maxArea = 0
+        for i in 0..<leftArray.count {
+            maxArea = max(maxArea, heights[i]*(rightArray[i]-leftArray[i]+1))
+        }
+        
+        return maxArea
+    }
+}
+
+print(MaximumRectangle().maximalRectangle([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]])) // Output: 6
+// -------------------------------------------------------------------------------------------------------------------------
