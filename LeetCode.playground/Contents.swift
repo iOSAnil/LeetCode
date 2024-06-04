@@ -564,4 +564,49 @@ class MaximumRectangle {
 }
 
 print(MaximumRectangle().maximalRectangle([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]])) // Output: 6
-// -------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------------------------------66. Plus One------------------------------------------------------------------------------------------------------------
+
+class PlusOne {
+    func plusOne(_ digits: [Int]) -> [Int] {
+        var digits = digits
+        var carry = 0
+        for i in stride(from: digits.count - 1, through: 0, by: -1) {
+            let value = digits[i]
+            if i == digits.count - 1  {
+                if value + 1 > 9 {
+                    digits[i] = 0
+                    carry = 1
+                } else {
+                    digits[i] = value+1
+                    carry = 0
+                    break
+                }
+            }  else if carry != 0  {
+                if value + carry > 9 {
+                    digits[i] = 0
+                    carry = 1
+                } else {
+                    digits[i] = value + carry
+                    carry = 0
+                    break
+                }
+            } else {
+                break
+            }
+        }
+        
+        if carry != 0 {
+            digits.insert(carry, at: 0)
+        }
+        return digits
+    }
+}
+ 
+print(PlusOne().plusOne([1,1,2]))
+print(PlusOne().plusOne([1,1,9]))
+print(PlusOne().plusOne([9,9,9]))
+print(PlusOne().plusOne([9]))
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
