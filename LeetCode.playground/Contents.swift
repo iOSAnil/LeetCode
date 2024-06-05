@@ -610,3 +610,68 @@ print(PlusOne().plusOne([9,9,9]))
 print(PlusOne().plusOne([9]))
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------12. Integer to Roman-------------------------------------------------------------------------------------------------------
+class IntToRoman {
+    func intToRoman(_ num: Int) -> String {
+        let thousands = ["", "M", "MM", "MMM"]
+        let hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" ]
+        let tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" ]
+        let ones = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" ]
+        
+        
+        return thousands[(num/1000)] + hundreds[num%1000/100] + tens[num%100/10] + ones[num%10]
+    }
+}
+print(IntToRoman().intToRoman(3999)) //MMMCMXCIX
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------------------------13. Roman to Integer----------------------------------------------------------------------------------------
+
+class RomanToInt {
+    func romanToInt(_ s: String) -> Int {
+       
+        let hashMap = ["I" : 1,
+                       "IV" : 4,"V" : 5,
+                       "IX" : 9,"X" : 10,
+                       "L" : 50, "XL" : 40,
+                       "C" : 100, "XC" : 90,
+                       "D" : 500, "CD" : 400,
+                       "M" : 1000, "CM" : 900,
+        ]
+        
+        var finalValue = 0
+        var index = 0
+
+        while (index < s.count) {
+            if index+1 < s.count {
+                if let sIndex = s.index(s.startIndex, offsetBy: index, limitedBy: s.endIndex),
+                   let eIndex = s.index(s.startIndex, offsetBy: index+1, limitedBy: s.endIndex),
+                   let value = hashMap[String(s[sIndex...eIndex])] {
+                    index += 2
+                    finalValue += value
+                }
+                else{
+                    if let sIndex = s.index(s.startIndex, offsetBy: index, limitedBy: s.endIndex),
+                       let value = hashMap[String(s[sIndex...sIndex])] {
+                        finalValue += value
+                        index += 1
+                    }
+                }
+            }
+            else{
+                if let sIndex = s.index(s.startIndex, offsetBy: index, limitedBy: s.endIndex),
+                   let value = hashMap[String(s[sIndex...sIndex])] {
+                    finalValue += value
+                    index += 1
+                }
+            }
+        }
+
+        
+
+        return finalValue
+    
+    }
+}
+print(RomanToInt().romanToInt("MMMCMXCIX")) //3999
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
