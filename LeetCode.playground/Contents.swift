@@ -716,3 +716,14 @@ class LongestCommonPrefixOptimized {
 
 print(LongestCommonPrefix().LongestCommonPrefix(["flower","flow","flight"])) //fl
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------------151. Reverse Words in a String---------------------------------------------------------------------------------------
+
+class ReverseWords {
+    func reverseWords(_ s: String) -> String {
+        return s.split(separator: " ").reversed().joined(separator: " ")
+    }
+}
+print(ReverseWords().reverseWords("a good   example")) //"example good a"
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
