@@ -25,3 +25,5 @@ https://leetcode.com/studyplan/leetcode-75/
 84. [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) HARD
 85. [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/description/) HARD
 66. [Plus One](https://leetcode.com/problems/plus-one/description/) EASY
+12. [Integer to roman](https://leetcode.com/problems/integer-to-roman/) EASY
+13. [Roman to integer](https://leetcode.com/problems/roman-to-integer/description/) EASY
