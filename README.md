@@ -27,3 +27,4 @@ https://leetcode.com/studyplan/leetcode-75/
 66. [Plus One](https://leetcode.com/problems/plus-one/description/) EASY
 12. [Integer to roman](https://leetcode.com/problems/integer-to-roman/) EASY
 13. [Roman to integer](https://leetcode.com/problems/roman-to-integer/description/) EASY
+14. [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/) EASY

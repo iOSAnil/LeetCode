@@ -675,3 +675,44 @@ class RomanToInt {
 }
 print(RomanToInt().romanToInt("MMMCMXCIX")) //3999
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------------14. Longest Common Prefix---------------------------------------------------------------------------------------
+class LongestCommonPrefix {
+    func LongestCommonPrefix(_ strs: [String]) -> String {
+        var array = [Character]()
+        var minLength = 0
+        for str in strs {
+            minLength = min(minLength, str.count)
+        }
+        var i = 0
+        while i < minLength {
+            let firstChar = Array(strs[0])[i]
+            var isAllCharSame = false
+            for str in strs {
+                if str.first != firstChar {
+                    return String(array)
+                }
+            }
+            array.append(firstChar)
+            i += 1
+        }
+        return String(array)
+    }
+}
+
+class LongestCommonPrefixOptimized {
+    func LongestCommonPrefix(_ strs: [String]) -> String {
+        var finalWord = strs[0]
+        while finalWord.count > 0 {
+            if !strs.allSatisfy({ $0.hasPrefix(finalWord)}) {
+                finalWord.removeLast()
+            } else {
+                return finalWord
+            }
+        }
+        return finalWord
+    }
+}
+
+print(LongestCommonPrefix().LongestCommonPrefix(["flower","flow","flight"])) //fl
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
