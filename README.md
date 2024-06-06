@@ -28,3 +28,4 @@ https://leetcode.com/studyplan/leetcode-75/
 12. [Integer to roman](https://leetcode.com/problems/integer-to-roman/) EASY
 13. [Roman to integer](https://leetcode.com/problems/roman-to-integer/description/) EASY
 151. [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/description) MEDIUM
+1431. [Kids with the greatest number of candies](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description) EASY
