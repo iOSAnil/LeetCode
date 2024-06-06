@@ -727,3 +727,14 @@ class ReverseWords {
 print(ReverseWords().reverseWords("a good   example")) //"example good a"
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------------1431. Kids With the Greatest Number of Candies------------------------------------------------------------------
+
+class KidsWithCandies {
+    func kidsWithCandies(_ candies: [Int], _ extraCandies: Int) -> [Bool] {
+        let maxCandies = candies.max()!
+        return candies.map({ $0 + extraCandies >= maxCandies })
+    }
+}
+print(KidsWithCandies().kidsWithCandies([2,3,5,1,3], 3)) //"example good a"
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
