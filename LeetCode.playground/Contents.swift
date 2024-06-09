@@ -738,7 +738,7 @@ class KidsWithCandies {
 }
 print(KidsWithCandies().kidsWithCandies([2,3,5,1,3], 3)) //"example good a"
 
-// ------------------------------------------------------136. Single Number-------------------------------------------------------------------------------------------
+// ------------------------------------------------------136. Single Number----------------------------------------------------
 class SingleNumber {
     func singleNumber(_ nums: [Int]) -> Int {
         nums.reduce(.zero, ^)
@@ -746,4 +746,49 @@ class SingleNumber {
 }
 print(SingleNumber().singleNumber([4,1,2,1,2])) //4
 print(SingleNumber().singleNumber([2,2,1])) //1
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------125. Valid Palindrome---------------------------------------------------
+class ValidPalindrome {
+    func isPalindrome(_ s: String) -> Bool {
+        let s = s.lowercased().filter { $0.isLetter || $0.isNumber }
+        return s == String(s.reversed())
+    }
+}
+print(ValidPalindrome().isPalindrome("A man, a plan, a canal: Panama")) //true
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------------------------42. Trapping Rain Water---------------------------------------------------
+/*
+ Start two pointer one from the left of the array and one from the right. Initially water trapping position is zero.
+ Start computing the maxLeftValue and maxRightValue at the pointer position.
+ let trappingValue = min(maxL, maxR) - height[i] and it should be greater than zero
+ The pointer having less value will be moved forward and water trapping position is updated to that index.
+ */
+class TrappingRainWater {
+    func trap(_ height: [Int]) -> Int {
+        var leftPointer = 0
+        var rightPointer = height.count - 1
+        var maxL = height[leftPointer]
+        var maxR = height[rightPointer]
+        var waterTrapped = 0
+        var i = leftPointer
+        while leftPointer < rightPointer {
+            maxL = max(maxL, height[leftPointer])
+            maxR = max(maxR, height[rightPointer])
+            let trappingValue = min(maxL, maxR) - height[i]
+            if maxL < maxR {
+                leftPointer += 1
+                i = leftPointer
+            } else {
+                rightPointer -= 1
+                i = rightPointer
+            }
+            
+            waterTrapped += trappingValue > 0 ? trappingValue : 0
+            
+            
+        }
+        return waterTrapped
+    }
+}
+// ------------------------------------------------------------------------------------------------------------------------------
