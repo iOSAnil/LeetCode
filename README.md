@@ -36,3 +36,5 @@ https://leetcode.com/studyplan/top-interview-150/
 151. [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/description) MEDIUM
 1431. [Kids with the greatest number of candies](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description) EASY
 136. [Single Number](https://leetcode.com/problems/single-number/description) EASY
+125. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/) EASY
+42. [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/) HARD
