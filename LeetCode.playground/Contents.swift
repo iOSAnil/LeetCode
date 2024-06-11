@@ -791,4 +791,35 @@ class TrappingRainWater {
         return waterTrapped
     }
 }
+print(TrappingRainWater().trap([5,4,1,2]))
+
+// -----------------------------------------------238. Product of Array Except Self------------------------------------
+func productExceptSelf(_ nums: [Int]) -> [Int] {
+    var result: [Int] = Array(repeating: 1, count: nums.count)
+    var left = 1, right = 1
+    for index in 0..<nums.count {
+        result[index] *= left
+        left *= nums[index]
+        result[nums.count - 1 - index] *= right
+        right *= nums[nums.count - 1 - index]
+    }
+    return result
+}
+
+func productExceptSelfTwoPointer(_ nums: [Int]) -> [Int] {
+    var res = [Int](repeating: 1, count: nums.count)
+    var prefix = 1
+    for i in 0..<nums.count {
+        res[i] = prefix
+        prefix *= nums[i]
+    }
+    var postfix = 1
+    for i in stride(from: nums.count - 1, through: 0, by: -1) {
+        res[i] *= postfix
+        postfix *= nums[i]
+    }
+    return res
+}
+print(productExceptSelf([1,2,3,4]))
+print(productExceptSelfTwoPointer([1,2,3,4]))
 // ------------------------------------------------------------------------------------------------------------------------------
