@@ -10,10 +10,9 @@ https://leetcode.com/studyplan/leetcode-75/
 1768. [Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75) EASY
 
 
-
 <b>Top Interview 150<b>
 https://leetcode.com/studyplan/top-interview-150/
-
+238. [Product of Array Except Self] (https://leetcode.com/problems/product-of-array-except-self/description) MEDIUM
 
 
 <b>Sample Problems<b><br>
