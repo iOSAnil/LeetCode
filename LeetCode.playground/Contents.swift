@@ -809,17 +809,31 @@ func productExceptSelf(_ nums: [Int]) -> [Int] {
 func productExceptSelfTwoPointer(_ nums: [Int]) -> [Int] {
     var res = [Int](repeating: 1, count: nums.count)
     var prefix = 1
-    for i in 0..<nums.count {
-        res[i] = prefix
-        prefix *= nums[i]
-    }
     var postfix = 1
-    for i in stride(from: nums.count - 1, through: 0, by: -1) {
-        res[i] *= postfix
-        postfix *= nums[i]
+
+    for i in 0..<nums.count {
+        res[i] *= prefix
+        prefix *= nums[i]
+        res[nums.count-1-i] *= postfix
+        postfix *= nums[nums.count-1-i]
     }
     return res
 }
-print(productExceptSelf([1,2,3,4]))
-print(productExceptSelfTwoPointer([1,2,3,4]))
+print(productExceptSelf([1,2,3,4,5]))
+print(productExceptSelfTwoPointer([1,2,3,4,5]))
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------------------------------------55. Jump Game------------------------------------
+
+func canJump(_ nums: [Int]) -> Bool {
+    var goal = nums.count - 1
+    
+    for index in stride(from: nums.count - 1, through: 0, by: -1) {
+         if index + nums[index] >= goal {
+            goal = index
+        }
+    }
+    return (goal == 0)
+}
+print(canJump([2,3,1,0,4]))
 // ------------------------------------------------------------------------------------------------------------------------------
