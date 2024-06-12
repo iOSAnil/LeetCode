@@ -837,3 +837,51 @@ func canJump(_ nums: [Int]) -> Bool {
 }
 print(canJump([2,3,1,0,4]))
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------------------------------------290. Word problem------------------------------------
+
+//https://leetcode.com/problems/word-pattern/
+class WordPattern {
+    func wordPattern(_ pattern: String, _ s: String) -> Bool {
+        let array = Array(s.split(separator: " "))
+        if pattern.count != array.count {
+            return false
+        } else {
+            return lhs(pattern, s) && rhs(pattern, s)
+        }
+    }
+    
+    func rhs(_ pattern: String, _ s: String) -> Bool {
+        var dict = [Character: String]()
+        let array = Array(s.split(separator: " "))
+        var i = 0
+        for p in pattern {
+            if dict[p] == nil {
+                dict[p] = String(array[i])
+            } else if dict[p]! != String(array[i]){
+                return false
+            }
+            i += 1
+        }
+        return true
+    }
+    
+    func lhs(_ pattern: String, _ s: String) -> Bool {
+        var dict = [String: Character]()
+        let array = Array(s.split(separator: " "))
+        let pttrn = Array(pattern)
+        var i = 0
+        for p in array {
+            if dict[String(p)] == nil {
+                dict[String(p)] = pttrn[i]
+            } else if dict[String(p)]! != pttrn[i] {
+                return false
+            }
+            i += 1
+        }
+        return true
+    }
+}
+print(WordPattern().wordPattern("abba","dog dog dog dog"))
+print(WordPattern().wordPattern("abba","dog cat cat fish"))
+// ------------------------------------------------------------------------------------------------------------------------------
