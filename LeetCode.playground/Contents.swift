@@ -885,3 +885,31 @@ class WordPattern {
 print(WordPattern().wordPattern("abba","dog dog dog dog"))
 print(WordPattern().wordPattern("abba","dog cat cat fish"))
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------------------------------------135. Candy----------------------------------------------------
+// https://leetcode.com/problems/candy/description/
+
+func candy(_ ratings: [Int]) -> Int {
+    var candyDistributed = Array(repeating: 1, count: ratings.count)
+    
+    for i in 1..<ratings.count {
+        if ratings[i-1] < ratings[i] {
+            candyDistributed[i] = candyDistributed[i-1] + 1
+        }
+    }
+
+    for i in stride(from: ratings.count - 1, through: 0, by: -1) {
+        if i+1 > ratings.count-1 {
+            continue
+        } else if candyDistributed[i] <= candyDistributed[i+1] {
+            if ratings[i+1] < ratings[i] {
+                candyDistributed[i] = candyDistributed[i+1] + 1
+            }
+        }
+    }
+    return candyDistributed.reduce(0, +)
+}
+
+print(candy([1,0,2])) // 5
+
+// ------------------------------------------------------------------------------------------------------------------------------

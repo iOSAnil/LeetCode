@@ -41,3 +41,4 @@ https://leetcode.com/studyplan/top-interview-150/
 136. [Single Number](https://leetcode.com/problems/single-number/description) EASY
 125. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/) EASY
 42. [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/) HARD
+135. [Candy](https://leetcode.com/problems/candy/description/) HARD
