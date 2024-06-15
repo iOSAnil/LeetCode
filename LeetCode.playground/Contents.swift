@@ -911,5 +911,28 @@ func candy(_ ratings: [Int]) -> Int {
 }
 
 print(candy([1,0,2])) // 5
+// ------------------------------------------------------------------------------------------------------------------------------
 
+// ---------------------------------------45. Jump Game II-----------------------------------------------------------
+//https://leetcode.com/problems/jump-game-ii
+func jump(_ nums: [Int]) -> Int {
+    var jumps = 0
+    var l = 0
+    var r = 0
+
+    while r != nums.count - 1 {
+        var farthest = 0
+        
+        for i in l...r {
+            farthest = max(farthest, i+nums[i])
+        }
+        l = r+1
+        r = min(nums.count-1, farthest)
+
+        jumps += 1
+    }
+    
+    return jumps
+}
+print(jump([2,3,1,1,4])) // 2
 // ------------------------------------------------------------------------------------------------------------------------------
