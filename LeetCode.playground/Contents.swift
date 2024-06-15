@@ -1098,3 +1098,25 @@ func isLeftAndRightNodeEqual(_ rootLeft: TreeNode?, _ rootRight: TreeNode?) -> B
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------- 167. Two Sum II - Input Array Is Sorted-------------------------------------------------------------------------------------------------------------
+//https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
+func twoSum(_ numbers: [Int], _ target: Int) -> [Int] {
+    guard numbers.count >= 2 else {return []}
+    var left = 0
+    var right = numbers.count - 1
+    
+    while left <= right {
+        if numbers[left] + numbers[right] == target {
+            return [left+1, right+1]
+        } else if numbers[left] + numbers[right] > target {
+            right -= 1
+        } else {
+            left += 1
+        }
+    }
+    return [0, 0]
+}
+
+print(twoSum([2,7,11,15], 9)) // [1,2]
+// ------------------------------------------------------------------------------------------------------------------------------
