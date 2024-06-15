@@ -22,7 +22,7 @@ https://leetcode.com/studyplan/top-interview-150/
 101. [Symmetric Tree] (https://leetcode.com/problems/symmetric-tree) EASY
 100. [Same Tree] (//https://leetcode.com/problems/same-tree) EASY
 226. [Invert Tree] (https://leetcode.com/problems/invert-binary-tree) EASY
-
+167. [Two Sum II - Input Array Is Sorted] (https://leetcode.com/problems/two-sum-ii-input-array-is-sorted) MEDIUM
 
 <b>Sample Problems<b><br>
 
