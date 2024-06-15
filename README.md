@@ -19,6 +19,9 @@ https://leetcode.com/studyplan/top-interview-150/
 35. [Search Insert Position] (https://leetcode.com/problems/search-insert-position) EASY
 20. [Valid Parentheses] (https://leetcode.com/problems/valid-parentheses) EASY
 199. [Binary Tree Right Side View] (https://leetcode.com/problems/binary-tree-right-side-view/description/) MEDIUM
+101. [Symmetric Tree] (https://leetcode.com/problems/symmetric-tree) EASY
+100. [Same Tree] (//https://leetcode.com/problems/same-tree) EASY
+226. [Invert Tree] (https://leetcode.com/problems/invert-binary-tree) EASY
 
 
 <b>Sample Problems<b><br>
