@@ -1017,3 +1017,34 @@ func searchInsert(_ nums: [Int], _ target: Int) -> Int {
 
 print(searchInsert([1,3,5,6], 2)) // 1
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------------------------199. Binary Tree Right Side View-----------------------------------------------------
+
+//https://leetcode.com/problems/binary-tree-right-side-view/
+func rightSideView(_ root: TreeNode?) -> [Int] {
+    var res = [Int]()
+    guard let root = root else {
+        return []
+    }
+    var queue = [root]
+    
+    while !queue.isEmpty {
+        var rightSide: TreeNode?
+        let qcount = queue.count
+        for _ in 0..<qcount {
+            let tree = queue.removeFirst()
+            rightSide = tree
+            if let leftNode = tree.left {
+                queue.append(leftNode)
+            }
+            if let rightNode = tree.right {
+                queue.append(rightNode)
+            }
+        }
+        if let value = rightSide?.val {
+            res.append(value)
+        }
+    }
+    return res
+}
+// ------------------------------------------------------------------------------------------------------------------------------

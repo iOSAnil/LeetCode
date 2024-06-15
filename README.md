@@ -18,6 +18,7 @@ https://leetcode.com/studyplan/top-interview-150/
 45. [Jump Game II] (https://leetcode.com/problems/jump-game-ii) MEDIUM
 35. [Search Insert Position] (https://leetcode.com/problems/search-insert-position) EASY
 20. [Valid Parentheses] (https://leetcode.com/problems/valid-parentheses) EASY
+199. [Binary Tree Right Side View] (https://leetcode.com/problems/binary-tree-right-side-view/description/) MEDIUM
 
 
 <b>Sample Problems<b><br>
