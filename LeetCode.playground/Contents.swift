@@ -911,5 +911,109 @@ func candy(_ ratings: [Int]) -> Int {
 }
 
 print(candy([1,0,2])) // 5
+// ------------------------------------------------------------------------------------------------------------------------------
 
+// ---------------------------------------45. Jump Game II-----------------------------------------------------------
+//https://leetcode.com/problems/jump-game-ii
+func jump(_ nums: [Int]) -> Int {
+    var jumps = 0
+    var l = 0
+    var r = 0
+
+    while r != nums.count - 1 {
+        var farthest = 0
+        
+        for i in l...r {
+            farthest = max(farthest, i+nums[i])
+        }
+        l = r+1
+        r = min(nums.count-1, farthest)
+
+        jumps += 1
+    }
+    
+    return jumps
+}
+print(jump([2,3,1,1,4])) // 2
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------1306. Jump Game III------------------------------------------------
+//https://leetcode.com/problems/jump-game-iii/description/
+class JumpGameIII {
+    func canReach(_ arr: [Int], _ start: Int) -> Bool {
+        var stack = [start]
+        var set = Set<Int>()
+        
+        while !stack.isEmpty {
+            let index = stack.removeFirst()
+            set.insert(index)
+            let rightIndex = index + arr[index]
+            if rightIndex <= arr.count - 1 {
+                if arr[rightIndex] == 0 {
+                    return true
+                } else if set.insert(rightIndex).0 == true {
+                    stack.append(rightIndex)
+                }
+            }
+            let leftIndex = index - arr[index]
+
+            if leftIndex >= 0 {
+                if arr[leftIndex] == 0 {
+                    return true
+                } else if set.insert(leftIndex).0 == true {
+                    stack.append(leftIndex)
+                }
+            }
+        }
+        return false
+      }
+}
+
+print(JumpGameIII().canReach([4,2,3,0,3,1,2], 5)) // true
+print(JumpGameIII().canReach([3,0,2,1,2], 2)) // false
+
+
+// --------------------------------------20. Valid Parentheses---------------------------------------------
+//https://leetcode.com/problems/valid-parentheses
+
+func isValid(_ s: String) -> Bool {
+       var stack: [String.Element] = []
+
+       for c in s {
+           if c == "(" {
+               stack.append(")")
+           } else if c == "[" {
+               stack.append("]")
+           } else if c == "{" {
+               stack.append("}")
+           } else {
+               if let bracket = stack.last, bracket == c {
+                   stack.popLast()
+               } else {
+                   return false
+               }
+           }
+       }
+       return stack.isEmpty
+}
+// ------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------35. Search Insert Position-----------------------------------------------------------------
+
+func searchInsert(_ nums: [Int], _ target: Int) -> Int {
+    var first = 0
+    var last = nums.count - 1
+    while first <= last {
+        let middle = (first + last)/2
+        if nums[middle] == target {
+            return middle
+        } else if nums[middle] > target {
+            last = middle - 1
+        } else {
+            first = middle + 1
+        }
+    }
+    return first
+}
+
+print(searchInsert([1,3,5,6], 2)) // 1
 // ------------------------------------------------------------------------------------------------------------------------------

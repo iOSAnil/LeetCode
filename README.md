@@ -15,8 +15,9 @@ https://leetcode.com/studyplan/top-interview-150/
 238. [Product of Array Except Self] (https://leetcode.com/problems/product-of-array-except-self/description) MEDIUM
 55. [Jump Game] (https://leetcode.com/problems/jump-game/description) MEDIUM
 290. [Word Pattern] (https://leetcode.com/problems/word-pattern/) EASY
-
-
+45. [Jump Game II] (https://leetcode.com/problems/jump-game-ii) MEDIUM
+35. [Search Insert Position] (https://leetcode.com/problems/search-insert-position) EASY
+20. [Valid Parentheses] (https://leetcode.com/problems/valid-parentheses) EASY
 
 
 <b>Sample Problems<b><br>
@@ -42,3 +43,4 @@ https://leetcode.com/studyplan/top-interview-150/
 125. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/) EASY
 42. [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/) HARD
 135. [Candy](https://leetcode.com/problems/candy/description/) HARD
+1306. [Jump Game III] (https://leetcode.com/problems/jump-game-iii) MEDIUM
