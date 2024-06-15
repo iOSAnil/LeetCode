@@ -1048,3 +1048,53 @@ func rightSideView(_ root: TreeNode?) -> [Int] {
     return res
 }
 // ------------------------------------------------------------------------------------------------------------------------------
+
+
+// -------------------- 100. Same Tree---------------------------------------------------------------------------------------------------------------
+//https://leetcode.com/problems/same-tree
+func isSameTree(_ p: TreeNode?, _ q: TreeNode?) -> Bool {
+      if p == nil && q == nil {
+          return true
+      }
+      return p?.val == q?.val && isSameTree(p?.left, q?.left) && isSameTree(p?.right, q?.right)
+}
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------- 226. Invert Tree---------------------------------------------------------------------------------------------------------------
+//https://leetcode.com/problems/invert-binary-tree
+func invertTree(_ root: TreeNode?) -> TreeNode? {
+    guard let root = root else {
+        return root
+    }
+    var stack = [root]
+    while !stack.isEmpty {
+        let rootNode = stack.removeFirst()
+        swap(&rootNode.left, &rootNode.right)
+        
+        if let left = rootNode.left {
+            stack.append(left)
+        }
+        if let right = rootNode.right {
+            stack.append(right)
+        }
+    }
+    return root
+}
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------- 101. Symmetric Tree---------------------------------------------------------------------------------------------------------------
+func isSymmetric(_ root: TreeNode?) -> Bool {
+    if root?.left == nil && root?.right == nil {
+        return true
+    }
+    return root?.left?.val == root?.right?.val && isLeftAndRightNodeEqual(root?.left, root?.right)
+}
+
+func isLeftAndRightNodeEqual(_ rootLeft: TreeNode?, _ rootRight: TreeNode?) -> Bool {
+    if rootLeft == nil && rootRight == nil {
+        return true
+    }
+    return rootLeft?.val == rootRight?.val && isLeftAndRightNodeEqual(rootLeft?.left, rootRight?.right) && isLeftAndRightNodeEqual(rootLeft?.right, rootRight?.left)
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------
