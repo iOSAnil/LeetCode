@@ -24,6 +24,7 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 226. [Invert Tree] (https://leetcode.com/problems/invert-binary-tree) EASY
 167. [Two Sum II - Input Array Is Sorted] (https://leetcode.com/problems/two-sum-ii-input-array-is-sorted) MEDIUM
 134. [Gas Station] (https://leetcode.com/problems/gas-station/) MEDIUM (FB)
+242. [Valid Anagram] (https://leetcode.com/problems/valid-anagram/description/) EASY
 
 <b>Sample Problems<b><br>
 
