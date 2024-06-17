@@ -26,6 +26,7 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 134. [Gas Station] (https://leetcode.com/problems/gas-station/) MEDIUM (FB)
 242. [Valid Anagram] (https://leetcode.com/problems/valid-anagram/description/) EASY
 219. [Contains Duplicate II] (https://leetcode.com/problems/contains-duplicate-ii/description) EASY
+633. [Sum of Square Numbers] (https://leetcode.com/problems/sum-of-square-numbers) MEDIUM (AMAZON)
 
 <b>Sample Problems<b><br>
 
