@@ -1178,6 +1178,7 @@ func containsNearbyDuplicate(_ nums: [Int], _ k: Int) -> Bool {
     
     for i in 0..<nums.count {
         let right = nums[i]
+
         if i - left > k {
             window.remove(nums[left])
             left += 1
