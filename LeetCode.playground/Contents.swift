@@ -1,4 +1,5 @@
 //Definition for a binary tree node.
+import Foundation
 
 public class TreeNode {
     public var val: Int
@@ -1193,4 +1194,24 @@ func containsNearbyDuplicate(_ nums: [Int], _ k: Int) -> Bool {
 }
 print(containsNearbyDuplicate([1,0,1,1], 1)) // true
 
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------633. Sum of Square Numbers-----------------------------------------------------------------
+
+func judgeSquareSum(_ c: Int) -> Bool {
+    var minValue = Int(sqrt(Double(c)))
+    
+    var hashSet = [Int: Int]()
+    for value in 0...minValue {
+        hashSet[value*value] = value
+    }
+    
+    for a in 0...minValue {
+        if hashSet[c - a*a] != nil {
+            return true
+        }
+    }
+    return false
+}
+print(judgeSquareSum(5))
 // ------------------------------------------------------------------------------------------------------------------------------
