@@ -1169,3 +1169,27 @@ func isAnagram(_ s: String, _ t: String) -> Bool {
 
 print(isAnagram("anagram","nagaram")) //true
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// --------------------------------------219. Contains Duplicate II (EASY)--------------------------------------------------------------
+
+func containsNearbyDuplicate(_ nums: [Int], _ k: Int) -> Bool {
+    var left = 0
+    var window: Set<Int> = []
+    
+    for i in 0..<nums.count {
+        var right = nums[i]
+        if i - left > k {
+            window.remove(nums[left])
+            left += 1
+        }
+        if window.contains(right) {
+            return true
+        } else {
+            window.insert(nums[i])
+        }
+    }
+    return false
+}
+print(containsNearbyDuplicate([1,0,1,1], 1)) // true
+
+// ------------------------------------------------------------------------------------------------------------------------------
