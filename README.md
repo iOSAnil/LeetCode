@@ -3,7 +3,7 @@
 
 <b>Solving the complex series of leet code</b>
 
-https://leetcode.com/studyplan/leetcode-75/
+https://leetcode.com/studyplan/leetcode-75/<b>
 
 104. [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75) EASY
 11. [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75) MEDIUM
@@ -11,8 +11,8 @@ https://leetcode.com/studyplan/leetcode-75/
 
 
 <b>Top Interview 150<b>
-https://leetcode.com/studyplan/top-interview-150/
-238. [Product of Array Except Self] (https://leetcode.com/problems/product-of-array-except-self/description) MEDIUM
+https://leetcode.com/studyplan/top-interview-150/<br>
+238.[Product of Array Except Self] (https://leetcode.com/problems/product-of-array-except-self/description) MEDIUM
 55. [Jump Game] (https://leetcode.com/problems/jump-game/description) MEDIUM
 290. [Word Pattern] (https://leetcode.com/problems/word-pattern/) EASY
 45. [Jump Game II] (https://leetcode.com/problems/jump-game-ii) MEDIUM
@@ -48,4 +48,4 @@ https://leetcode.com/studyplan/top-interview-150/
 125. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/) EASY
 42. [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/) HARD
 135. [Candy](https://leetcode.com/problems/candy/description/) HARD
-1306. [Jump Game III] (https://leetcode.com/problems/jump-game-iii) MEDIUM
+1306. [Jump Game III] (https://leetcode.com/problems/jump-game-iii/) MEDIUM
