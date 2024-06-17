@@ -1141,3 +1141,31 @@ func canCompleteCircuit(_ gas: [Int], _ cost: [Int]) -> Int {
 print(canCompleteCircuit([1,2,3,4,5], [3,4,5,1,2])) // 3
 print(canCompleteCircuit([2,3,4], [3,4,3])) // -1
 // ------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------242. Valid Anagram--------------------------------------------------------------
+//https://leetcode.com/problems/valid-anagram
+func isAnagram(_ s: String, _ t: String) -> Bool {
+    var dict1 = [Character: Int]()
+    var dict2 = [Character: Int]()
+    for ch in s {
+        dict1[ch] = (dict1[ch] != nil) ? dict1[ch]!+1 : 1
+    }
+    for ch in t {
+        dict2[ch] = (dict2[ch] != nil) ? dict2[ch]!+1 : 1
+    }
+    
+    for (key,value) in dict1 {
+        if dict2[key] != value {
+            return false
+        }
+    }
+    
+    for (key,value) in dict2 {
+        if dict1[key] != value {
+            return false
+        }
+    }
+    return true
+}
+
+print(isAnagram("anagram","nagaram")) //true
+// ------------------------------------------------------------------------------------------------------------------------------
