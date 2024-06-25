@@ -27,6 +27,7 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 242. [Valid Anagram] (https://leetcode.com/problems/valid-anagram/description/) EASY
 219. [Contains Duplicate II] (https://leetcode.com/problems/contains-duplicate-ii/description) EASY
 633. [Sum of Square Numbers] (https://leetcode.com/problems/sum-of-square-numbers) MEDIUM (AMAZON)
+48. [Rotate Image] (https://leetcode.com/problems/rotate-image/description) MEDIUM (AMAZON)
 
 <b>Sample Problems<b><br>
 
