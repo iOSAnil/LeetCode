@@ -1248,3 +1248,52 @@ var matrix = [[1,2,3],[4,5,6],[7,8,9]]
 RotateMatrixBy90Degree().rotate(&matrix)
 //matrix now becomes [[7,4,1],[8,5,2],[9,6,3]]
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------54. Spiral Matrix-----------------------------------------------------------------------------------
+
+func spiralOrder(_ matrix: [[Int]]) -> [Int] {
+        guard !matrix.isEmpty else { return [] }
+        
+        var result = [Int]()
+        var top = 0, bottom = matrix.count - 1
+        var left = 0, right = matrix[0].count - 1
+        
+        while left <= right && top <= bottom {
+            // Traverse from left to right along the top row
+            if right >= left {
+                
+                for i in left...right {
+                    result.append(matrix[top][i])
+                }
+                top += 1
+            }
+            
+            // Traverse from top to bottom along the right column
+            if bottom >= top {
+                for i in top...bottom {
+                    result.append(matrix[i][right])
+                }
+                right -= 1
+            }
+           
+            
+            if top <= bottom { // Check if there are remaining rows
+                // Traverse from right to left along the bottom row
+                for i in stride(from: right, through: left, by: -1) {
+                    result.append(matrix[bottom][i])
+                }
+                bottom -= 1
+            }
+            
+            if left <= right { // Check if there are remaining columns
+                // Traverse from bottom to top along the left column
+                for i in stride(from: bottom, through: top, by: -1) {
+                    result.append(matrix[i][left])
+                }
+                left += 1
+            }
+        }
+        
+        return result
+    }
+// ---------------------------------------------------------------------------------------------------------------------
