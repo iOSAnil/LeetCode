@@ -1215,3 +1215,36 @@ func judgeSquareSum(_ c: Int) -> Bool {
 }
 print(judgeSquareSum(5))
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------48. Rotate Image-----------------------------------------------------------------------------------
+
+class RotateMatrixBy90Degree {
+    func rotate(_ matrix: inout [[Int]]) {
+        var left = 0
+        var right = matrix.count - 1
+        
+        while left < right {
+        for i in 0..<(right - left) {
+                var (top, bottom) = (left, right)
+                
+                let topLeft = matrix[top][left+i] //topLeft
+                
+                matrix[top][left+i] = matrix[bottom-i][left]
+                
+                matrix[bottom-i][left] = matrix[bottom][right-i]
+
+                matrix[bottom][right-i] = matrix[top+i][right]
+
+                matrix[top+i][right] = topLeft
+            }
+            right -= 1
+            left += 1
+        }
+        
+     }
+}
+
+var matrix = [[1,2,3],[4,5,6],[7,8,9]]
+RotateMatrixBy90Degree().rotate(&matrix)
+//matrix now becomes [[7,4,1],[8,5,2],[9,6,3]]
+// ------------------------------------------------------------------------------------------------------------------------------
