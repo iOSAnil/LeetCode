@@ -31,6 +31,7 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 54. [Spiral Matrix] (https://leetcode.com/problems/spiral-matrix/description) MEDIUM (Microsoft)
 73. [Set Matrix Zeroes] (https://leetcode.com/problems/set-matrix-zeroes) MEDIUM (FB)
 112. [Path Sum] (https://leetcode.com/problems/path-sum) EASY
+21. [Merge Two Sorted Lists] (https://leetcode.com/problems/merge-two-sorted-lists) EASY
 
 <b>Sample Problems<b><br>
 
