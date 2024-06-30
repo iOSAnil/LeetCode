@@ -1298,7 +1298,7 @@ func spiralOrder(_ matrix: [[Int]]) -> [Int] {
     }
 // -------------------------------------------------------------------------------------------------------------------------------------
 // ---------------------------73. Set Matrix Zeroes-----------------------------------------------------------------------------------
-
+// No new Memory used
 class MatrixToZeroes{
     func setZeroes(_ matrix: inout [[Int]]) {
         let rows = matrix.count
@@ -1333,5 +1333,39 @@ class MatrixToZeroes{
         }
     }
 }
+var matrix1 = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+MatrixToZeroes().setZeroes(&matrix1)
+print(matrix1) //[[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+// -------------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------------------------------------112. Path Sum----------------------------------------------------------------------------
+class PathSum {
+    func hasPathSum(_ root: TreeNode?, _ targetSum: Int) -> Bool {
+        guard let root = root else {
+            return false
+        }
+        return checkBelowTreeSum(root, targetSum)
+    }
+    
+    func isLastNode(_ root: TreeNode?) -> Bool {
+        return root?.left == nil && root?.right == nil
+    }
+
+    func checkBelowTreeSum(_ root: TreeNode?, _ leftTarget: Int) -> Bool {
+        guard let root = root else {
+            return false
+        }
+        let newTarget = leftTarget - root.val
+        if isLastNode(root) {
+            return newTarget == 0
+        }
+        return checkBelowTreeSum(root.left, newTarget) || checkBelowTreeSum(root.right, newTarget)
+    }
+}
+
+let two = TreeNode(2)
+let three = TreeNode(3)
+let root = TreeNode(1, two, three)
+print(PathSum().hasPathSum(root, 3))
 
 // -------------------------------------------------------------------------------------------------------------------------------------
