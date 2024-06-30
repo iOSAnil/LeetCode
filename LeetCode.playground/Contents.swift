@@ -1412,3 +1412,44 @@ func mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {
     return dummy.next
 }
 // -------------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------228. Summary Ranges---------------------------------------------------------
+
+func summaryRanges(_ nums: [Int]) -> [String] {
+    var array = [String]()
+    if nums.isEmpty {
+        return array
+    }
+    
+    var stack = [Int]()
+   
+    for num in nums {
+        if stack.isEmpty {
+            stack.insert(num, at: 0)
+        } else {
+            if stack.last! + 1 != num  {
+                if stack.count == 1 {
+                    array.append("\(stack[0])")
+                } else {
+                    array.append("\(stack[0])->\(stack.popLast()!)")
+                }
+                stack.removeAll()
+                stack.insert(num, at: 0)
+            } else {
+                stack.insert(num, at: stack.count)
+            }
+        }
+    }
+    
+    if !stack.isEmpty {
+        if stack.count == 1 {
+            array.append("\(stack[0])")
+        } else {
+            array.append("\(stack[0])->\(stack.popLast()!)")
+        }
+    }
+    return array
+}
+
+print(summaryRanges([0,2,3,4,6,8,9]))
+// -------------------------------------------------------------------------------------------------------------------------------------
