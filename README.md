@@ -29,6 +29,7 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 633. [Sum of Square Numbers] (https://leetcode.com/problems/sum-of-square-numbers) MEDIUM (AMAZON)
 48. [Rotate Image] (https://leetcode.com/problems/rotate-image/description) MEDIUM (Microsoft)
 54. [Spiral Matrix] (https://leetcode.com/problems/spiral-matrix/description) MEDIUM (Microsoft)
+73. [Set Matrix Zeroes] (https://leetcode.com/problems/set-matrix-zeroes) MEDIUM (FB)
 
 <b>Sample Problems<b><br>
 
