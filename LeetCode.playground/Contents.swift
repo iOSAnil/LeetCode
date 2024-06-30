@@ -1296,4 +1296,42 @@ func spiralOrder(_ matrix: [[Int]]) -> [Int] {
         
         return result
     }
-// ---------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------73. Set Matrix Zeroes-----------------------------------------------------------------------------------
+
+class MatrixToZeroes{
+    func setZeroes(_ matrix: inout [[Int]]) {
+        let rows = matrix.count
+        let columns = matrix[0].count
+        for i in 0..<rows {
+            for j in 0..<columns {
+                if matrix[i][j] == 0 {
+                    setMaximum(&matrix, i, j)
+                }
+            }
+        }
+        resetMaxToZero(&matrix)
+    }
+    
+    func resetMaxToZero(_ matrix: inout [[Int]]) {
+        let rows = matrix.count
+        let columns = matrix[0].count
+        for i in 0..<rows {
+            for j in 0..<columns {
+                matrix[i][j] = matrix[i][j] == Int.max ? 0 : matrix[i][j]
+            }
+        }
+    }
+    
+    func setMaximum(_ matrix: inout [[Int]], _ i: Int, _ j: Int) {
+        for row in 0..<matrix.count {
+            matrix[row][j] = matrix[row][j] == 0 ? 0 : Int.max
+        }
+        
+        for column in 0..<matrix[0].count {
+            matrix[i][column] = matrix[i][column] == 0 ? 0 : Int.max
+        }
+    }
+}
+
+// -------------------------------------------------------------------------------------------------------------------------------------
