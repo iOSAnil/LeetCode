@@ -33,6 +33,7 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 112. [Path Sum] (https://leetcode.com/problems/path-sum) EASY
 21. [Merge Two Sorted Lists] (https://leetcode.com/problems/merge-two-sorted-lists) EASY
 228. [Summary Ranges] (https://leetcode.com/problems/summary-ranges/) EASY
+289. [Game of life] (https://leetcode.com/problems/game-of-life/description/) Medium (AMAZON)
 
 <b>Sample Problems<b><br>
 
