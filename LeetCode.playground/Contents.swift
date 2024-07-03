@@ -1453,3 +1453,74 @@ func summaryRanges(_ nums: [Int]) -> [String] {
 
 print(summaryRanges([0,2,3,4,6,8,9]))
 // -------------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------289. Game of Life---------------------------------------------------------
+
+func gameOfLife(_ board: inout [[Int]]) {
+    for i in 0..<board.count {
+        for j in 0..<board[0].count {
+            let livingNeighbours = getNeighboursLivingCellsCount(i, j, board)
+            switch (board[i][j], livingNeighbours){
+            case (0, 3):
+                board[i][j] = 10
+            case (1, 0..<2), (1, 4...):
+                board[i][j] = -10
+            default:
+                break
+            }
+        }
+    }
+    resetBoardValue(&board)
+}
+
+func resetBoardValue(_ board: inout [[Int]]) {
+    for i in 0..<board.count {
+        for j in 0..<board[0].count {
+            if board[i][j] == 10 {
+                board[i][j] = 1
+            } else if board[i][j] == -10 {
+                board[i][j] = 0
+            }
+        }
+    }
+}
+
+func isLivingValue(_ val: Int?) -> Bool {
+    guard let val = val else {
+        return false
+    }
+    return val == 1 || val == -10
+}
+
+func getNeighboursLivingCellsCount(_ rowIndex: Int, _ columnIndex: Int, _ board: [[Int]]) -> Int {
+    var count = 0
+    // Up cells
+            
+    count += isLivingValue(board[safe: rowIndex-1]?[safe: columnIndex-1]) ? 1 : 0
+    count += isLivingValue(board[safe: rowIndex-1]?[safe: columnIndex]) ? 1 : 0
+    count += isLivingValue(board[safe: rowIndex-1]?[safe: columnIndex+1]) ? 1 : 0
+
+    
+    // left cells
+    count += isLivingValue(board[safe: rowIndex]?[safe: columnIndex-1]) ? 1 : 0
+    //right cells
+    count += isLivingValue(board[safe: rowIndex]?[safe: columnIndex+1]) ? 1 : 0
+
+    //Down cells
+    count += isLivingValue(board[safe: rowIndex+1]?[safe: columnIndex-1]) ? 1 : 0
+    count += isLivingValue(board[safe: rowIndex+1]?[safe: columnIndex]) ? 1 : 0
+    count += isLivingValue(board[safe: rowIndex+1]?[safe: columnIndex+1]) ? 1 : 0
+    
+    return count
+}
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        get { return self.indices.contains(index) ? self[index] : nil }
+    }
+}
+ 
+var board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+gameOfLife(&board)
+print(board) // [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+// -------------------------------------------------------------------------------------------------------------------------------------
