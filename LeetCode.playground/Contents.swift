@@ -1524,3 +1524,86 @@ var board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
 gameOfLife(&board)
 print(board) // [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
 // -------------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------2. Add Two Numbers----------------------------------------------------------------------------------
+//https://leetcode.com/problems/add-two-numbers
+func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+    let dummy = ListNode(0)
+    var currentl1 = l1
+    var currentl2 = l2
+    
+    var head: ListNode? = dummy
+    
+    var carry = 0
+    while currentl1 != nil || currentl2 != nil {
+        let val = (currentl1?.val ?? 0) + (currentl2?.val ?? 0) + carry
+        head?.next = ListNode(val%10)
+        carry = val/10
+        head = head?.next
+        currentl1 = currentl1?.next
+        currentl2 = currentl2?.next
+    }
+    
+    if carry != 0 {
+        head?.next = ListNode(carry)
+    }
+    return dummy.next
+}
+
+let resultNode = addTwoNumbers(ListNode(2, ListNode(4, ListNode(3, ListNode(9)))),
+                               ListNode(5, ListNode(6, ListNode(6))))
+print(resultNode)
+// -------------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------61.  Rotate List----------------------------------------------------------------------------------
+//https://leetcode.com/problems/rotate-list
+
+func rotateRight(_ head: ListNode?, _ k: Int) -> ListNode? {
+    if head == nil {
+        return nil
+    }
+    var length = lengthOfListNode(head)
+    let rotate = k%length
+
+    if length == 0 {
+        return nil
+    }
+    if k == 0 || rotate == 0 {
+        return head
+    }
+    
+    var shiftingRequiredToCut = length - rotate
+    
+    var newHead = head
+    var lefthead = head
+    
+    while shiftingRequiredToCut > 0 {
+        newHead = newHead?.next
+        if shiftingRequiredToCut != 1 {
+            lefthead = lefthead?.next
+        } else {
+            lefthead?.next = nil // cut the head consider this is the last node now
+        }
+        shiftingRequiredToCut -= 1
+    }
+    
+    let startPointer = newHead
+    while newHead?.next != nil {
+        newHead = newHead?.next
+    }
+    
+    //Join the last node to the head
+    newHead?.next = head
+    
+    
+    while length > 0 {
+        newHead = newHead?.next
+        length -= 1
+    }
+    newHead?.next = nil
+    
+    return startPointer
+}
+let node: ListNode? = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+print(rotateRight(node, 2))
+// -------------------------------------------------------------------------------------------------------------------------------------
