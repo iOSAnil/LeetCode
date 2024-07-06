@@ -1678,3 +1678,17 @@ func deleteDuplicates(_ head: ListNode?) -> ListNode? {
 
 let deletedDuplicatesList = deleteDuplicates(ListNode(1, ListNode(2 , ListNode(3, ListNode(3, ListNode(4, ListNode(4, ListNode(5))))))))
 // -------------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------71. Simplify Path -----------------------------------------------------------------------
+
+func simplifyPath(_ path: String) -> String {
+    return "/" + path.split(separator: "/").reduce(into: [Substring()], {
+        switch $1 {
+        case ".": return
+        case "..": _ = $0.popLast()
+        default: $0.append($1)
+        }
+    }).compactMap({String($0)}).filter({ !$0.isEmpty }).joined(separator: "/")
+}
+
+print(simplifyPath("/.../a/../b/c/../d/./")) //"/.../b/d"
+// -------------------------------------------------------------------------------------------------------------------------------------
