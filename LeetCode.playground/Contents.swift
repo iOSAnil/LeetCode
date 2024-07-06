@@ -1552,7 +1552,6 @@ func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
 
 let resultNode = addTwoNumbers(ListNode(2, ListNode(4, ListNode(3, ListNode(9)))),
                                ListNode(5, ListNode(6, ListNode(6))))
-print(resultNode)
 // -------------------------------------------------------------------------------------------------------------------------------------
 
 // ------------------------------------61.  Rotate List----------------------------------------------------------------------------------
@@ -1605,5 +1604,50 @@ func rotateRight(_ head: ListNode?, _ k: Int) -> ListNode? {
     return startPointer
 }
 let node: ListNode? = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
-print(rotateRight(node, 2))
+let rotateRightNode = rotateRight(node, 2)
+
+// --------------------------------------------------86. Partition List---------------------------------------------------------------------------------------------------
+// https://leetcode.com/problems/partition-list/description
+
+func partition(_ head: ListNode?, _ x: Int) -> ListNode? {
+    if head == nil {
+        return nil
+    }
+    var originalList = head
+    let dummyLeftNode = ListNode(0)
+    let dummyRightNode = ListNode(0)
+    var leftList: ListNode? = dummyLeftNode
+    var rightList: ListNode? = dummyRightNode
+    while originalList != nil {
+        if (originalList?.val ?? 0) >= x {
+            rightList?.next = ListNode(originalList?.val ?? 0)
+            rightList = rightList?.next
+        } else {
+            leftList?.next = ListNode(originalList?.val ?? 0)
+            leftList = leftList?.next
+        }
+        originalList = originalList?.next
+    }
+    
+    leftList?.next = dummyRightNode.next
+    
+    return dummyLeftNode.next
+}
+
+let newPartitionList = partition(ListNode(1, ListNode(4 , ListNode(3, ListNode(2, ListNode(5, ListNode(2)))))), 3) // [1,2,2,4,3,5]
+let newPartitionList2 = partition(ListNode(2, ListNode(1)), 2) // [1,2]
+
+func lengthOfListNode(_ l1: ListNode?) -> Int {
+    var l1 = l1
+    var len = 0
+    if l1 == nil {
+        return len
+    }
+    len = 1
+    while l1?.next != nil {
+        l1 = l1?.next
+        len += 1
+    }
+    return len
+}
 // -------------------------------------------------------------------------------------------------------------------------------------

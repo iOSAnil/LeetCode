@@ -34,9 +34,9 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 21. [Merge Two Sorted Lists] (https://leetcode.com/problems/merge-two-sorted-lists) EASY
 228. [Summary Ranges] (https://leetcode.com/problems/summary-ranges/) EASY
 289. [Game of life] (https://leetcode.com/problems/game-of-life/description/) Medium (AMAZON)
-2. [Add two numbers] (https://leetcode.com/problems/add-two-numbers/) Medium  
-61. [Rotate List] (https://leetcode.com/problems/rotate-list/) Medium  
-
+2. [Add two numbers] (https://leetcode.com/problems/add-two-numbers/) Medium (AMAZON)
+61. [Rotate List] (https://leetcode.com/problems/rotate-list/) Medium   (FB)
+86. [Partition List] (https://leetcode.com/problems/partition-list/description) Medium (Microsoft)
 <b>Sample Problems<b><br>
 
 189. [Rotate Array](https://leetcode.com/problems/rotate-array/description/) MEDIUM
