@@ -1651,3 +1651,30 @@ func lengthOfListNode(_ l1: ListNode?) -> Int {
     return len
 }
 // -------------------------------------------------------------------------------------------------------------------------------------
+
+func deleteDuplicates(_ head: ListNode?) -> ListNode? {
+    var originalList = head
+    var hash = [Int: Int]()
+    
+    while originalList != nil {
+        hash[originalList!.val, default: 0] += 1
+        originalList = originalList?.next
+    }
+    
+    originalList = head
+    var dummyNode: ListNode? = ListNode(0)
+    var resultList = dummyNode
+    
+    while originalList != nil {
+        if let hashValue = hash[originalList!.val], hashValue <= 1 {
+            resultList?.next = ListNode(originalList!.val)
+            resultList = resultList?.next
+        }
+        originalList = originalList?.next
+    }
+    
+    return dummyNode?.next
+}
+
+let deletedDuplicatesList = deleteDuplicates(ListNode(1, ListNode(2 , ListNode(3, ListNode(3, ListNode(4, ListNode(4, ListNode(5))))))))
+// -------------------------------------------------------------------------------------------------------------------------------------

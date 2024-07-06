@@ -37,6 +37,7 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 2. [Add two numbers] (https://leetcode.com/problems/add-two-numbers/) Medium (AMAZON)
 61. [Rotate List] (https://leetcode.com/problems/rotate-list/) Medium   (FB)
 86. [Partition List] (https://leetcode.com/problems/partition-list/description) Medium (Microsoft)
+82. [Delete Duplicates] (https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/) Medium
 <b>Sample Problems<b><br>
 
 189. [Rotate Array](https://leetcode.com/problems/rotate-array/description/) MEDIUM
