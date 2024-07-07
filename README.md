@@ -63,3 +63,4 @@ https://leetcode.com/studyplan/top-interview-150/<br>
 42. [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/) HARD
 135. [Candy](https://leetcode.com/problems/candy/description/) HARD
 1306. [Jump Game III] (https://leetcode.com/problems/jump-game-iii/) MEDIUM
+69. [Sqrt(x)] (https://leetcode.com/problems/sqrtx/description/) //Easy

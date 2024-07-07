@@ -1691,4 +1691,29 @@ func simplifyPath(_ path: String) -> String {
 }
 
 print(simplifyPath("/.../a/../b/c/../d/./")) //"/.../b/d"
-// -------------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------69. Sqrt(x)------------------------------------------------------------------------------------------
+https://leetcode.com/problems/sqrtx/description/
+func mySqrt(_ x: Int) -> Int {
+    if x < 2 { return x }
+    
+    var left = 1
+    var right = x / 2
+    
+    while left <= right {
+        let middle = (right + left) / 2
+        let midSquare = middle * middle
+        
+        if midSquare == x {
+            return middle
+        } else if midSquare > x {
+            right = middle - 1
+        } else {
+            left = middle + 1
+        }
+    }
+    
+    return right
+}
+print(mySqrt(8) //2
+      // -------------------------------------------------------------------------------------------------------------------------------------
