@@ -38,6 +38,7 @@
   - [Single Number](https://leetcode.com/problems/single-number/description)
   - [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
   - [Sqrt(x)](https://leetcode.com/problems/sqrtx/description/)
+  - [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/description/)
 
 - **MEDIUM**
   - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description)

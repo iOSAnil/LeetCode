@@ -1693,7 +1693,7 @@ func simplifyPath(_ path: String) -> String {
 print(simplifyPath("/.../a/../b/c/../d/./")) //"/.../b/d"
 
 // -------------------------------------------69. Sqrt(x)------------------------------------------------------------------------------------------
-https://leetcode.com/problems/sqrtx/description/
+// https://leetcode.com/problems/sqrtx/description/
 func mySqrt(_ x: Int) -> Int {
     if x < 2 { return x }
     
@@ -1715,5 +1715,26 @@ func mySqrt(_ x: Int) -> Int {
     
     return right
 }
-print(mySqrt(8) //2
-      // -------------------------------------------------------------------------------------------------------------------------------------
+print(mySqrt(8)) //2
+// ------------------------------------------------643. Maximum Average Subarray I----------------------------------------------------
+//https://leetcode.com/problems/maximum-average-subarray-i
+func findMaxAverage(_ nums: [Int], _ k: Int) -> Double {
+    var left = 0
+    var right = left + k - 1
+    var sum = (nums[left...right].reduce(0) { $0 + $1 })
+    var maxSum = sum
+    
+    while right < nums.count {
+        right += 1
+        if right < nums.count {
+            sum += (nums[right]-nums[left])
+            maxSum = max(maxSum, sum)
+        }
+        left += 1
+    }
+    return Double(maxSum)/Double(k)
+}
+print(findMaxAverage([1,12,-5,-6,50,3], 4)) // 12.75
+print(findMaxAverage([5], 1)) // 5.00
+print(findMaxAverage([0,4,0,3,2], 1)) //4.00
+// -------------------------------------------------------------------------------------------------------------------------------------
