@@ -1737,4 +1737,13 @@ func findMaxAverage(_ nums: [Int], _ k: Int) -> Double {
 print(findMaxAverage([1,12,-5,-6,50,3], 4)) // 12.75
 print(findMaxAverage([5], 1)) // 5.00
 print(findMaxAverage([0,4,0,3,2], 1)) //4.00
+
+// ------------------------------------------ 222. Count Complete Tree Nodes------------------------------------------------------------
+// https://leetcode.com/problems/count-complete-tree-nodes
+func countNodes(_ root: TreeNode?) -> Int {
+    if root == nil {
+        return 0
+    }
+    return 1+countNodes(root?.left)+countNodes(root?.right)
+}
 // -------------------------------------------------------------------------------------------------------------------------------------
