@@ -40,7 +40,8 @@
   - [Single Number](https://leetcode.com/problems/single-number/description)
   - [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
   - [Sqrt(x)](https://leetcode.com/problems/sqrtx/description/)
-
+  - [Average levels in binary tree](https://leetcode.com/problems/average-of-levels-in-binary-tree)
+  
 - **MEDIUM**
   - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description)
   - [Jump Game](https://leetcode.com/problems/jump-game/description)

@@ -1747,3 +1747,41 @@ func countNodes(_ root: TreeNode?) -> Int {
     return 1+countNodes(root?.left)+countNodes(root?.right)
 }
 // -------------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------------ 637. Average of Levels in Binary Tree-----------------------------------------------------
+//https://leetcode.com/problems/average-of-levels-in-binary-tree/description
+func averageOfLevels(_ root: TreeNode?) -> [Double] {
+    var doubleArray = [Double]()
+    guard let root = root else {
+        return doubleArray
+    }
+    var array = [(Int, TreeNode?)]()
+    var collectionArray = [Int: [Int]]()
+    array.append((0, root))
+    collectionArray[0] = [root.val]
+    
+    while !array.isEmpty {
+        let (index, node) = array.removeFirst()
+        
+        if let left = node?.left {
+            array.append((index+1, left))
+            collectionArray[index+1, default: []] += [left.val]
+        }
+        if let right = node?.right {
+            array.append((index+1, right))
+            collectionArray[index+1, default: []] += [right.val]
+        }
+    }
+    
+    doubleArray = Array(repeating: Double(0), count: (collectionArray.keys.max() ?? 0)+1)
+    
+    for (index, items) in collectionArray {
+        doubleArray[index] = Double(items.reduce(0, { $0 + $1 }))/Double(items.count)
+    }
+    collectionArray.removeAll()
+    return doubleArray
+}
+
+averageOfLevels(TreeNode(3, TreeNode(9, TreeNode(15),  TreeNode(7)), TreeNode(20)))
+// -------------------------------------------------------------------------------------------------------------------------------------
+
