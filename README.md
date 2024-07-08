@@ -9,6 +9,8 @@
 - **EASY**
   - [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75)
   - [Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75)
+  - [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/description/)
+
 - **MEDIUM**
   - [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75)
 
