@@ -63,7 +63,8 @@
   - [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/description/)
   - [Jump Game III](https://leetcode.com/problems/jump-game-iii/)
   - [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/description)
-
+  - [Count complete tree nodes](https://leetcode.com/problems/count-complete-tree-nodes/description)
+  
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)
