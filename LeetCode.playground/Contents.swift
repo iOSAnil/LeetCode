@@ -1784,4 +1784,32 @@ func averageOfLevels(_ root: TreeNode?) -> [Double] {
 
 averageOfLevels(TreeNode(3, TreeNode(9, TreeNode(15),  TreeNode(7)), TreeNode(20)))
 // -------------------------------------------------------------------------------------------------------------------------------------
+// https://leetcode.com/problems/sum-root-to-leaf-numbers
+class RootToLeafNumbers  {
+    func sumNumbers(_ root: TreeNode?) -> Int {
+        return dfs(root, 0)
+    }
+    
+    private func dfs(_ root: TreeNode?, _ sum: Int) -> Int {
+        var sum = sum
+        guard let root = root else {
+            return 0
+        }
+        sum = sum*10 + root.val
+        if root.left == nil && root.right == nil {
+            return sum
+        } else {
+            return dfs(root.left, sum) + dfs(root.right, sum)
+        }
+    }
+}
 
+let tree2 = TreeNode(3, TreeNode(4), TreeNode(5))
+let tree3 = TreeNode(4, TreeNode(9, TreeNode(5), TreeNode(1)), TreeNode(0))
+let tree4 = TreeNode(1, TreeNode(0), nil)
+
+print(RootToLeafNumbers().sumNumbers(tree2)) // 69
+print(RootToLeafNumbers().sumNumbers(tree3)) // 1026
+print(RootToLeafNumbers().sumNumbers(tree4)) // 10
+
+// -------------------------------------------------------------------------------------------------------------------------------------
