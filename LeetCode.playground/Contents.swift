@@ -1813,3 +1813,33 @@ print(RootToLeafNumbers().sumNumbers(tree3)) // 1026
 print(RootToLeafNumbers().sumNumbers(tree4)) // 10
 
 // -------------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------209. Minimum Size Subarray Sum----------------------------------------------------------
+//https://leetcode.com/problems/minimum-size-subarray-sum
+func minSubArrayLen(_ target: Int, _ nums: [Int]) -> Int {
+    var leftPointer = 0
+    var rightPointer = 0
+    var sum = nums[leftPointer]
+    var window = Int.max
+    
+    while rightPointer <= nums.count {
+        if sum >= target {
+            window = min(window, rightPointer-leftPointer+1)
+            sum -= nums[leftPointer]
+            leftPointer += 1
+            continue
+        }
+        
+        rightPointer += 1
+        
+        if nums.indices.contains(rightPointer), rightPointer != leftPointer {
+            sum += nums[rightPointer]
+        }
+    }
+    return window == Int.max ? 0 : window
+    
+}
+
+print(minSubArrayLen(7, [2,3,1,2,4,3])) //2
+print(minSubArrayLen(4, [1,4,4])) //1
+print(minSubArrayLen(11, [1,2,3,4,5])) //3
+// -------------------------------------------------------------------------------------------------------------------------------------
