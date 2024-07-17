@@ -1843,3 +1843,26 @@ print(minSubArrayLen(7, [2,3,1,2,4,3])) //2
 print(minSubArrayLen(4, [1,4,4])) //1
 print(minSubArrayLen(11, [1,2,3,4,5])) //3
 // -------------------------------------------------------------------------------------------------------------------------------------
+
+// --------------------------------------852. Peak Index in a Mountain Array------------------------------------------------------------
+// https://leetcode.com/problems/peak-index-in-a-mountain-array/description/
+class Mountain {
+    func peakIndexInMountainArray(_ arr: [Int]) -> Int {
+        var left = 0
+        var right = arr.count - 1
+        
+        while left < right {
+            let middle = (left+right)/2
+            if arr[middle]>arr[middle-1] && arr[middle+1]<arr[middle] {
+                return middle
+            } else if arr[middle] > arr[middle-1] {
+                left = middle+1
+            } else {
+                right = middle
+            }
+        }
+        return left
+    }
+}
+print(Mountain().peakIndexInMountainArray([1,2,3,4,5])) //4
+// -----------------------------------------------------------------------------------------------------------------------------------------
