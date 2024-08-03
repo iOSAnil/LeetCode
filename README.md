@@ -41,6 +41,7 @@
   - [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
   - [Sqrt(x)](https://leetcode.com/problems/sqrtx/description/)
   - [Average levels in binary tree](https://leetcode.com/problems/average-of-levels-in-binary-tree)
+  - [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/)
   
 - **MEDIUM**
   - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description)
@@ -68,6 +69,7 @@
   - [Sum Root to Leaf Numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers/description)
   - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description)
   - [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array/description/)
+  - [H-Index](https://leetcode.com/problems/h-index/description/)
   
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)

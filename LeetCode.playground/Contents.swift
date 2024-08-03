@@ -1866,3 +1866,43 @@ class Mountain {
 }
 print(Mountain().peakIndexInMountainArray([1,2,3,4,5])) //4
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+func hIndex(_ citations: [Int]) -> Int {
+    let citation = citations.sorted(by: { $0 > $1})
+    
+    for (index,value) in citation.enumerated() {
+        if index >= value {
+            return index
+        }
+    }
+    return citation.count
+}
+
+print(hIndex([3,0,6,1,5]))
+print(hIndex([1,3,1]))
+
+// --------------------------------------448. Find All Numbers Disappeared in an Array--------------------------------------
+
+func findDisappearedNumbers(_ nums: [Int]) -> [Int] {
+    //Take the numbers and mark the corresponding indexes to -(number)
+    var nums = nums
+    for n in nums {
+        let i = abs(n) - 1
+        nums[i] = -1 * abs(nums[i])
+    }
+    
+    //Take the positive numbers out since the negative numbers must not be present.
+    var result = [Int]()
+    for i in 0..<nums.count {
+        if nums[i] > 0 {
+            result.append(i+1)
+        }
+    }
+    return result
+}
+
+
+findDisappearedNumbers([4,3,2,7,8,2,3,1]) // Output: [5,6]
+findDisappearedNumbers([1,1]) // Output: [2]
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
