@@ -1906,3 +1906,40 @@ findDisappearedNumbers([4,3,2,7,8,2,3,1]) // Output: [5,6]
 findDisappearedNumbers([1,1]) // Output: [2]
 
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------------------------------pascals-triangle-ii-----------------------------------------------------------------------------
+// https://leetcode.com/problems/pascals-triangle-ii/
+func getRow(_ rowIndex: Int) -> [Int] {
+    var array = Array(repeating: 1, count: rowIndex+1)
+    var dict = [String: Int?]()
+    if rowIndex == 0 {
+        return array
+    }
+    
+    for i in 1..<rowIndex {
+        array[i] = summarize(rowIndex, i, 0, &dict)
+    }
+    return array
+}
+    
+private func summarize(_ rowIndex: Int, _ index: Int, _ sum: Int,  _ dict: inout [String: Int?]) -> Int {
+    if let val = dict["\(rowIndex)\(index)"], let value = val {
+        return value
+    } else {
+        if index < 0 {
+            return 0
+        } else if index == 0 || (index == rowIndex) {
+            return 1
+        } else {
+            let a = summarize(rowIndex-1, index, sum, &dict)
+            dict["\(rowIndex-1)\(index)"] = a
+            let b = summarize(rowIndex-1, index-1, sum, &dict)
+            dict["\(rowIndex-1)\(index-1)"] = b
+            return (a + b)
+        }
+    }
+}
+
+print(getRow(3)) // [1,3,3,1]
+print(getRow(4)) // [1, 4, 6, 4, 1]
+// -----------------------------------------------------------------------------------------------------------------------------------------

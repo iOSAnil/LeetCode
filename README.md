@@ -2,6 +2,10 @@
 
 **Solving the complex series of LeetCode**
 
+- **EASY**
+  - [Maximum Depth of Binary Tree](https://leetcode.com/problems/pascals-triangle-ii/description/)
+
+
 [LeetCode 75 Study Plan](https://leetcode.com/studyplan/leetcode-75/)
 
 ## Problems from LeetCode 75 Study Plan
