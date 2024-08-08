@@ -1,17 +1,17 @@
 # LeetCode
 
-**Solving the complex series of LeetCode**
-
 - **EASY**
   - [Pascal's triangle](https://leetcode.com/problems/pascals-triangle-ii/description/)
 
 - **MEDIUM**
   - [Find triangular sum of an array](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Solving the complex series of LeetCode**
+
+## 1) Problems from LeetCode 75 Study Plan
 
 [LeetCode 75 Study Plan](https://leetcode.com/studyplan/leetcode-75/)
-
-## Problems from LeetCode 75 Study Plan
 
 - **EASY**
   - [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75)
@@ -21,7 +21,7 @@
 - **MEDIUM**
   - [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75)
 
-## Top Interview 150
+## 2) Top Interview 150
 
 [Top Interview 150 Study Plan](https://leetcode.com/studyplan/top-interview-150/)
 
