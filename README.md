@@ -5,6 +5,9 @@
 - **EASY**
   - [Pascal's triangle](https://leetcode.com/problems/pascals-triangle-ii/description/)
 
+- **MEDIUM**
+  - [Find triangular sum of an array](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
+
 
 [LeetCode 75 Study Plan](https://leetcode.com/studyplan/leetcode-75/)
 

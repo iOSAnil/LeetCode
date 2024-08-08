@@ -1943,3 +1943,21 @@ private func summarize(_ rowIndex: Int, _ index: Int, _ sum: Int,  _ dict: inout
 print(getRow(3)) // [1,3,3,1]
 print(getRow(4)) // [1, 4, 6, 4, 1]
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------------------------2221. Find Triangular Sum of an Array---------------------------------------
+// https://leetcode.com/problems/find-triangular-sum-of-an-array/description/
+func triangularSum(_ nums: [Int]) -> Int {
+    var nums = nums
+    while nums.count > 1 {
+        for i in 0..<nums.count {
+            if i+1 == nums.count {
+                nums.removeLast()
+            } else {
+                nums[i] = (nums[i] + nums[i+1])%10
+            }
+        }
+    }
+    return nums.first ?? 0
+}
+print(triangularSum([1,2,3,4,5])) // 8
+print(triangularSum([5])) // 5
