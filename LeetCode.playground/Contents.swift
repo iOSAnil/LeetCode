@@ -1960,4 +1960,42 @@ func triangularSum(_ nums: [Int]) -> Int {
     return nums.first ?? 0
 }
 print(triangularSum([1,2,3,4,5])) // 8
+/*
+ 1 2 3 4 5
+  3 5 7 9
+   8 2 6
+    0 8
+     8
+ */
 print(triangularSum([5])) // 5
+
+
+// -------------------------------------3. Longest Substring Without Repeating Characters--------------------------------------
+// https://leetcode.com/problems/longest-substring-without-repeating-characters
+// 2 pointer window sliding with unique elements capturing is done by set.
+func lengthOfLongestSubstring(_ s: String) -> Int {
+   var charSet: Set<Character> = []
+   var left = 0
+   var maximum = 0
+   var array = Array(s)
+   
+   for right in 0..<array.count {
+       while charSet.contains(array[right]) {
+           // In case of duplicate, abdadgh (when d is found remove "bd" remove all the characters from set, till the character is from left index
+           charSet.remove(array[left])
+           left += 1
+       }
+       charSet.insert(array[right])
+       maximum = max(maximum, right - left + 1)
+   }
+   return maximum
+}
+
+print(lengthOfLongestSubstring("abcabcbb")) // 3
+print(lengthOfLongestSubstring("bbbbb")) // 1
+print(lengthOfLongestSubstring("pwwkew")) // 3
+print(lengthOfLongestSubstring("aab")) // 2
+print(lengthOfLongestSubstring("dvdf")) // 3
+print(lengthOfLongestSubstring("abdadgh")) // 4
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
