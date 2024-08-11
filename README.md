@@ -78,6 +78,7 @@
   - [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array/description/)
   - [H-Index](https://leetcode.com/problems/h-index/description/)
   - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters) (FB)
+  - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/submissions) (GOOGLE)
   
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
