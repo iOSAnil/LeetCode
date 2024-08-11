@@ -1999,3 +1999,36 @@ print(lengthOfLongestSubstring("dvdf")) // 3
 print(lengthOfLongestSubstring("abdadgh")) // 4
 
 // -----------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------128. Longest Consecutive Sequence----------------------------------------------------------------------------------
+
+//https://leetcode.com/problems/longest-consecutive-sequence
+func longestConsecutive(_ nums: [Int]) -> Int {
+    var dict = [Int: Bool]()
+    nums.forEach({ dict[$0] = true })
+    
+    // if left element is not present then its start of the list
+    // [100,4,200,1,3,2]
+    // [1,2,3,4        100,          200]
+    // startOfSequences is 1 100 and 200 since the left element doesn't exist in hasmap created above.
+    
+    var startOfSequences = [Int]()
+    nums.forEach({ if dict[$0-1] == nil {
+        startOfSequences.append($0)
+    } })
+    
+    var maximum = 0
+    var i = 0
+    for startOfSequence in startOfSequences {
+        while dict[startOfSequence+i] != nil {
+            i += 1
+            maximum = max(maximum, i)
+        }
+        i = 0
+    }
+    return maximum
+}
+
+longestConsecutive([100,4,200,1,3,2])
+longestConsecutive([0,3,7,2,5,8,4,6,0,1])
+ 
+// -----------------------------------------------------------------------------------------------------------------------------------------
