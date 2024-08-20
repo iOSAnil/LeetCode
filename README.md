@@ -83,7 +83,7 @@
   - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters) (FB)
   - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/submissions) (GOOGLE)
   - [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/description) (AMAZON)
-  
+  - [Group Anagrams](https://leetcode.com/problems/group-anagrams/description)
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)
