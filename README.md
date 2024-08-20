@@ -5,6 +5,9 @@
 
 - **MEDIUM**
   - [Find triangular sum of an array](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
+ 
+ - **HARD**
+  - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/) 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Solving the complex series of LeetCode**
