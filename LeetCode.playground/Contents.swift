@@ -2078,4 +2078,34 @@ medianFinder.addNum(-4);    // arr[-4, -3, -2, -1]
 print(medianFinder.findMedian()); // return -2.5 (i.e., (-3 + -2) / 2)
 medianFinder.addNum(-5);    // arr[-5, -4, -3, -2, -1]
 print(medianFinder.findMedian()); // return -3.0
+// -----------------------------------------------------------------------------------------------------------------------------------------
 
+// ------------------------------------22. Generate Parentheses-------------------------------------------------------------------
+//https://leetcode.com/problems/generate-parentheses/description
+func generateParenthesis(_ n: Int) -> [String] {
+    var result = [String]()
+    var stack = [Character]()
+    
+    func dfsGenerateParathesis(open: Int, closed: Int) {
+        if open == closed && open == n {
+            result.append(String(stack))
+            return
+        }
+        
+        if open < n {
+            stack.append("(")
+            dfsGenerateParathesis(open: open+1, closed: closed)
+            stack.removeLast()
+        }
+        
+        if closed < open {
+            stack.append(")")
+            dfsGenerateParathesis(open: open, closed: closed+1)
+            stack.removeLast()
+        }
+        
+    }
+    dfsGenerateParathesis(open: 0, closed: 0)
+    return result
+}
+// -----------------------------------------------------------------------------------------------------------------------------------------
