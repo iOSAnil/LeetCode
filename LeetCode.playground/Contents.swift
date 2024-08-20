@@ -2032,3 +2032,50 @@ longestConsecutive([100,4,200,1,3,2])
 longestConsecutive([0,3,7,2,5,8,4,6,0,1])
  
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------295. Find Median from Data Stream--------------------------------------------------------------------
+//https://leetcode.com/problems/find-median-from-data-stream/
+class MedianFinder {
+    var array = [Int]()
+    init() {
+        array = [Int]()
+    }
+    
+    func addNum(_ num: Int) {
+        var l = 0, r = array.count - 1
+        
+        while l <= r {
+            let m = l + (r - l) / 2
+            
+            if array[m] < num {
+                l = m + 1
+            } else {
+                r = m - 1
+            }
+        }
+        array.insert(num, at: l)
+    }
+    
+    func findMedian() -> Double {
+        if array.isEmpty {
+            return Double(0)
+        } else if array.count.isMultiple(of: 2) {
+            return Double(Double((array[(array.count/2)-1] + array[(array.count/2)])) / 2)
+        } else {
+            return Double(array[(array.count/2)])
+        }
+    }
+}
+
+var medianFinder =  MedianFinder();
+medianFinder.addNum(-1);    // arr = [-1]
+print(medianFinder.findMedian()) // return -1
+medianFinder.addNum(-2);    // arr = [-2, -1]
+print(medianFinder.findMedian()) // return 1.5 (i.e., (-1 + -2) / 2)
+medianFinder.addNum(-3);    // arr[-3, -2, -1]
+print(medianFinder.findMedian()); // return -2.0
+medianFinder.addNum(-4);    // arr[-4, -3, -2, -1]
+print(medianFinder.findMedian()); // return -2.5 (i.e., (-3 + -2) / 2)
+medianFinder.addNum(-5);    // arr[-5, -4, -3, -2, -1]
+print(medianFinder.findMedian()); // return -3.0
+
