@@ -2194,3 +2194,52 @@ print(survivalBoard)
  */
 //
 // -----------------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------399. Evaluate Division----------------------------------------------------------
+// https://leetcode.com/problems/evaluate-division/description/
+func calcEquation(_ equations: [[String]], _ values: [Double], _ queries: [[String]]) -> [Double] {
+    var adj = [String: [(String, Double)]]()
+    
+    for (i, eq) in equations.enumerated() {
+        let a = eq[0]
+        let b = eq[1]
+        adj[a, default: []].append((b, values[i]))
+        adj[b, default: []].append((a, 1 / values[i]))
+    }
+    
+    
+    func bfs(_ src: String, _ target: String) -> Double {
+        guard adj[src] != nil, adj[target] != nil else {
+            return -1
+        }
+        
+        var q = [(src, 1.0)]
+        var visit = Set<String>()
+        visit.insert(src)
+        
+        while (!q.isEmpty) {
+            let (node, nodeWeight) = q.removeFirst()
+            if node == target {
+                return nodeWeight
+            }
+            
+            for (nei, weight) in adj[node, default: []] {
+                if !visit.contains(nei) {
+                    q.append((nei, nodeWeight * weight))
+                    visit.insert(nei)
+                }
+            }
+        }
+        return -1
+    }
+    
+    return queries.map { bfs($0[0], $0[1]) }
+}
+print(calcEquation( [["a","b"],["b","c"],["bc","cd"]], [1.5,2.5,5.0], [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]))
+
+/*
+ Input: equations = [["a","b"],["b","c"],["bc","cd"]],
+ values = [1.5,2.5,5.0],
+ queries = [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]
+ Output: [3.75000,0.40000,5.00000,0.20000]
+*/
+// -----------------------------------------------------------------------------------------------------------------------------------------
