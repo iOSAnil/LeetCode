@@ -2128,3 +2128,69 @@ func groupAnagrams(_ strs: [String]) -> [[String]] {
     return Array(dict.values)
 }
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------------------130. Surrounded Regions---------------------------------------------------------------------
+// https://leetcode.com/problems/surrounded-regions/description
+func solve(_ board: inout [[Character]]) {
+    let rows = board.count
+    let columns = board.first?.count ?? 0
+    
+    func capture(_ row: Int, _ column: Int) {
+        if row < 0 || column < 0 ||
+            row == rows ||
+            column == columns ||
+            board[row][column] != "O" {
+            return
+        }
+            board[row][column] = "I"
+            capture(row+1, column) // down
+            capture(row-1, column) // up
+            capture(row, column+1) // right
+            capture(row, column-1) // left
+        
+    }
+
+    // change all O to I by recursion calling the neightbours
+    for row in 0..<rows {
+        for column in 0..<columns {
+            if board[row][column] == "O" && ((row == 0 || row == rows-1) || (column == 0 || column == columns-1))  {
+                capture(row, column)
+            }
+        }
+    }
+    
+    // change all O to X after transformation to I
+    for row in 0..<rows {
+        for column in 0..<columns {
+            if board[row][column] == "O" {
+                board[row][column] = "X"
+            }
+            
+        }
+    }
+   
+    // change all I to O
+    for row in 0..<rows {
+        for column in 0..<columns {
+            if board[row][column] == "I" {
+                board[row][column] = "O"
+            }
+        }
+    }
+}
+
+var survivalBoard : [[Character]] = [["X","X","X","X"],
+                                      ["X","O","O","X"],
+                                      ["X","X","O","X"],
+                                      ["X","O","X","X"]]
+solve(&survivalBoard)
+print(survivalBoard)
+/*
+[["X","X","X","X"],
+ ["X","X","X","X"],
+ ["X","X","X","X"],
+ ["X","O","X","X"]]
+ 
+ */
+//
+// -----------------------------------------------------------------------------------------------------------------------------------------
