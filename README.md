@@ -95,3 +95,10 @@
   - [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/description/)
   - [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
   - [Candy](https://leetcode.com/problems/candy/description/)
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Basics of Tree (Data Structure)**
+- **EASY**
+  - [InOrder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
+  - [PostOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
+  - [PreOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
