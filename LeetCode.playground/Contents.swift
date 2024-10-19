@@ -2319,3 +2319,46 @@ func diameterOfBinaryTree(_ root: TreeNode?) -> Int {
     return maximum
 }
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------542. 01 Matrix-------------------------------------------------------------------------------
+
+//https://leetcode.com/problems/01-matrix/
+func updateMatrix(_ mat: [[Int]]) -> [[Int]] {
+    var result = Array(repeating: Array(repeating: 0, count: mat[0].count), count: mat.count)
+    var queue = [(Int, Int)]()
+    for row in 0..<mat.count {
+        for column in 0..<mat[0].count  {
+            if mat[row][column] == 0 {
+                queue.append((row,column))
+                result[row][column] = 0
+            } else {
+                result[row][column] = Int.max
+            }
+        }
+    }
+    
+    while !queue.isEmpty {
+        let (originalRow, originalColumn) = queue.removeFirst()
+        
+        updateResult(originalRow+1, originalColumn)
+        updateResult(originalRow-1, originalColumn)
+        updateResult(originalRow, originalColumn+1)
+        updateResult(originalRow, originalColumn-1)
+
+        func updateResult(_ row: Int, _ column: Int) {
+            if row >= mat.count || column >= mat[0].count || row < 0 || column < 0 {
+                return
+            }
+            if (result[row][column] > 1 + result[originalRow][originalColumn]) && result[row][column] == Int.max {
+                result[row][column] = 1 + result[originalRow][originalColumn]
+                queue.append((row, column))
+            }
+        }
+        
+    }
+    
+    return result
+}
+
+updateMatrix([[0,0,0],[0,1,0],[1,1,1]]) // [[0,0,0],[0,1,0],[1,2,1]]
+// -----------------------------------------------------------------------------------------------------------------------------------------
