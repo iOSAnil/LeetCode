@@ -2307,3 +2307,26 @@ func insert(_ intervals: [[Int]], _ newInterval: [Int]) -> [[Int]] {
 }
 
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------543. Diameter of Binary Tree---------------------------------------------------------------
+// https://leetcode.com/problems/diameter-of-binary-tree/
+
+func diameterOfBinaryTree(_ root: TreeNode?) -> Int {
+    var maximum = 0
+    
+    func height(_ root: TreeNode?, _ maxValue: Int) -> Int {
+        if root == nil {
+            return 0
+        }
+        
+        let lHeight = height(root?.left, maxValue)
+        let rHeight = height(root?.right, maxValue)
+        
+        maximum = max(maximum, lHeight+rHeight)
+        return 1 + max(lHeight, rHeight)
+    }
+    _ = height(root, maximum)
+    
+    return maximum
+}
+// -----------------------------------------------------------------------------------------------------------------------------------------
