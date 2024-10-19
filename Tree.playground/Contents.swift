@@ -44,6 +44,23 @@ func inorderWithRecursion(_ root: TreeNode?) -> [Int] {
     return array
 }
 
+func preorderWithoutRecursion(_ root: Node?) -> [Int] {
+    var stack = [Node]()
+    var result = [Int]()
+    guard let root = root else {
+        return result
+    }
+    stack.append(root)
+    
+    while !stack.isEmpty {
+        let node = stack.removeFirst()
+        result.append(node.val)
+        stack.insert(contentsOf: node.children, at: 0)
+    }
+    
+    return result
+}
+
 //https://leetcode.com/problems/n-ary-tree-preorder-traversal
 func preorderWithRecursion(_ root: Node?) -> [Int] {
     var array = [Int]()
@@ -88,7 +105,8 @@ rootNode.children = [nodeThree, Node(2), Node(4)]
     5      6
 */
 
-print(preorderWithRecursion(rootNode))
+print(preorderWithRecursion(rootNode)) // [1, 3, 5, 6, 2, 4]
+print(preorderWithoutRecursion(rootNode)) // [1, 3, 5, 6, 2, 4]
 print(postorderWithRecursion(rootNode))
 
 let treeNode = TreeNode(1, nil, TreeNode(2, TreeNode(3), nil))

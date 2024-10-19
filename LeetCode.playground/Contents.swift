@@ -2243,3 +2243,67 @@ print(calcEquation( [["a","b"],["b","c"],["bc","cd"]], [1.5,2.5,5.0], [["a","c"]
  Output: [3.75000,0.40000,5.00000,0.20000]
 */
 // -----------------------------------------------------------------------------------------------------------------------------------------
+
+
+// ---------------------------------------------------------------Flood fill----------------------------------------------------------------
+// https://leetcode.com/problems/flood-fill/
+
+func floodFill(_ image: [[Int]], _ sr: Int, _ sc: Int, _ color: Int) -> [[Int]] {
+    if image[sr][sc] == color {
+        return image
+    }
+    let rowCount = image.count
+    let coloumCount = image[0].count
+    let sourceValue = image[sr][sc]
+    var finalImage = image
+    var alreadyVisited = Set<String>()
+    
+    
+    
+    func callIteratively(_ image: inout [[Int]], _ sr: Int, _ sc: Int, _ color: Int) {
+        if alreadyVisited.contains("\(sr)\(sc)") {
+            return
+        }
+        if sr < 0 || sc < 0 || sr >= rowCount || sc >= coloumCount {
+            return
+        }
+        if image[sr][sc] != sourceValue {
+            return
+        }
+        alreadyVisited.insert(String("\(sr)\(sc)"))
+        image[sr][sc] = color
+        callIteratively(&image, sr-1, sc, color)
+        callIteratively(&image, sr, sc-1, color)
+        callIteratively(&image, sr, sc+1, color)
+        callIteratively(&image, sr+1, sc, color)
+    }
+    
+    callIteratively(&finalImage, sr, sc, color)
+    
+    return finalImage
+}
+// -----------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------Insert interval ----------------------------------------------------------------
+
+//https://leetcode.com/problems/insert-interval/
+func insert(_ intervals: [[Int]], _ newInterval: [Int]) -> [[Int]] {
+    var result = [[Int]]()
+    var newInterval = newInterval
+    
+    for i in 0..<intervals.count {
+        if intervals[i][0] > newInterval[1] {
+            result.append(newInterval)
+            return result + Array(intervals[i...])
+        } else if newInterval[0] > intervals[i][1] {
+            result.append(intervals[i])
+        } else {
+            newInterval = [min(newInterval[0], intervals[i][0]), max(newInterval[1], intervals[i][1])]
+        }
+    }
+    result.append(newInterval)
+ 
+    return result
+}
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
