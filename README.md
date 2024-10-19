@@ -25,6 +25,7 @@
 - **MEDIUM**
   - [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75)
   - [Insert Interval](https://leetcode.com/problems/insert-interval/)
+  - [01 Matrix](https://leetcode.com/problems/01-matrix/description/)
 
 ## 2) Top Interview 150
 
