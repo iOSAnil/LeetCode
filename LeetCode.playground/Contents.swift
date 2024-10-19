@@ -2360,5 +2360,41 @@ func updateMatrix(_ mat: [[Int]]) -> [[Int]] {
     return result
 }
 
-updateMatrix([[0,0,0],[0,1,0],[1,1,1]]) // [[0,0,0],[0,1,0],[1,2,1]]
+print(updateMatrix([[0,0,0],[0,1,0],[1,1,1]])) // [[0,0,0],[0,1,0],[1,2,1]]
+// -----------------------------------------------------------------------------------------------------------------------------------------
+
+
+// ----------------------------------------------56. Merge Intervals------------------------------------------------------------------------
+// https://leetcode.com/problems/merge-intervals/
+func merge(_ intervals: [[Int]]) -> [[Int]] {
+
+    if intervals.count == 1 {
+        return intervals
+    } else {
+        var intervals = intervals.sorted { a, b in
+            return a[0] < b[0]
+        }
+        var newInterval = intervals[0]
+        var i = 0
+        var result = [[Int]]()
+        
+        while (i < intervals.count) {
+            if intervals[i][0] <= newInterval[1] {
+                newInterval = [min(intervals[i][0], newInterval[0]), max(intervals[i][1], newInterval[1])]
+            } else {
+                result.append(newInterval)
+                newInterval = intervals[i]
+            }
+            i += 1
+        }
+        result.append(newInterval)
+        return result
+    }
+}
+
+print(merge([[1,3],[2,6],[8,10],[15,18]])) // [1,6] [8,10],[15,18]
+print(merge([[1,4],[4,5]])) // [1,5]
+print(merge([[1,3],[2,6],[8,10],[10,11],[11,13]]))  // [1,6] [8,13]
+print(merge([[1,4],[0,0]])) // [0, 0][1,4]
+
 // -----------------------------------------------------------------------------------------------------------------------------------------
