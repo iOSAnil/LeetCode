@@ -106,3 +106,10 @@
   - [InOrder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
   - [PostOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
   - [PreOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
+
+**Intervals **
+- **EASY**
+  - [Maximum Population Year](https://leetcode.com/problems/maximum-population-year/description/)
+- **Medium**
+  - [Insert Interval](https://leetcode.com/problems/insert-interval/)
+  - [Merge Interval](https://leetcode.com/problems/merge-intervals/)

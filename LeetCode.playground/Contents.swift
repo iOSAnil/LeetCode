@@ -2273,30 +2273,6 @@ func floodFill(_ image: [[Int]], _ sr: Int, _ sc: Int, _ color: Int) -> [[Int]] 
 }
 // -----------------------------------------------------------------------------------------------------------------------------------------------
 
-// ---------------------------------------------------------------Insert interval ----------------------------------------------------------------
-
-//https://leetcode.com/problems/insert-interval/
-func insert(_ intervals: [[Int]], _ newInterval: [Int]) -> [[Int]] {
-    var result = [[Int]]()
-    var newInterval = newInterval
-    
-    for i in 0..<intervals.count {
-        if intervals[i][0] > newInterval[1] {
-            result.append(newInterval)
-            return result + Array(intervals[i...])
-        } else if newInterval[0] > intervals[i][1] {
-            result.append(intervals[i])
-        } else {
-            newInterval = [min(newInterval[0], intervals[i][0]), max(newInterval[1], intervals[i][1])]
-        }
-    }
-    result.append(newInterval)
- 
-    return result
-}
-
-// -----------------------------------------------------------------------------------------------------------------------------------------
-
 // ----------------------------------------------543. Diameter of Binary Tree---------------------------------------------------------------
 // https://leetcode.com/problems/diameter-of-binary-tree/
 
@@ -2364,37 +2340,26 @@ print(updateMatrix([[0,0,0],[0,1,0],[1,1,1]])) // [[0,0,0],[0,1,0],[1,2,1]]
 // -----------------------------------------------------------------------------------------------------------------------------------------
 
 
-// ----------------------------------------------56. Merge Intervals------------------------------------------------------------------------
-// https://leetcode.com/problems/merge-intervals/
-func merge(_ intervals: [[Int]]) -> [[Int]] {
-
-    if intervals.count == 1 {
-        return intervals
+func findAnagrams(_ s: String, _ p: String) -> [Int] {
+    var maxString = ""
+    var minString = ""
+    if s.count > p.count {
+        maxString = s
+        minString = p
     } else {
-        var intervals = intervals.sorted { a, b in
-            return a[0] < b[0]
-        }
-        var newInterval = intervals[0]
-        var i = 0
-        var result = [[Int]]()
-        
-        while (i < intervals.count) {
-            if intervals[i][0] <= newInterval[1] {
-                newInterval = [min(intervals[i][0], newInterval[0]), max(intervals[i][1], newInterval[1])]
-            } else {
-                result.append(newInterval)
-                newInterval = intervals[i]
-            }
-            i += 1
-        }
-        result.append(newInterval)
-        return result
+        maxString = p
+        minString = s
     }
+    var index = 0
+    var result = [Int]()
+    
+    while index < maxString.count - minString.count {
+        if isAnagram(minString, String(Array(maxString)[index..<minString.count])) {
+            result.append(index)
+        }
+        index += 1
+    }
+    return result
 }
+print(findAnagrams("cbaebabacd", "abc"))
 
-print(merge([[1,3],[2,6],[8,10],[15,18]])) // [1,6] [8,10],[15,18]
-print(merge([[1,4],[4,5]])) // [1,5]
-print(merge([[1,3],[2,6],[8,10],[10,11],[11,13]]))  // [1,6] [8,13]
-print(merge([[1,4],[0,0]])) // [0, 0][1,4]
-
-// -----------------------------------------------------------------------------------------------------------------------------------------
