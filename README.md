@@ -110,6 +110,9 @@
 **Intervals **
 - **EASY**
   - [Maximum Population Year](https://leetcode.com/problems/maximum-population-year/description/)
+  - [My Calender I](https://leetcode.com/problems/my-calendar-i/description/)
+  - [Maximum Population Year](/https://leetcode.com/problems/maximum-population-year/)
+  - [Points That Intersect With Cars](https://leetcode.com/problems/points-that-intersect-with-cars/description/)
 - **Medium**
   - [Insert Interval](https://leetcode.com/problems/insert-interval/)
   - [Merge Interval](https://leetcode.com/problems/merge-intervals/)
