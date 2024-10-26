@@ -107,8 +107,9 @@
   - [PostOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
   - [PreOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
 
-**Intervals **
-- **EASY**
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- **INTERVALS**
+- - **EASY**
   - [Maximum Population Year](https://leetcode.com/problems/maximum-population-year/description/)
   - [My Calender I](https://leetcode.com/problems/my-calendar-i/description/)
   - [Maximum Population Year](/https://leetcode.com/problems/maximum-population-year/)
