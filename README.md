@@ -116,3 +116,4 @@
 - **Medium**
   - [Insert Interval](https://leetcode.com/problems/insert-interval/)
   - [Merge Interval](https://leetcode.com/problems/merge-intervals/)
+  - [Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)

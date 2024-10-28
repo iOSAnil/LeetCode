@@ -161,3 +161,31 @@ func numberOfPoints(_ nums: [[Int]]) -> Int {
     return indexWithCarPresent
 }
 // ------------------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------452. Minimum Number of Arrows to Burst Balloons ---------------------------------------
+//https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description
+func findMinArrowShots(_ points: [[Int]]) -> Int {
+    let sortedPoints = points.sorted { a, b in
+        a[0] < b[0]
+    }
+    var arrows = sortedPoints.count
+    
+    var interval = sortedPoints[0]
+    var i = 1
+    while i < sortedPoints.count {
+        let newInterval = sortedPoints[i]
+        if newInterval[0] <= interval[1] {  //Overlapping interval
+            interval = [max(newInterval[0], interval[0]), min(newInterval[1], interval[1])]
+            arrows -= 1
+        } else {
+            interval = newInterval
+        }
+        i += 1
+    }
+   
+    return arrows
+}
+
+print(findMinArrowShots([[10,16],[2,8],[1,6],[7,12]]))
+print(findMinArrowShots([[1,2],[3,4],[5,6],[7,8]]))
+print(findMinArrowShots([[1,2],[2,3],[3,4],[4,5]]))
+// ------------------------------------------------------------------------------------------------------------------------------------------
