@@ -118,3 +118,14 @@
   - [Insert Interval](https://leetcode.com/problems/insert-interval/)
   - [Merge Interval](https://leetcode.com/problems/merge-intervals/)
   - [Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- **MONOTONIC STACK**
+- - **EASY**
+  - [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i)
+- **Medium**
+  - [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/description)
+- **Hard**
+  - [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/description/)
+

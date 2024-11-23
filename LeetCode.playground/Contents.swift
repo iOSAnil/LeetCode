@@ -2361,5 +2361,4 @@ func findAnagrams(_ s: String, _ p: String) -> [Int] {
     }
     return result
 }
-print(findAnagrams("cbaebabacd", "abc"))
-
+//print(findAnagrams("cbaebabacd", "abc"))
