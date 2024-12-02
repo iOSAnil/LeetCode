@@ -128,4 +128,7 @@
   - [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/description)
 - **Hard**
   - [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/description/)
+  - [321. Create Maximum Number](https://leetcode.com/problems/create-maximum-number/description)
+  - [862. Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
+  
 
