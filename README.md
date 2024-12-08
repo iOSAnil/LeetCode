@@ -106,6 +106,9 @@
   - [InOrder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
   - [PostOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
   - [PreOrder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
+  
+- **MEDIUM (BFS Application)**
+  - [Trees and Ladders](https://leetcode.com/problems/snakes-and-ladders/)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - **INTERVALS**

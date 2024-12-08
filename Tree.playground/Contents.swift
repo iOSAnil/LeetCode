@@ -119,3 +119,49 @@ let treeNode = TreeNode(1, nil, TreeNode(2, TreeNode(3), nil))
 print(inorderWithRecursion(treeNode))
 
 //------------------------------------------------------------Tree Traversals---------------------------------------------------------------
+
+// ----------------------------------------------909. Snakes and Ladders------------------------------------------------------------------------------
+//https://leetcode.com/problems/snakes-and-ladders/
+class SnakesAndLadders {
+    func snakesAndLadders(_ board: [[Int]]) -> Int {
+        var board = board
+        board.reverse()
+        let boardLength = board.count
+        
+ 
+        var visited: Set<Int> = Set()
+        
+        var queue = [(1, 0)]
+        visited.insert(1)
+ 
+        while !queue.isEmpty {
+            let poppedElement = queue.removeFirst()
+            let (square, moves) = poppedElement
+            for i in 1...6 {
+                var newSquare = square+i
+                let (r,c) = (newSquare).toPosition(in: boardLength)
+                newSquare = board[r][c] != -1 ? board[r][c] : newSquare
+                if newSquare == boardLength*boardLength {
+                    return moves+1
+                }
+                if !visited.contains(newSquare) {
+                    queue.append((newSquare, moves+1))
+                    visited.insert(newSquare)
+                }
+            }
+        }
+        return -1
+    }
+}
+
+extension Int {
+    func toPosition(in rowLength: Int) -> (Int, Int) {
+        let row = (self - 1)/rowLength
+        var column = (self - 1)%rowLength
+        if !row.isMultiple(of: 2) {
+            column = rowLength - 1 - column
+        }
+        return (row, column)
+    }
+}
+// -----------------------------------------------------------------------------------------------------------------------------------------
