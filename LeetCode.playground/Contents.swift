@@ -801,8 +801,41 @@ class TrappingRainWater {
         }
         return waterTrapped
     }
+    
+    func trap1(_ height: [Int]) -> Int {
+        var maxL = Array(repeating: 0, count: height.count)
+        var maxValue = 0
+        for i in 0..<height.count {
+            if i >= 1 {
+                maxValue = max(maxValue, height[i])
+            }
+            maxL[i] = maxValue
+        }
+        
+        var maxR = Array(repeating: 0, count: height.count)
+        maxValue = 0
+        for i in stride(from: height.count-1, through: 0, by: -1) {
+            if i != height.count - 1 {
+                maxValue = max(maxValue, height[i])
+            }
+            maxR[i] = maxValue
+        }
+        
+        var waterTrapped = 0
+        for i in 0..<height.count {
+            let trapWater = min(maxR[i], maxL[i]) - height[i]
+            if trapWater > 0 {
+                waterTrapped += trapWater
+            }
+        }
+        
+        return waterTrapped
+    }
 }
-print(TrappingRainWater().trap([5,4,1,2]))
+print("---------------------------------------------")
+print(TrappingRainWater().trap1([0,1,0,2,1,0,1,3,2,1,2,1]))
+print(TrappingRainWater().trap([0,1,0,2,1,0,1,3,2,1,2,1]))
+print("---------------------------------------------")
 
 // -----------------------------------------------238. Product of Array Except Self------------------------------------
 func productExceptSelf(_ nums: [Int]) -> [Int] {
@@ -823,10 +856,10 @@ func productExceptSelfTwoPointer(_ nums: [Int]) -> [Int] {
     var postfix = 1
 
     for i in 0..<nums.count {
-        res[i] *= prefix
-        prefix *= nums[i]
-        res[nums.count-1-i] *= postfix
-        postfix *= nums[nums.count-1-i]
+        res[i] *= prefix               // res[0] = 1  // res[1] = 1   // res[2] = 6
+        prefix *= nums[i]              // prefix = 1  // prefix = 2   // prefix = 6   // prefix= 24  //prefix = 120
+        res[nums.count-1-i] *= postfix  // res[4] = 5 // res[3] = 5     // res[2] =
+        postfix *= nums[nums.count-1-i]  // postfix = 5  // postfix = 20 // postfix = 60 // postfix = 120 //postfix = 120
     }
     return res
 }
@@ -2362,5 +2395,293 @@ func findAnagrams(_ s: String, _ p: String) -> [Int] {
     return result
 }
 //print(findAnagrams("cbaebabacd", "abc"))
+
+// -----------------------------------------------------------162. Find Peak Element-------------------------------------------------------------------
+//https://leetcode.com/problems/find-peak-element
+func findPeakElement(_ nums: [Int]) -> Int {
+    var peak = 0
+
+    for index in 0..<nums.count {
+        let num = nums[index]
+        if num > nums[peak] {
+            peak = index
+        }
+    }
+    return peak
+}
+
+print(findPeakElement([1,2,1,3,5,6,4])) // 5
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ----------------------------------------387. First Unique Character in a String-------------------------------------------------------------------
+//https://leetcode.com/problems/first-unique-character-in-a-string
+func firstUniqChar(_ s: String) -> Int {
+    var dict = [Character: Int]()
+    for char in s {
+        dict[char, default: 0] += 1
+    }
+    let string = Array(s)
+    for index in 0..<s.count {
+        let char = string[index]
+        if dict[char] == 1 {
+            return index
+        }
+    }
+    return -1
+}
+print(firstUniqChar("loveleetcode"))
+
+// -------------------------------------------------------443. String Compression----------------------------------------------------------------------
+//https://leetcode.com/problems/string-compression
+//["a","a","b","b","c","c","c"]
+
+func compress2(_ chars: inout [Character]) -> Int {
+    var index = 0
+    var start = 0
+    
+    while start < chars.count {
+        var end = start
+        
+        while end < chars.count && chars[end] == chars[start] {
+            end += 1
+        }
+        
+        let count = end - start
+        chars[index] = chars[start]
+        index += 1
+
+        if count > 1 {
+            for e in Array(String(count)) {
+                chars[index] = e
+                index += 1
+            }
+        }
+        start = end
+    }
+    
+    chars = chars.dropLast(chars.count - index)
+    return chars.count
+}
+
+func compress(_ chars: inout [Character]) -> Int {
+    var start = 0
+    var end = 0
+    var list = [String]()
+     
+    while end < chars.count {
+        if chars[start] == chars[end] {
+            end += 1
+        } else {
+            list.append(String(chars[start]))
+            if (end - start > 1) {
+                list.append(String(end - start))
+            }
+            start = end
+        }
+    }
+    
+    if start != end {
+        list.append(String(chars[start]))
+        if (end - start > 1) {
+            list.append(String(end - start))
+        }
+    }
+    
+    chars = Array(list.joined())
+    return chars.count
+}
+
+var chars: [Character] = ["a","a","b","b","b","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c"]
+print(compress2(&chars))
+print(compress(&chars))
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------64. Minimum Path Sum----------------------------------------------------------------------------------
+//https://leetcode.com/problems/minimum-path-sum/
+
+func minPathSum2(_ grid: [[Int]]) -> Int {
+    let rows = grid.count
+    let columns = grid[0].count
+    var dp = grid
+    
+    for i in 0..<grid.count {
+        for j in 0..<grid[0].count {
+            var left = Int.max
+            var top = Int.max
+            
+            if i == 0 && j == 0 {
+                continue
+            } else if i == 0 && j != 0 {
+               left = dp[i][j-1]
+            } else if j == 0 && i != 0 {
+               top = dp[i-1][j]
+            } else {
+                top = dp[i-1][j]
+                left = dp[i][j-1]
+            }
+             
+            dp[i][j] = dp[i][j] + min(top, left)
+        }
+    }
+    
+    return dp[rows-1][columns-1]
+}
+
+func minPathSum(_ grid: [[Int]]) -> Int {
+        let rows = grid.count
+        let columns = grid[0].count
+        var result = Array(repeating: Array(repeating: Int.max, count: columns+1), count: rows+1)
+        result[rows][columns-1] = 0
+        
+        for i in stride(from: rows-1, through: 0, by: -1) {
+            for j in stride(from: columns-1, through: 0, by: -1) {
+                result[i][j] = grid[i][j] + min(result[i+1][j], result[i][j+1])
+                print(result[i][j])
+            }
+        }
+        
+        return result[0][0]
+}
+
+print(minPathSum2([[1,3,1],[1,5,1],[4,2,1]]))
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------2375. Construct Smallest Number From DI String--------------------------------------------------------
+//https://leetcode.com/problems/construct-smallest-number-from-di-string
+func smallestNumber1(_ pattern: String) -> String{
+    var result = ""
+    var stack = [String]()
+    
+    for index in 0...pattern.count {
+        stack.append("\(index+1)")
+        
+        while !stack.isEmpty && (index == pattern.count || Array(pattern)[index] == "I") {
+            result.append(stack.popLast() ?? "")
+        }
+    }
+    
+    return result
+}
+
+print(smallestNumber1("IIIDIDDD")) //"123549876"
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// ---------------------------------------------166. Fraction to Recurring Decimal--------------------------------------------------------
+//https://leetcode.com/problems/fraction-to-recurring-decimal
+func fractionToDecimal(_ numerator: Int, _ denominator: Int) -> String {
+        if numerator == 0 {
+            return "0"
+        }
+        var result: String = ""
+        if (numerator > 0 && denominator < 0) || (numerator < 0 && denominator > 0) {
+            result.append("-")
+        }
+        let divisor = abs(Int(numerator))
+        let dividend = abs(Int(denominator))
+        var remainder = divisor % dividend
+        result.append(String(divisor/dividend))
+        if remainder == 0 {
+            return result
+        }
+        result.append(".")
+        
+        var map = [Int: Int]()
+        while remainder != 0 {
+            if let index = map[remainder] {
+                let startIndex = result.index(result.startIndex, offsetBy: index)
+                result.insert("(", at: startIndex)
+                result.append(")")
+                break
+            }
+            map[remainder] = result.count
+            remainder *= 10
+            result.append(String(remainder/dividend))
+            remainder %= dividend
+        }
+        
+        return result
+    }
+
+print(fractionToDecimal(1, 6)) //"0.1(6)"
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------653. Two Sum IV - Input is a BST------------------------------------------------------------------------------------
+//https://leetcode.com/problems/two-sum-iv-input-is-a-bst
+func findTarget(_ root: TreeNode?, _ k: Int) -> Bool {
+     var nodeSeen = Set<Int>()
+    
+    func find(node: TreeNode?) -> Bool {
+        guard let node = node else { return false }
+        
+        if nodeSeen.contains(k - node.val) {
+            return true
+        }
+        
+        nodeSeen.insert(node.val)
+        
+        return find(node: node.left) ||  find(node: node.right)
+        
+    }
+    return find(node: root)
+}
+
+print(findTarget(TreeNode(5, TreeNode(3, TreeNode(2), TreeNode(4)), TreeNode(6, nil, TreeNode(7))), 9))
+
+// ------------------------------------2191. Sort the Jumbled Numbers---------------------------------------------------------------------------------------
+//https://leetcode.com/problems/sort-the-jumbled-numbers/
+func sortJumbled(_ mapping: [Int], _ nums: [Int]) -> [Int] {
+    var pairs: [(Int, Int)] = []
+    
+    for (i, n) in nums.enumerated() {
+        var mapped_n = 0
+        let strN = String(n)
+        
+        for c in strN {
+            mapped_n *= 10
+            mapped_n += mapping[Int(String(c))!] // Convert character to integer
+        }
+        
+        pairs.append((mapped_n, i))
+    }
+    
+    pairs.sort { a, b in
+        if a.0 == b.0 && a.1 < b.1 {
+            return true
+        } else if a.0 == b.0 && a.1 > b.1 {
+            return false
+        } else if a.0 > b.0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    return pairs.map { nums[$0.1] }
+}
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------------------------------------53. Maximum Subarray--------------------------------------------------------------------------
+//https://leetcode.com/problems/maximum-subarray
+
+func maxSubArray(_ nums: [Int]) -> Int {
+    var maxSum = 0
+    var rightPointer = 0
+    var maximumValue = Int.min
+    
+    while (rightPointer <= nums.count - 1) {
+        maxSum = maxSum + nums[rightPointer]
+        if maxSum < 0 {
+            maxSum = 0
+        }
+        rightPointer += 1
+        maximumValue = max(maxSum, maximumValue)
+    }
+    return maximumValue
+}
+
+print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------

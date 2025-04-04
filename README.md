@@ -134,4 +134,24 @@
   - [321. Create Maximum Number](https://leetcode.com/problems/create-maximum-number/description)
   - [862. Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
   
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- **GS**
+- - **EASY**
+  - [387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string)
+  - [653. Two Sum IV - Input is a BST](https://leetcode.com/problems/two-sum-iv-input-is-a-bst)  
+- **Medium**
+  - [162. Find Peak Element](https://leetcode.com/problems/find-peak-element)
+  - [443. String Compression](//https://leetcode.com/problems/string-compression)
+  - [64. Minimum path sum](https://leetcode.com/problems/minimum-path-sum/)
+  - [166. Fraction to Recurring Decimal](https://leetcode.com/problems/fraction-to-recurring-decimal)
+  - [2375. Construct Smallest Number From DI](https://leetcode.com/problems/construct-smallest-number-from-di-string)
+- **Hard**
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- **GOOGLE**
+- - **EASY**
+- **Medium**
+  - [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray)
+- **Hard**
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
