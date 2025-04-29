@@ -204,3 +204,42 @@ func shortestSubarray(_ nums: [Int], _ k: Int) -> Int {
     return shortest == Int.max ? -1 : Int(shortest)
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------316. Remove Duplicate Letters--------------------------------------------------------------------------
+//https://leetcode.com/problems/remove-duplicate-letters/
+
+func removeDuplicateLetters(_ s: String) -> String {
+    var frequency = [Character: Int]()
+    var seen = Set<Character>()
+    var stack = [Character]()
+    
+    // Count frequency of each character
+    for char in s {
+        frequency[char, default: 0] += 1
+    }
+    
+    for char in s {
+        // Decrease the frequency count
+        frequency[char]! -= 1
+        
+        // Skip if already seen
+        if seen.contains(char) {
+            continue
+        }
+        
+        // Remove characters that are greater than current and still have occurrences left
+        while let last = stack.last, last > char, frequency[last]! > 0 {
+            seen.remove(last)
+            stack.removeLast()
+        }
+        
+        stack.append(char)
+        seen.insert(char)
+    }
+    
+    return String(stack)
+}
+
+print(removeDuplicateLetters("bcabc")) // abc
+print(removeDuplicateLetters("cbacdcbc")) //acdb
+
+//------------------------------------------------------------------------------------------------------------------------------------------------

@@ -2665,7 +2665,6 @@ func sortJumbled(_ mapping: [Int], _ nums: [Int]) -> [Int] {
 
 // -----------------------------------------------53. Maximum Subarray--------------------------------------------------------------------------
 //https://leetcode.com/problems/maximum-subarray
-
 func maxSubArray(_ nums: [Int]) -> Int {
     var maxSum = 0
     var rightPointer = 0
@@ -2682,6 +2681,354 @@ func maxSubArray(_ nums: [Int]) -> Int {
     return maximumValue
 }
 
+func maxSubArrayWithKadane(_ nums: [Int]) -> Int {
+    return kadaneAlgo(nums)
+}
+
+func kadaneAlgo(_ nums: [Int])-> Int {
+    var currentSum = 0
+    var maxSum = nums[0]
+    
+    for i in 0..<nums.count {
+        currentSum = max(currentSum+nums[i], nums[i])
+        maxSum = max(currentSum, maxSum)
+    }
+    return maxSum
+}
+
 print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+print(maxSubArrayWithKadane([-2,1,-3,4,-1,2,1,-5,4]))
+
+
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------918. Maximum Sum Circular Subarray-------------------------------------------------------------
+//https://leetcode.com/problems/maximum-sum-circular-subarray/
+func maxSubarraySumCircular(_ nums: [Int]) -> Int {
+    var maxSum = nums[0]
+    var currentMaxSum = 0
+    var minSum = nums[0]
+    var currentMinSum = 0
+    var total = 0
+    
+    for n in nums {
+        total += n
+        
+        currentMaxSum = max(currentMaxSum+n, n)
+        maxSum = max(maxSum, currentMaxSum)
+        
+        currentMinSum = min(currentMinSum+n, n)
+        minSum = min(minSum, currentMinSum)
+    }
+    
+    if currentMaxSum > 0 {
+        return max(total - minSum, maxSum)
+    } else {
+        return currentMaxSum
+    }
+}
+print(maxSubarraySumCircular([1,-2,3,-2])) //3
+print(maxSubarraySumCircular([5,-2,5])) //10
+print(maxSubarraySumCircular([-1,-1,-1])) //-1
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------152. Maximum Product Subarray--------------------------------------------------------------------------------------
+//https://leetcode.com/problems/maximum-product-subarray
+func maxProduct(_ nums: [Int]) -> Int {
+    var currentMaxProduct = 1
+    var currentMinProduct = 1
+    var maxProduct = nums[0]
+
+    for n in nums {
+        let temp = currentMaxProduct*n
+        currentMaxProduct = max(max(currentMaxProduct*n, n), max(currentMinProduct*n, n))
+        currentMinProduct = min(min(temp, n), min(currentMinProduct*n, n))
+        maxProduct = max(currentMaxProduct, maxProduct)
+    }
+    return maxProduct
+}
+print(maxProduct([2,3,-2,4])) //6
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// -----------------------------1014. Best Sightseeing Pair-----------------------------------------------------------------------------------
+//https://leetcode.com/problems/best-sightseeing-pair/description/
+func maxScoreSightseeingPair(_ values: [Int]) -> Int {
+    var res = 0
+    var max_i = values[0] + 0  // values[i] + i
+    
+    for j in 1..<values.count {
+        res = max(res, max_i + values[j] - j)  // (values[i] + i) + (values[j] - j)
+        max_i = max(max_i, values[j] + j)      // update max_i
+    }
+    
+    return res
+}
+
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------88. Merge Sorted Array---------------------------------------------------------------
+//https://leetcode.com/problems/merge-sorted-array
+
+func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+    var pointerSecondArray = 0
+    var pointerFirstArray = 0
+    var removedItems = 0
+    
+    while (pointerSecondArray < n) && pointerFirstArray < (m+n) {
+        if nums2[pointerSecondArray] < nums1[pointerFirstArray] && pointerFirstArray < (m + removedItems) {
+            nums1.insert(nums2[pointerSecondArray], at: pointerFirstArray)
+            pointerSecondArray += 1
+            nums1.removeLast()
+            removedItems += 1
+        } else if pointerFirstArray >= (m + removedItems) {
+            nums1.insert(nums2[pointerSecondArray], at: pointerFirstArray)
+            pointerSecondArray += 1
+            nums1.removeLast()
+            removedItems += 1
+        }
+        pointerFirstArray += 1
+    }
+}
+
+func merging(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+    var p1 = m - 1
+    var p2 = n - 1
+    
+    for i in stride(from: m+n-1, through: 0, by: -1) {
+        if p2 < 0 {
+            break
+        }
+        if p1 >= 0 && nums1[p1] > nums2[p2] {
+            nums1[i] = nums1[p1]
+            p1 -= 1
+        } else {
+            nums1[i] = nums2[p2]
+            p2 -= 1
+        }
+        
+    }
+}
+
+var a = [4,5,6,0,0,0]
+merging(&a, 3, [1,2,3], 3)
+print(a)
+
+// --------------------------------------------------------283. Move Zeroes--------------------------------------------------------------------------
+// https://leetcode.com/problems/move-zeroes
+func moveZeroes(_ nums: inout [Int]) {
+    var reader = 0
+    var writer = 0
+    
+    while reader < nums.count {
+        if nums[reader] != 0 {
+            nums[writer] = nums[reader]
+            writer += 1
+        }
+        reader += 1
+    }
+    
+    while writer < nums.count {
+        nums[writer] = 0
+        writer += 1
+    }
+}
+
+a = [0,1,0,3,2,0]
+moveZeroes(&a)
+print(a) // [1,3,2,0,0,0]
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------416. Partition Equal Subset Sum-------------------------------------------------------
+//https://leetcode.com/problems/partition-equal-subset-sum/description/
+func canPartition(_ nums: [Int]) -> Bool {
+    let totalSum = nums.reduce(0, +)
+    
+    // If sum is odd, partition is not possible
+    if totalSum % 2 != 0 { return false }
+    
+    let target = totalSum / 2
+    var dp = [Bool](repeating: false, count: target + 1)
+    dp[0] = true // Base case: subset sum of 0 is always possible
+    
+    for num in nums {
+        // Traverse dp array **backwards** to prevent reusing the same element multiple times
+        for j in stride(from: target, through: num, by: -1) {
+            dp[j] = dp[j] || dp[j - num]
+        }
+    }
+    
+    return dp[target]
+}
+
+print(canPartition([1,5,11,5]))
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------------------974. Subarray Sums Divisible by K-------------------------------------------------------
+//https://leetcode.com/problems/subarray-sums-divisible-by-k
+
+func subarraysDivByK(_ nums: [Int], _ k: Int) -> Int {
+    var sum = 0
+    var map = [Int: Int]()
+    var count = 0
+    map[0] = 1
+    
+    for n in nums {
+        sum += n
+        let modulus = (sum % k >= 0) ?  sum%k : (sum%k)+k
+        if let value = map[modulus] {
+            count += value
+        }
+        map[modulus, default: 0] += 1
+    }
+    
+    return count
+}
+
+// ----------------------------------------------------------198. House Robber--[DP]-----------------------------------------------------
+//https://leetcode.com/problems/house-robber/description/
+// DP[i] = max(DP[i-2]+nums[i], DP[i-1])
+func rob(_ nums: [Int]) -> Int {
+    var rob1 = 0
+    var rob2 = 0
+    
+    for i in 0..<nums.count {
+        let temp = max(rob1 + nums[i], rob2)
+        rob1 = rob2
+        rob2 = temp
+    }
+    return rob2
+}
+
+print(rob([1,2,3,1])) //4
+print(rob([2,7,9,3,1])) // 12
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------118. Pascal's Triangle [Easy]-----------------------------------------------------
+// https://leetcode.com/problems/pascals-triangle/
+func generate(_ numRows: Int) -> [[Int]] {
+    var result = [[Int]]()
+    for n in 1...numRows {
+        result.append(getRowArray(n,result.last))
+    }
+    return result
+}
+
+func getRowArray(_ n: Int, _ lastArray: [Int]?) -> [Int] {
+    var array = [Int](repeating: 1, count: n)
+    if n == 1 {
+        return array
+    } else {
+        for i in 1..<(n-1) {
+            array[i] = lastArray![i] + lastArray![i-1]
+        }
+    }
+    return array
+}
+// ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------120. Triangle--------------------------------------------------------------------------
+//https://leetcode.com/problems/triangle/description/
+
+func minimumTotal(_ triangle: [[Int]]) -> Int {
+    var newTriangle = triangle
+    var iteration = triangle.count-1
+    
+    while iteration > 0 {
+        // get the last row
+        var t = newTriangle[iteration]
+        
+        //change elements in last row and delete last element
+        var tCounter = 0
+        while tCounter < t.count-1 {
+            t[tCounter] = min(t[tCounter], t[tCounter+1])
+            tCounter += 1
+        }
+        
+        if iteration > 0 {
+            //Add the variables in the newTriangle
+            var lastRowTriangle = newTriangle[iteration-1]
+            
+            for i in 0..<lastRowTriangle.count {
+                lastRowTriangle[i] += t[i]
+            }
+            newTriangle[iteration-1] = lastRowTriangle
+        }
+        
+        
+        iteration -= 1
+    }
+    
+    return newTriangle[0][0]
+}
+// ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------345. Reverse Vowels of a String---------------------------------------------------
+// https://leetcode.com/problems/reverse-vowels-of-a-string (Easy)
+func reverseVowels(_ s: String) -> String {
+    var s = Array(s)
+    let vowels: Set<Character> = ["a", "e", "i", "o", "u",
+                                  "A", "E", "I", "O", "U"]
+    var left = 0
+    var right = s.count - 1
+    
+    while left < right {
+        while left < right && !vowels.contains(s[left]) {
+            left += 1
+        }
+        while left < right && !vowels.contains(s[right]) {
+            right -= 1
+        }
+        
+        if left < right {
+            s.swapAt(left, right)
+            left += 1
+            right -= 1
+        }
+    }
+    
+    return String(s)
+}
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+func removeStars(_ s: String) -> String {
+    var array = Array(s)
+    var stack = [Character]()
+    
+    for char in array {
+        if String(char) == "*" {
+            if !stack.isEmpty {
+                stack.removeLast()
+            }
+        } else {
+            stack.append(char)
+        }
+    }
+    return String(stack)
+}
+
+print("erase*****")
+
+//[5,10,-5]
+func asteroidCollision(_ asteroids: [Int]) -> [Int] {
+    var stack = [Int]()
+    
+    for a in asteroids {
+        if stack.isEmpty{
+            stack.append(a)
+            continue
+        }
+        while let lastValue = stack.last, stack.count >= 2, (lastValue < 0 && a > 0 || lastValue > 0 && a < 0) {
+            if abs(lastValue) < abs(a) {
+                stack.removeLast()
+                stack.append(a)
+            }
+        }
+        
+    }
+    return stack
+}
+print(asteroidCollision([5,10,-5]))
+print(asteroidCollision([10,2,-5]))
+print(asteroidCollision([5,-5]))

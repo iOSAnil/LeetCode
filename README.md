@@ -21,6 +21,8 @@
   - [Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75)
   - [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/description/)
   - [Flood Fill](https://leetcode.com/problems/flood-fill/)
+  - [Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string)
+  - [Move Zeroes](https://leetcode.com/problems/move-zeroes)
 
 - **MEDIUM**
   - [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75)
@@ -129,6 +131,7 @@
   - [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i)
 - **Medium**
   - [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/description)
+  - [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters)
 - **Hard**
   - [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/description/)
   - [321. Create Maximum Number](https://leetcode.com/problems/create-maximum-number/description)
@@ -152,6 +155,10 @@
 - **GOOGLE**
 - - **EASY**
 - **Medium**
-  - [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray)
+  - [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray) (Kadane's Algorithm)
+  - [918. Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray) (Kadane's Algorithm (difficult))
+  - [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray) (Kadane's Algorithm (difficult))
+  - [1014. Best Sightseeing Pair-](https://leetcode.com/problems/best-sightseeing-pair/description/) (Kadane's Algorithm (difficult))  
+  
 - **Hard**
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
