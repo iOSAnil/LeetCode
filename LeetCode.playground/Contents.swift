@@ -1124,24 +1124,6 @@ func invertTree(_ root: TreeNode?) -> TreeNode? {
     }
     return root
 }
-// ------------------------------------------------------------------------------------------------------------------------------
-
-// -------------------- 101. Symmetric Tree---------------------------------------------------------------------------------------------------------------
-func isSymmetric(_ root: TreeNode?) -> Bool {
-    if root?.left == nil && root?.right == nil {
-        return true
-    }
-    return root?.left?.val == root?.right?.val && isLeftAndRightNodeEqual(root?.left, root?.right)
-}
-
-func isLeftAndRightNodeEqual(_ rootLeft: TreeNode?, _ rootRight: TreeNode?) -> Bool {
-    if rootLeft == nil && rootRight == nil {
-        return true
-    }
-    return rootLeft?.val == rootRight?.val && isLeftAndRightNodeEqual(rootLeft?.left, rootRight?.right) && isLeftAndRightNodeEqual(rootLeft?.right, rootRight?.left)
-}
-
-// ------------------------------------------------------------------------------------------------------------------------------
 
 // -------------------- 167. Two Sum II - Input Array Is Sorted-------------------------------------------------------------------------------------------------------------
 //https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
@@ -3032,3 +3014,24 @@ func asteroidCollision(_ asteroids: [Int]) -> [Int] {
 print(asteroidCollision([5,10,-5]))
 print(asteroidCollision([10,2,-5]))
 print(asteroidCollision([5,-5]))
+
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------- 101. Symmetric Tree---------------------------------------------------------------------------------------------------------------
+func isSymmetric(_ root: TreeNode?) -> Bool {
+    func isMirror(_ left: TreeNode?, _ right: TreeNode?) -> Bool {
+        if left == nil && right == nil {
+            return true
+        } else if left == nil || right == nil {
+            return false
+        } else {
+            return (left!.val == right!.val) && isMirror(left!.left, right!.right) &&  isMirror(left!.right, right!.left)
+        }
+    }
+    return isMirror(root?.left, root?.right)
+}
+// ------------------------------------------------------------------------------------------------------------------------------
+
+
+
