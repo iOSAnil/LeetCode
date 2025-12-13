@@ -92,8 +92,8 @@
   - [Group Anagrams](https://leetcode.com/problems/group-anagrams/description)
   - [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/description)
   - [Evaluate Division](https://leetcode.com/problems/evaluate-division/description/)
+  - [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/description/) (Amazon)(Google)(Meta)(Microsoft)(Bloomberg)(Apple)
   
- 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)
