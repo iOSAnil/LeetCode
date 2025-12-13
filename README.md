@@ -58,7 +58,9 @@
   - [Sqrt(x)](https://leetcode.com/problems/sqrtx/description/)
   - [Average levels in binary tree](https://leetcode.com/problems/average-of-levels-in-binary-tree)
   - [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/)
-  
+  - [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+  - [Remove Element](https://leetcode.com/problems/remove-elemen)
+ 
 - **MEDIUM**
   - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description)
   - [Jump Game](https://leetcode.com/problems/jump-game/description)
