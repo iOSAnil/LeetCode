@@ -96,6 +96,7 @@
   - [Evaluate Division](https://leetcode.com/problems/evaluate-division/description/)
   - [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/description/) (Amazon)(Google)(Meta)(Microsoft)(Bloomberg)(Apple)
   - [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) (Amazon)(Google)(Meta)(Microsoft)
+  - [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal)
   
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)

@@ -169,3 +169,23 @@ print(SnakesAndLadders().snakesAndLadders([[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-
 // -----------------------------------------------------------------------------------------------------------------------------------------
 
  
+
+//-----------------------------------------Construct Binary Tree from Preorder and Inorder Traversal------------------------------------
+/*
+ Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+ Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+ Output: [3,9,20,null,null,15,7]
+ */
+func buildTree(_ preorder: [Int], _ inorder: [Int]) -> TreeNode? {
+    if preorder.isEmpty || inorder.isEmpty {
+        return nil
+    }
+    let root = TreeNode(preorder[0])
+    if let mid = inorder.firstIndex(of: preorder[0]) {
+        root.left = buildTree(Array(preorder[1..<mid+1]), Array(inorder[0..<mid]))
+        root.right = buildTree(Array(preorder[mid+1..<preorder.count]), Array(inorder[mid + 1..<inorder.count]))
+    }
+    return root
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
+
