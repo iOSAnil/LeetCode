@@ -3034,4 +3034,35 @@ func isSymmetric(_ root: TreeNode?) -> Bool {
 // ------------------------------------------------------------------------------------------------------------------------------
 
 
+// -------------------- 6. Zigzag Conversion---------------------------------------------------------------------------------------------------------------
+/*The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+*/
+func convert(_ s: String, _ numRows: Int) -> String {
+    if numRows == 1 {
+        return s
+    }
+    let array = Array(s)
+    var queue = Array(repeating: "", count: numRows)
+    
+    var sCounter = 0
+    var index = 0
+    var direction = 0
+    while sCounter < s.count {
+        queue[index] += String(array[sCounter])
+        if index == 0 {
+            direction = 1
+        } else if index == (numRows - 1) {
+            direction = -1
+        }
+        index += direction
+        sCounter += 1
+    }
+    return queue.reduce("", +)
+}
+print(convert("PAYPALISHIRING", 3))
+// ------------------------------------------------------------------------------------------------------------------------------
