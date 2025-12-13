@@ -189,3 +189,25 @@ func buildTree(_ preorder: [Int], _ inorder: [Int]) -> TreeNode? {
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 
+//------------------------Construct Binary Tree from Inorder and Postorder Traversal--------------------------------------------------------
+/*
+ Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+Output: [3,9,20,null,null,15,7]
+*/
+func buildTree1(_ inorder: [Int], _ postorder: [Int]) -> TreeNode? {
+    if inorder.isEmpty || postorder.isEmpty {
+        return nil
+    }
+    let rootVal = postorder.last!
+    var node = TreeNode(rootVal)
+    
+    guard let index = inorder.firstIndex(of: rootVal) else {
+        return nil
+    }
+    let leftInorder = Array(inorder[0..<index])
+    let rightInorder = Array(inorder[index+1..<inorder.count])
+    node.left = buildTree(leftInorder, Array(postorder[0..<leftInorder.count]))
+    node.right = buildTree(rightInorder, Array(postorder[leftInorder.count..<postorder.count-1]))
+    return node
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
