@@ -3107,3 +3107,77 @@ func removeDuplicates(_ nums: inout [Int]) -> Int {
     return nums.count
 }
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------Remove Duplicates from Sorted Array II------------------------------------------------------------
+
+//https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii
+func removeDuplicatesWithMax2(_ nums: inout [Int]) -> Int {
+    if nums.count <= 2 { return nums.count }
+    
+    var k = 1
+    var i = 1
+    var count = 1
+    
+    for i in 1..<nums.count {
+        if nums[i] == nums[i - 1] {
+            count += 1
+            if count <= 2 {
+                nums[k] = nums[i]
+                k += 1
+            }
+        } else {
+            count = 1
+            nums[k] = nums[i]
+            k += 1
+        }
+    }
+    
+    nums.removeLast(nums.count - k)
+    return k
+}
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// -------------Evaluate Reverse Polish Notation--------------------------------------------------------------------------------
+/*
+ Input: tokens = ["2","1","+","3","*"]
+ Output: 9
+ Explanation: ((2 + 1) * 3) = 9
+*/
+class SolutionReverseNotation {
+    func evalRPN(_ tokens: [String]) -> Int {
+        var stack = [String]()
+        for s in tokens {
+            if isOperator(s) {
+                let a = stack.popLast()!
+                let b = stack.popLast()!
+                stack.append(operation(a: a, b: b, s: s))
+            } else {
+                stack.append(s)
+            }
+        }
+        return Int(stack[0])!
+    }
+    
+    func isOperator(_ str: String) -> Bool {
+        return Int(str) == nil
+    }
+    
+    func operation(a: String, b: String , s: String) -> String {
+        let aValue = Int(a)!
+        let bValue = Int(b)!
+        
+        switch s {
+        case "+":
+            return String(aValue+bValue)
+        case "*":
+            return String(aValue*bValue)
+        case "-":
+            return String(bValue-aValue)
+        case "/":
+            return String(bValue/aValue)
+        default:
+            return "0"
+        }
+    }
+}
+// ------------------------------------------------------------------------------------------------------------------------------

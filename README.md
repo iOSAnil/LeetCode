@@ -95,6 +95,7 @@
   - [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/description)
   - [Evaluate Division](https://leetcode.com/problems/evaluate-division/description/)
   - [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/description/) (Amazon)(Google)(Meta)(Microsoft)(Bloomberg)(Apple)
+  - [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) (Amazon)(Google)(Meta)(Microsoft)
   
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
