@@ -211,3 +211,38 @@ func buildTree1(_ inorder: [Int], _ postorder: [Int]) -> TreeNode? {
     return node
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------114. Flatten Binary Tree to Linked List----------------------------------------------------------------
+/*
+ Given the root of a binary tree, flatten the tree into a "linked list":
+
+ The "linked list" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
+ The "linked list" should be in the same order as a pre-order traversal of the binary tree.
+ Input: root = [1,2,5,3,4,null,6]
+ Output: [1,null,2,null,3,null,4,null,5,null,6]
+ */
+
+func flatten(_ root: TreeNode?) {
+    func dfs(_ node: TreeNode?) -> TreeNode? {
+        guard let node = node else { return nil }
+        
+        let leftTail = dfs(node.left)
+        let rightTail = dfs(node.right)
+        
+        if let leftTail = leftTail {
+            // Save original right subtree
+            let right = node.right
+            
+            // Move left subtree to right
+            node.right = node.left
+            node.left = nil
+            
+            // Attach original right subtree
+            leftTail.right = right
+        }
+        
+        // Return the tail of the flattened tree
+        return rightTail ?? leftTail ?? node
+    }
+    _ = dfs(root)
+}
+//------------------------------------------------------------------------------------------------------------------------------------------
