@@ -3181,3 +3181,45 @@ class SolutionReverseNotation {
     }
 }
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// --------------------------------1636. Sort Array by Increasing Frequency------------------------------------------------------
+//https://leetcode.com/problems/sort-array-by-increasing-frequency/
+func frequencySort(_ nums: [Int]) -> [Int] {
+    var dict = [Int: Int]()
+    
+    for n in nums {
+        dict[n, default: 0] += 1
+    }
+    
+    let sorted = dict.sorted { (a, b) in
+        if a.value == b.value {
+            return a.key > b.key        // higher number first
+        }
+        return a.value < b.value        // higher frequency first
+    }
+    
+    var result = [Int]()
+    for (num, count) in sorted {
+        result += Array(repeating: num, count: count)
+    }
+    
+    return result
+}
+print(frequencySort([1,1,2,2,2,3]))
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// --------------------------------172. Factorial Trailing Zeroes----------------------------------------------------------------
+//https://leetcode.com/problems/factorial-trailing-zeroes
+func trailingZeroes(_ n: Int) -> Int {
+    var num = n
+    var trailingZeroes = 0
+    while num >= 5 {
+        num /= 5
+        trailingZeroes += num
+    }
+    
+    return trailingZeroes
+}
+
+print(trailingZeroes(10))
+// ------------------------------------------------------------------------------------------------------------------------------
