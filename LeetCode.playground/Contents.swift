@@ -3276,3 +3276,30 @@ class Trie {
     }
 }
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------------------------------------------------
+// https://leetcode.com/problems/equal-row-and-column-pairs
+func equalPairs(_ grid: [[Int]]) -> Int {
+    var dict = [[Int]: Int]()
+    var result = 0
+    
+    for i in 0..<grid.count {
+        dict[grid[i], default: 0] += 1 // Duplicate grid to have increased counter
+    }
+    
+    
+    for i in 0..<grid.count {
+        var column = [Int]()
+        for j in 0..<grid[i].count {
+            column.append(grid[j][i])  // To fetch column details
+        }
+        
+        if let count = dict[column] {
+            result += count
+        }
+    }
+    return result
+}
+
+print(equalPairs([[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]])) // 3
+// ------------------------------------------------------------------------------------------------------------------------------

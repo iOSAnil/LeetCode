@@ -29,6 +29,7 @@
   - [Insert Interval](https://leetcode.com/problems/insert-interval/)
   - [Merge Interval](https://leetcode.com/problems/merge-intervals/description/)
   - [01 Matrix](https://leetcode.com/problems/01-matrix/description/)
+  - [Equal Row and Column Pairs](https://leetcode.com/problems/equal-row-and-column-pairs/description)
 
 ## 2) Top Interview 150
 
