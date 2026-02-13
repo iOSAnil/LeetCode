@@ -3223,3 +3223,56 @@ func trailingZeroes(_ n: Int) -> Int {
 
 print(trailingZeroes(10))
 // ------------------------------------------------------------------------------------------------------------------------------
+
+// -----------------208. Implement Trie (Prefix Tree)------------------------------------------------------------
+//https://leetcode.com/problems/implement-trie-prefix-tree
+class TrieNode {
+    var children = [Character: TrieNode]()
+    var endOfWorld = false
+}
+class Trie {
+    var root: TrieNode
+
+    init() {
+        root = TrieNode()
+    }
+    
+    func insert(_ word: String) {
+        var currentNode = self.root
+
+        for char in word {
+            if currentNode.children[char] == nil {
+                currentNode.children[char] = TrieNode()
+            }
+            currentNode = currentNode.children[char]!
+        }
+        currentNode.endOfWorld = true
+    }
+    
+    func search(_ word: String) -> Bool {
+        var currentNode = self.root
+
+        for char in word {
+            if currentNode.children[char] == nil {
+                return false
+            } else {
+                currentNode = currentNode.children[char]!
+            }
+        }
+        return currentNode.endOfWorld
+    }
+    
+    func startsWith(_ prefix: String) -> Bool {
+        var currentNode = self.root
+
+        for char in prefix {
+            if currentNode.children[char] == nil {
+                return false
+            } else {
+                currentNode = currentNode.children[char]!
+            }
+        }
+        return true
+    }
+}
+// ------------------------------------------------------------------------------------------------------------------------------
