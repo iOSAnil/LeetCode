@@ -106,6 +106,8 @@
   - [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
   - [Single Number II](https://leetcode.com/problems/single-number-ii)
   - [Bitwise AND of Numbers Range](https://leetcode.com/problems/bitwise-and-of-numbers-range)
+  - [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal)
+  - [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal)
 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)

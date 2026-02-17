@@ -246,3 +246,77 @@ func flatten(_ root: TreeNode?) {
     _ = dfs(root)
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+//https://leetcode.com/problems/binary-tree-level-order-traversal
+func levelOrder(_ root: TreeNode?) -> [[Int]] {
+    var finalList = [[Int]]()
+    guard let root = root else {
+        return finalList
+    }
+    
+    var queue: [TreeNode] = [root]
+    
+    while !queue.isEmpty {
+        var array = [Int]()
+
+        for i in 0..<queue.count {
+            let node = queue.removeFirst()  //Try without this and keep number since remove is expensive operation
+            array.append(node.val)
+            
+            if let left = node.left {
+                queue.append(left)
+            }
+            
+            if let right = node.right {
+                queue.append(right)
+            }
+        }
+        finalList.append(array)
+    }
+    return finalList
+}
+
+print(levelOrder(TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))))
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+// https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
+func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
+    var list = [[Int]]()
+    guard let root = root else {
+        return list
+    }
+    
+    var queue: [TreeNode] = [root]
+    var direction = true
+    var frontIndex = 0
+
+    while frontIndex < queue.count {
+        var array = [Int]()
+        
+        for i in frontIndex..<queue.count {
+
+            let node = queue[frontIndex]
+            frontIndex += 1
+
+            array.append(node.val)
+            
+            if let left = node.left {
+                queue.append(left)
+            }
+            
+            if let right = node.right {
+                queue.append(right)
+            }
+            
+        }
+        let subArray = direction ? array: array.reversed()
+        list.append(subArray)
+        direction.toggle()
+        
+    }
+    return list
+}
+print(zigzagLevelOrder(TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))))
+//------------------------------------------------------------------------------------------------------------------------------------------
