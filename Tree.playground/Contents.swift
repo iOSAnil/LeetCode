@@ -320,3 +320,30 @@ func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
 }
 print(zigzagLevelOrder(TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))))
 //------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------144. Binary Tree Preorder Traversal-----------------------------------------------------------
+//https://leetcode.com/problems/binary-tree-preorder-traversal
+func preorderTraversal(_ root: TreeNode?) -> [Int] {
+    var array = [Int]()
+    
+    func iterate(_ root: TreeNode) {
+        array.append(root.val)
+        
+        if let left = root.left {
+            iterate(left)
+        }
+        
+        if let right = root.right {
+            iterate(right)
+        }
+    }
+    
+    if let root = root {
+        iterate(root)
+    }
+    return array
+}
+
+print(preorderTraversal(TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))))
+//------------------------------------------------------------------------------------------------------------------------------------------

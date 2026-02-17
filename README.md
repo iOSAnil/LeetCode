@@ -108,6 +108,8 @@
   - [Bitwise AND of Numbers Range](https://leetcode.com/problems/bitwise-and-of-numbers-range)
   - [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal)
   - [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal)
+  - [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal)
+
 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
