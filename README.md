@@ -61,7 +61,10 @@
   - [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/)
   - [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
   - [Remove Element](https://leetcode.com/problems/remove-elemen)
- 
+  - [Add Binary](https://leetcode.com/problems/add-binary)
+  - [Reverse Bit](https://leetcode.com/problems/reverse-bits)
+  - [Number-of-1-bits](https://leetcode.com/problems/number-of-1-bits)
+
 - **MEDIUM**
   - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description)
   - [Jump Game](https://leetcode.com/problems/jump-game/description)
@@ -101,7 +104,9 @@
   - [Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal)
   - [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description)
   - [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
-  
+  - [Single Number II](https://leetcode.com/problems/single-number-ii)
+  - [Bitwise AND of Numbers Range](https://leetcode.com/problems/bitwise-and-of-numbers-range)
+
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)
