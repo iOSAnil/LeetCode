@@ -109,6 +109,9 @@
   - [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal)
   - [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal)
   - [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal)
+  - [Unique Paths II](https://leetcode.com/problems/unique-paths-ii)
+  - [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum)
+  - [Triangle](https://leetcode.com/problems/triangle/description)
 
 
 - **HARD**
