@@ -91,3 +91,11 @@ func rangeBitwiseAnd(_ left: Int, _ right: Int) -> Int {
     return right
 }
 //----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------693. Binary Number with Alternating Bits-------------------------------------
+// https://leetcode.com/problems/binary-number-with-alternating-bits
+func hasAlternatingBits(_ n: Int) -> Bool {
+    let x = n ^ (n >> 1) // It makes everything 1
+    return (x & (x + 1)) == 0 // It makes everything 0 always
+}
+//----------------------------------------------------------------------------------------------------------------------

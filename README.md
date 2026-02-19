@@ -175,7 +175,9 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - **GOOGLE**
-- - **EASY**
+- **EASY**
+  - [693. Binary Number with Alternating Bits](https://leetcode.com/problems/binary-number-with-alternating-bits) (Bit Manipulation)
+
 - **Medium**
   - [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray) (Kadane's Algorithm)
   - [918. Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray) (Kadane's Algorithm (difficult))
