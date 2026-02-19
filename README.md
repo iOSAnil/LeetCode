@@ -112,6 +112,8 @@
   - [Unique Paths II](https://leetcode.com/problems/unique-paths-ii)
   - [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum)
   - [Triangle](https://leetcode.com/problems/triangle/description)
+  - [Interleaving String](https://leetcode.com/problems/interleaving-string)
+  - [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring)
 
 
 - **HARD**

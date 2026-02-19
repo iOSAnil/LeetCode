@@ -152,9 +152,76 @@ func uniquePathsWithObstaclesDP(_ obstacleGrid: [[Int]]) -> Int {
 //---------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------5. Longest Palindromic Substring-------------------------------------------------------------
+// Expand from center and check all the palindromes
+// Handle it for both even and odd length of Strings.
+func longestPalindrome(_ s: String) -> String {
+    var maxLength = 0
+    var startIndex = 0
+    var chars = Array(s)
+    
+    for i in 0..<s.count {
+        // odd string handling
+        expandAroundCenter(chars, i, i, &startIndex, &maxLength)
+        
+        // even string handling
+        expandAroundCenter(chars, i, i+1, &startIndex, &maxLength)
+    }
+    
+    return String(chars[startIndex..<(startIndex + maxLength)])
+}
+
+func expandAroundCenter(_ chars: [Character],
+                        _ left: Int,
+                        _ right: Int,
+                        _ startIndex: inout Int,
+                        _ maxLength: inout Int) {
+    var left = left
+    var right = right
+    
+    while left >= 0 && right < chars.count && chars[left] == chars[right] {
+        if right - left + 1 > maxLength {
+            startIndex = left
+            maxLength = right - left + 1
+        }
+        left -= 1
+        right += 1
+    }
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------97. Interleaving String---------------------------------------------------------------
+// Bottom up DP
+// https://leetcode.com/problems/interleaving-string/
+func isInterleave(_ s1: String, _ s2: String, _ s3: String) -> Bool {
+    if s1.count + s2.count != s3.count {
+        return false
+    }
+    let s1Char = Array(s1)
+    let s2Char = Array(s2)
+    let s3Char = Array(s3)
+    
+    var dp = Array(repeating: Array(repeating: false, count: s2.count + 1), count: s1.count + 1)
+    dp[s1.count][s2.count] = true // if reaches this index then both string are consumed to make s3
+    
+    for i in stride(from: s1.count, through: 0, by: -1) {
+        for j in stride(from: s2.count, through: 0, by: -1) {
+            if i < s1.count && s1Char[i] == s3Char[i + j] && dp[i+1][j] {    // s1 i index should make s3 i + j  and dp [i+1][j] which is next index of first string and same j index of s2 should also make the string s3
+                dp[i][j] = true
+            }
+            if j < s2.count && s2Char[j] == s3Char[i + j]  && dp[i][j+1] {
+                dp[i][j] = true
+            }
+        }
+    }
+    return dp[0][0]
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
 
 print(minimumTotal([[2],[3,4],[6,5,7],[4,1,8,3]]))
 print(minimumTotalMinimizeSpace([[2],[3,4],[6,5,7],[4,1,8,3]]))
 print(minPathSum([[1,3,1],[1,5,1],[4,2,1]]))
 print(minPathSumWithLessComplexitySameLogic([[1,3,1],[1,5,1],[4,2,1]]))
 print(uniquePathsWithObstacles([[0,0,0],[0,1,0],[0,0,0]]))
+print(isInterleave("abc","defg","adefgbc"))
