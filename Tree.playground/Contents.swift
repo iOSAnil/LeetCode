@@ -403,3 +403,39 @@ func lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> 
     return left ?? right
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------200. Number of Islands---------------------------------------------------------------------------
+// https://leetcode.com/problems/number-of-islands
+// Run DFS in all direction when found 1 increase the count and sink the land in all directions
+func numIslands(_ grid: [[Character]]) -> Int {
+    var count = 0
+    var grid = grid
+    
+    func dfs(_ row: Int, _ column: Int) {
+        if row < 0 || column < 0 || row >= grid.count || column >= grid[0].count {
+            return
+        }
+        if grid[row][column] == "1" {
+            grid[row][column] = "0"
+            dfs(row-1, column) // up
+            dfs(row, column+1) // right
+            dfs(row+1, column) //down
+            dfs(row, column-1) //left
+        }
+    }
+    
+    
+    for i in 0..<grid.count {
+        for j in 0..<grid[0].count {
+            if grid[i][j] == "1" {
+                dfs(i, j)
+                count += 1
+            }
+        }
+    }
+    
+    return count
+}
+
+print(numIslands([["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]])) // 1
+//------------------------------------------------------------------------------------------------------------------------------------------
