@@ -218,6 +218,25 @@ func isInterleave(_ s1: String, _ s2: String, _ s3: String) -> Bool {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
 
+//--------------------------------------------------221. Maximal Square------------------------------------------------------------------
+// Use bottom up approach and calculate dp[i][j] = min(right, bottom, diagonal) + 1 square are that it can generate.
+func maximalSquare(_ matrix: [[Character]]) -> Int {
+    var dp = Array(repeating: Array(repeating: 0, count: matrix[0].count), count: matrix.count)
+    var maxValue = 0
+    
+    for i in stride(from: dp.count-1, through: 0, by: -1) {
+        for j in stride(from: dp[0].count-1, through: 0, by: -1) {
+            if i == dp.count-1 || j == dp[0].count-1 {
+                dp[i][j] = Int(String(matrix[i][j])) ?? 0
+            } else if Int(String(matrix[i][j])) == 1 {
+                dp[i][j] = min(dp[i+1][j], dp[i][j+1], dp[i+1][j+1]) + 1
+            }
+            maxValue = max(dp[i][j], maxValue)
+        }
+    }
+    return maxValue*maxValue
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
 
 print(minimumTotal([[2],[3,4],[6,5,7],[4,1,8,3]]))
 print(minimumTotalMinimizeSpace([[2],[3,4],[6,5,7],[4,1,8,3]]))
@@ -225,3 +244,4 @@ print(minPathSum([[1,3,1],[1,5,1],[4,2,1]]))
 print(minPathSumWithLessComplexitySameLogic([[1,3,1],[1,5,1],[4,2,1]]))
 print(uniquePathsWithObstacles([[0,0,0],[0,1,0],[0,0,0]]))
 print(isInterleave("abc","defg","adefgbc"))
+print(maximalSquare([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]])) //4

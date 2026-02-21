@@ -114,7 +114,9 @@
   - [Triangle](https://leetcode.com/problems/triangle/description)
   - [Interleaving String](https://leetcode.com/problems/interleaving-string)
   - [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring)
-
+  - [Binary Search Tree Iterator](https://leetcode.com/problems/binary-search-tree-iterator)
+  - [House Robber](https://leetcode.com/problems/house-robber)
+  - [Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words)
 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)

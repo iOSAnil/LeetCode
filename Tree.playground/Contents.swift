@@ -347,3 +347,42 @@ func preorderTraversal(_ root: TreeNode?) -> [Int] {
 
 print(preorderTraversal(TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))))
 //------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------173. Binary Search Tree Iterator-------------------------------------------------------------
+// https://leetcode.com/problems/binary-search-tree-iterator
+class BSTIterator {
+    var stack = [TreeNode]()
+    init(_ root: TreeNode?) {
+        var cur = root
+        while cur != nil {
+            stack.append(cur!)
+            cur = cur!.left
+        }
+    }
+    
+    func next() -> Int {
+        let node = stack.popLast()!
+        var cur = node.right
+        while cur != nil {
+            stack.append(cur!)
+            cur = cur!.left
+        }
+        return node.val
+    }
+    
+    func hasNext() -> Bool {
+        !stack.isEmpty
+    }
+}
+let bSTIterator = BSTIterator(TreeNode(7, TreeNode(3), TreeNode(15, TreeNode(9), TreeNode(20))))
+print("BST Iterator Starts:")
+print(bSTIterator.next())   // return 3
+print(bSTIterator.next())   // return 7
+print(bSTIterator.hasNext()) // return True
+print(bSTIterator.next())   // return 9
+print(bSTIterator.hasNext()) // return True
+print(bSTIterator.next())   // return 15
+print(bSTIterator.hasNext()) // return True
+print(bSTIterator.next())   // return 20
+print(bSTIterator.hasNext()) // return False
+print("BST Iterator ends:")
+//------------------------------------------------------------------------------------------------------------------------------------------

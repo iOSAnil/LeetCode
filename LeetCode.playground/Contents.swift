@@ -3303,3 +3303,46 @@ func equalPairs(_ grid: [[Int]]) -> Int {
 
 print(equalPairs([[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]])) // 3
 // ------------------------------------------------------------------------------------------------------------------------------
+func findSubstring(_ s: String, _ words: [String]) -> [Int] {
+    var sArray = Array(s)
+    var leftIndices = [Int]()
+    var dict = [String: Int]()
+    for word in words {
+        dict[word, default: 0] += 1
+    }
+    var wordLength = words[0].count
+    var wordsCount = words.count
+    var windowSize = wordsCount * wordLength
+  
+    
+    for i in 0..<wordLength {
+        var left = i
+        var right = i
+        var newDict = dict
+        var count = 0
+
+        for j in stride(from: i, through: sArray.count-wordLength+1, by: wordLength) {
+            let word = String(sArray[j..<j+wordLength])
+            
+            if let freq = newDict[word]{
+                right += wordLength
+                if freq == 1 {
+                    newDict.removeValue(forKey: word)
+                } else {
+                    newDict[word] = freq - 1
+                }
+                count += 1
+                
+                if (right - left) == windowSize {
+                    leftIndices.append(left)
+                }
+            } else {
+                newDict = dict
+                left = right
+                count = 0
+            }
+        }
+    }
+    return leftIndices
+    
+}
