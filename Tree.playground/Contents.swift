@@ -385,4 +385,21 @@ print(bSTIterator.hasNext()) // return True
 print(bSTIterator.next())   // return 20
 print(bSTIterator.hasNext()) // return False
 print("BST Iterator ends:")
+//--------------------------------236. Lowest Common Ancestor of a Binary Tree--------------------------------------------------------------
+//https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
+func lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> TreeNode? {
+    guard let root = root else {
+        return nil
+    }
+    if root.val == p?.val || root.val == q?.val {
+        return root
+    }
+    let left = lowestCommonAncestor(root.left, p, q)
+    let right = lowestCommonAncestor(root.right, p, q)
+    
+    if left != nil && right != nil {
+        return root
+    }
+    return left ?? right
+}
 //------------------------------------------------------------------------------------------------------------------------------------------
