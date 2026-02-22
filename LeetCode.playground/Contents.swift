@@ -3377,4 +3377,35 @@ func maxPoints(_ points: [[Int]]) -> Int {
     }
     return maxCount
 }
+// -----------------------------------------------92. Reverse Linked List II-------------------------------------------------------
+// create dummyNode to handle left = 1
+// reach till left in iteration to create Left previous node and store. After then run the array from left to right + 1.
+func reverseBetween(_ head: ListNode?, _ left: Int, _ right: Int) -> ListNode? {
+    if left == right {
+        return head
+    }
+    var dummyNode = ListNode(0)
+    dummyNode.next = head
+    
+    var leftPrevious: ListNode? = dummyNode
+    var current: ListNode? = head
+    
+    for i in stride(from: 1, through: left-1 , by: 1) {
+        leftPrevious = current
+        current = current?.next
+    }
+    
+    var previous: ListNode?
+    for i in stride(from: 0, to: right-left+1, by: 1) {
+        let temp = current?.next
+        current?.next = previous
+        previous = current
+        current = temp
+    }
+    
+    leftPrevious?.next?.next = current
+    leftPrevious?.next = previous
+    
+    return dummyNode.next
+}
 // ------------------------------------------------------------------------------------------------------------------------------
