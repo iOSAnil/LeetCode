@@ -3346,3 +3346,35 @@ func findSubstring(_ s: String, _ words: [String]) -> [Int] {
     return leftIndices
     
 }
+
+// ------------------------------------------149. Max Points on a Line----------------------------------------------------------------
+// https://leetcode.com/problems/max-points-on-a-line
+func maxPoints(_ points: [[Int]]) -> Int {
+    if points.count <= 2 {
+        return points.count
+    }
+    
+    var count = 0
+    var maxCount = count
+    for i in 0..<points.count{
+        let x1 = points[i][0]
+        let y1 = points[i][1]
+        count = 1
+        for j in stride(from: i+1, to: points.count, by: 1) {
+            let x2 = points[j][0]
+            let y2 = points[j][1]
+            count = 2
+            for k in stride(from: j+1, to: points.count, by: 1) {
+                let x3 = points[k][0]
+                let y3 = points[k][1]
+                
+                if (y3-y1)*(x2-x1) == (y2-y1)*(x3-x1) {
+                    count += 1
+                }
+                maxCount = max(maxCount, count)
+            }
+        }
+    }
+    return maxCount
+}
+// ------------------------------------------------------------------------------------------------------------------------------

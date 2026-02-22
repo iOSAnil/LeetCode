@@ -58,6 +58,31 @@ func rob2(_ nums: [Int]) -> Int {
 
 // ---------------------------------------------------------------------------------------------------------------------------
 
+// -------------------------------------139. Word Break-----------------------------------------------------------------------
+//https://leetcode.com/problems/word-break
+//bottom up dp and dp[i] = dp[i+word.length] if word matches from i position
+func wordBreak(_ s: String, _ wordDict: [String]) -> Bool {
+    var dp = Array(repeating: false, count: s.count + 1)
+    dp[s.count] = true
+    var sArray = Array(s)
+    
+    for i in stride(from: s.count, through: 0, by: -1) {
+        for word in wordDict {
+            if i + word.count <= s.count && String(sArray[i...(i + word.count-1)]) == word {
+                dp[i] = dp[i + word.count]
+            }
+            if dp[i] {
+                break
+            }
+        }
+    }
+    
+    return dp[0]
+}
+print(wordBreak("leetcode", ["leet","code"]))
+
+// ---------------------------------------------------------------------------------------------------------------------------
+
 print(coinChange([1,2,5], 11))
 print(coinChange([2], 3))
 print(rob([2,7,9,3,1])) //12
