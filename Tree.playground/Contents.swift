@@ -486,4 +486,21 @@ func sumNumbers(_ root: TreeNode?) -> Int {
 }
 
 print(sumNumbers(TreeNode(1, TreeNode(2), TreeNode(3))))
+//---------------124. Binary Tree Maximum Path Sum-------------------------------------------------------------------
+// https://leetcode.com/problems/binary-tree-maximum-path-sum/
+func maxPathSum(_ root: TreeNode?) -> Int {
+    var maximumValue = Int.min
+    func dfs(_ root: TreeNode?) -> Int {
+        guard let root = root else {
+            return 0
+        }
+        let left = max(0, dfs(root.left)) // Ignore -ve value since it reduces the sum
+        let right = max(0, dfs(root.right)) // Ignore -ve value since it reduces the sum
+        let value = left+right+root.val
+        maximumValue = max(maximumValue, value)
+        return root.val + max(left, right) // node should contain only max of left | right sum with root value
+    }
+    dfs(root)
+    return maximumValue
+}
 //------------------------------------------------------------------------------------------------------------------------------------------

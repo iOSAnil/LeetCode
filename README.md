@@ -121,9 +121,9 @@
   - [Word Break](https://leetcode.com/problems/word-break)
   - [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii)
   - [Permutations](https://leetcode.com/problems/permutations)
-  - [Populating Next Right Pointers in Each Node II] (https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)
-  - [Course Schedule] (https://leetcode.com/problems/course-schedule/)
-  - [Course Schedule II] (https://leetcode.com/problems/course-schedule-ii/)
+  - [Populating Next Right Pointers in Each Node II](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)
+  - [Course Schedule](https://leetcode.com/problems/course-schedule/)
+  - [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
@@ -132,7 +132,7 @@
   - [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/description/)
   - [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
   - [Candy](https://leetcode.com/problems/candy/description/)
- 
+  - [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Basics of Tree (Data Structure)**
 - **EASY**
