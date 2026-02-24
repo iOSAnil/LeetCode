@@ -438,4 +438,52 @@ func numIslands(_ grid: [[Character]]) -> Int {
 }
 
 print(numIslands([["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]])) // 1
+//---------------------------129. Sum Root to Leaf Numbers--------------------------------------------------------------
+//https://leetcode.com/problems/sum-root-to-leaf-numbers
+func sumRootToLeaf(_ root: TreeNode?) -> Int {
+    func dfs(_ root: TreeNode?, _ currentResult: [Int]) -> Int {
+        guard let root = root else {
+            return 0
+        }
+        var newResult = currentResult
+        newResult.append(root.val)
+
+        if root.left == nil && root.right == nil {
+            return newResult.toInt()
+        }
+        
+        return dfs(root.left, newResult) + dfs(root.right, newResult)
+     }
+    return dfs(root, [])
+}
+
+extension Array where Element == Int {
+    func toInt() -> Int {
+        self.reduce(0) {
+             $0 * 2 + $1
+        }
+    }
+}
+print(sumRootToLeaf(TreeNode(1, TreeNode(0, TreeNode(0), TreeNode(1)), TreeNode(1, TreeNode(0), TreeNode(1)))))
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//----------1022. Sum of Root To Leaf Binary Numbers -----------------------------------------------------------
+// https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers
+func sumNumbers(_ root: TreeNode?) -> Int {
+    func sum(_ root: TreeNode?, _ currentNumber: Int) -> Int {
+        guard let root = root else {
+            return 0
+        }
+        let currentNumber = currentNumber * 10 + root.val
+        if root.left == nil && root.right == nil {
+            return currentNumber
+        }
+        
+        return sum(root.left, currentNumber) + sum(root.right, currentNumber)
+    }
+    return sum(root, 0)
+}
+
+print(sumNumbers(TreeNode(1, TreeNode(2), TreeNode(3))))
 //------------------------------------------------------------------------------------------------------------------------------------------

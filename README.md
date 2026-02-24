@@ -120,6 +120,10 @@
   - [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree)
   - [Word Break](https://leetcode.com/problems/word-break)
   - [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii)
+  - [Permutations](https://leetcode.com/problems/permutations)
+  - [Populating Next Right Pointers in Each Node II] (https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)
+  - [Course Schedule] (https://leetcode.com/problems/course-schedule/)
+  - [Course Schedule II] (https://leetcode.com/problems/course-schedule-ii/)
 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
@@ -139,6 +143,9 @@
 - **MEDIUM (BFS Application)**
   - [Trees and Ladders](https://leetcode.com/problems/snakes-and-ladders/)
 
+- **MEDIUM (DFS Application)**
+  - [Sum Root to Leaf Numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers/)
+  - [Sum of Root To Leaf Binary Numbers](https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - **INTERVALS**
 - - **EASY**

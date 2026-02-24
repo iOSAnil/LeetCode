@@ -165,4 +165,44 @@ func letterCasePermutation(_ s: String) -> [String] {
     
     return result
 }
-//--------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------46. Permutations------------------------------------------------------------
+// https://leetcode.com/problems/permutations
+func permute(_ nums: [Int]) -> [[Int]] {
+    var result = [[Int]]()
+    var currentPath = [Int]()
+    
+    func backtrack(remainingChoices: [Int]) {
+        // 1. Base Case: Goal Reached (e.g., path is correct length)
+        if currentPath.count == nums.count {
+            result.append(currentPath) // Store a COPY of the path
+            return
+        }
+        
+        
+        for i in 0..<remainingChoices.count {
+            let choice = remainingChoices[i]
+            
+            // 3. Validation/Constraint Check
+            if currentPath.contains(choice) || currentPath.count == nums.count {
+                continue
+            }
+            
+            // 4. Make the choice
+            currentPath.append(choice)
+            
+            // 5. Recursion (move to next state)
+            backtrack(remainingChoices: remainingChoices)
+            
+            // 6. Backtrack (Undo the choice)
+            if !currentPath.isEmpty {
+                currentPath.removeLast()
+            }
+        }
+        
+    }
+    backtrack(remainingChoices: nums)
+    return result
+}
+
+
+print(permute([5,4,6,2]))
