@@ -124,6 +124,7 @@
   - [Populating Next Right Pointers in Each Node II](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)
   - [Course Schedule](https://leetcode.com/problems/course-schedule/)
   - [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+  - [Sort List](https://leetcode.com/problems/sort-list/)
 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
