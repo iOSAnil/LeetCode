@@ -99,3 +99,27 @@ func hasAlternatingBits(_ n: Int) -> Bool {
     return (x & (x + 1)) == 0 // It makes everything 0 always
 }
 //----------------------------------------------------------------------------------------------------------------------
+//----------------1404. Number of Steps to Reduce a Number in Binary Representation to One-------------------------------------------
+
+func numSteps(_ s: String) -> Int {
+    var steps = 0
+    var carry = 0
+    var sChar = Array(s)
+    
+    for i in stride(from: sChar.count - 1, to: 0, by: -1) {
+        let bit = Int(String(sChar[i]))! + carry
+        
+        if bit == 1 {
+            // ...00101   (ends in 1 → odd)
+            // ...00110   (add 1)
+            // ...0011    (divide by 2)
+            // so in two steps we remove the least significant bit and carry 1 for next bit processing
+            steps += 2
+            carry = 1
+        } else {
+            steps += 1
+        }
+    }
+    return steps + carry
+}
+//----------------------------------------------------------------------------------------------------------------------
