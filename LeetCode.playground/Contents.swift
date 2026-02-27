@@ -3439,4 +3439,55 @@ func search(_ nums: [Int], _ target: Int) -> Int {
 }
 
 print(search([4,5,6,7,0,1,2], 0))
+
+// ---------------------------------------------------------------------------------------
+// --------------------211. Design Add and Search Words Data Structure--------------------
+
+class WordDictionary {
+    var head: TrieNode
+    init() {
+        head = TrieNode()
+    }
+    
+    func addWord(_ word: String) {
+        var currentNode = head
+        for char in word {
+            if currentNode.children[char] == nil {
+                currentNode.children[char] = TrieNode()
+            }
+            currentNode = currentNode.children[char]!
+        }
+        currentNode.endOfWorld = true
+    }
+    
+    func search(_ word: String) -> Bool {
+        var sArray = Array(word)
+        func dfs(_ index: Int, _ cur: TrieNode) -> Bool {
+            if index == word.count {
+                return cur.endOfWorld
+            }
+             
+            if sArray[index] == "." {
+                for child in cur.children.values {
+                    if dfs(index+1, child) {
+                        return true
+                    }
+                }
+                return false
+            } else {
+                guard let node = cur.children[sArray[index]] else {
+                    return false
+                }
+                return dfs(index+1, node)
+            }
+        }
+        return dfs(0, head)
+    }
+}
+
 // ------------------------------------------------------------------------------------------------------------------------------
+let obj = WordDictionary()
+obj.addWord("word")
+print(obj.search("word"))
+print(obj.search("..rd"))
+
