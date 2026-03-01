@@ -127,6 +127,9 @@
   - [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
   - [Sort List](https://leetcode.com/problems/sort-list/)
   - [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array) 
+  - [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array) 
+  
+   
 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)

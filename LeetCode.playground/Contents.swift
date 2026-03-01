@@ -3491,3 +3491,66 @@ obj.addWord("word")
 print(obj.search("word"))
 print(obj.search("..rd"))
 
+// ------------------------------------------------------------------------------------------------------------------------------
+
+func findKthLargest1(_ nums: [Int], _ k: Int) -> Int {
+    var nums = nums
+    var k = nums.count - k
+    func quickSelect(_ left: Int, _ right: Int) -> Int {
+        var pivot = nums[right]
+        var p = left
+        
+        for i in stride(from: left, to: right, by: 1) {
+            if nums[i] <= pivot {
+                nums.swapAt(p, i)
+                p += 1
+            }
+        }
+        nums.swapAt(p, right)
+        
+        if p == k {
+            return nums[p]
+        } else if p > k {
+            return quickSelect(left, p-1)
+        } else {
+            return quickSelect(p+1, right)
+        }
+        
+    }
+    return quickSelect(0, nums.count-1)
+}
+// ------------------------------------------------------------------------------------------------------------------------------
+func rotate(_ nums: inout [Int], _ k: Int) {
+    var k = k % nums.count
+    var r = nums.count - k
+    nums = Array(nums[r..<nums.count]) + Array(nums[0..<r])
+}
+var array = [1,2,3,4,5]
+rotate(&array, 2)
+print(array)
+// ------------------------------------------------------------------------------------------------------------------------------
+// --------------------------153. Find Minimum in Rotated Sorted Array-------------------------------------------------
+/*
+ In a rotated sorted array:
+ One half is always sorted. The minimum lies in the unsorted half.
+ */
+func findMin(_ nums: [Int]) -> Int {
+    var left = 0
+    var right = nums.count - 1
+    
+    while left < right {    // <= is not used so that when left == right loop should end else it go infinitely since mid is always equal to right & left both
+        let mid = left + (right - left)/2
+        if nums[mid] > nums[right] {   // compare with last in the list so that we know right side is unsorted
+            left = mid + 1
+        } else {
+            right = mid
+        }
+    }
+    return nums[left]
+}
+
+print(findMin([3,4,5,1,2]))
+print(findMin([4,5,6,7,0,1,2]))
+print(findMin([4,5,6,7,8,9,0,1,2]))
+print(findMin([3,4,5,1,2]))
+// ------------------------------------------------------------------------------------------------------------------------------
