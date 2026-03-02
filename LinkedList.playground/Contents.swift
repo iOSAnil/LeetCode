@@ -77,3 +77,36 @@ func mergeList(_ list1: ListNode?, _ list2: ListNode?) -> ListNode?{
 //------------------------------------------------------------------------
 let list = ListNode(4, ListNode(3, ListNode(2, ListNode(1))))
 sortList(list)?.printList()
+
+//---------------------------24. Swap Nodes in Pairs-------------------------
+// 1->2->3->4 after swap should be 2->1->4->3
+func swapPairs(_ head: ListNode?) -> ListNode? {
+    guard let head = head,
+          let nextNode = head.next else {
+        return head
+    }
+    
+    var prev: ListNode? = head // 1
+    var next: ListNode? = nextNode // 2
+    var tail: ListNode?   // Last pair after the swap
+    
+    while (prev != nil && next != nil) {
+        var temp = next?.next //3       // nil
+        prev?.next = temp  // 1->3.     // 3 -> nil
+        next?.next = prev  // 2->3      // 4->3
+        
+        if let tail = tail {
+            tail.next = next
+        }
+        
+        tail = prev   // tail = 1
+        prev = temp    // prev = 3
+        next = temp?.next // next = 4
+    }
+    
+    if prev != nil && next == nil {
+        tail?.next = prev
+    }
+    return nextNode
+}
+//-----------------------------------------------------------------------------------

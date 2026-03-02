@@ -6,6 +6,7 @@
 - **MEDIUM**
   - [Find triangular sum of an array](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
   - [Minimum Swaps to Arrange a Binary Grid](https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid)
+  - [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs) 
  
  - **HARD**
   - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/) 
