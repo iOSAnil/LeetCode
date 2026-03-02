@@ -3554,3 +3554,47 @@ print(findMin([4,5,6,7,0,1,2]))
 print(findMin([4,5,6,7,8,9,0,1,2]))
 print(findMin([3,4,5,1,2]))
 // ------------------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------1536. Minimum Swaps to Arrange a Binary Grid------------------------------
+//#See MinSwaps in Resouces
+//Grid to trailing Zeroes Array and start swapping that
+func minSwaps(_ grid: [[Int]]) -> Int {
+    var grid = grid
+    var n = grid.count
+    var trailingZeroesCount = [Int]()
+
+    for row in grid {
+        var count = 0
+        for j in stride(from: n-1, through: 0, by: -1) {
+            if row[j] == 0 {
+                count += 1
+            } else {
+                break
+            }
+        }
+        trailingZeroesCount.append(count)
+    }
+
+    var swapCount = 0
+
+    for i in 0..<trailingZeroesCount.count {
+        let requiredTrailingZeroes = n - i - 1
+
+        var j = i
+        while (j < n && trailingZeroesCount[j] < requiredTrailingZeroes) {
+            j += 1
+        }
+
+        if j == n {
+            return -1
+        }
+
+        while j > i {
+          trailingZeroesCount.swapAt(j, j-1)
+          swapCount += 1
+          j -= 1
+        }
+    }
+    return swapCount
+}
+//--------------------------------------------------------------------------------------

@@ -5,6 +5,7 @@
 
 - **MEDIUM**
   - [Find triangular sum of an array](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
+  - [Minimum Swaps to Arrange a Binary Grid](https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid)
  
  - **HARD**
   - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/) 
@@ -129,7 +130,7 @@
   - [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array) 
   - [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array) 
   - [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst) 
-
+  - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)

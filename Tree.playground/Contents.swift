@@ -506,20 +506,21 @@ func maxPathSum(_ root: TreeNode?) -> Int {
 //------------------------------------------------------------------------------------------------------------------------------------------
 
 func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
-    var head: TreeNode?
-    func recursion(_ l: Int, _ r: Int) -> TreeNode? {
-        while (l < r) {
-            let mid = l + (r - l) / 2
-            let node = TreeNode(nums[mid])
-            if head == nil {
-                head = node
-            }
-            node.left = recursion(l, mid - 1)
-            node.right = recursion(mid + 1, r)
+    func build(_ l: Int, _ r: Int) -> TreeNode? {
+        if l > r {
+            return nil
         }
-        return head
+        
+        let mid = l + (r - l) / 2
+        let node = TreeNode(nums[mid])
+        
+        node.left = build(l, mid - 1)
+        node.right = build(mid + 1, r)
+        
+        return node
     }
-    return recursion(0, nums.count - 1)
+    
+    return build(0, nums.count - 1)
 }
 
 print(sortedArrayToBST([-10,-3,0,5,9]))
@@ -548,27 +549,61 @@ func kthSmallest(_ root: TreeNode?, _ k: Int) -> Int {
     return value
 }
 
-    func kthSmallestLowMemory(_ root: TreeNode?, _ k: Int) -> Int {
-        var value = -1
-        var k = k
-        
-        func inOrder(_ root: TreeNode?) {
-            guard let root = root else {
-                return
-            }
-            
-            inOrder(root.left)
-            
-            k -= 1
-        
-            if 0 == k {
-                value = root.val
-                return
-            }
-            inOrder(root.right)
+func kthSmallestLowMemory(_ root: TreeNode?, _ k: Int) -> Int {
+    var value = -1
+    var k = k
+    
+    func inOrder(_ root: TreeNode?) {
+        guard let root = root else {
+            return
         }
-        inOrder(root)
-        return value
+        
+        inOrder(root.left)
+        
+        k -= 1
+        
+        if 0 == k {
+            value = root.val
+            return
+        }
+        inOrder(root.right)
     }
+    inOrder(root)
+    return value
+}
 
 print(kthSmallest(TreeNode(3, TreeNode(1, nil, TreeNode(2)), TreeNode(4)), 1)) // 1
+
+//--------------------------98. Validate Binary Search Tree--------------------------
+/*BST Validation With Ranges
+(Each node shows: value  [allowed_range])
+
+                         5(-∞,+∞)
+                        / \
+                 1(-∞,5)   4(5,+∞)
+                          / \
+                3(5,4) ❌    6(4,+∞)
+*/
+// When left tree is iterated only right value is updated to parent node val
+// When right tree is iterated only left value is updated to parent node val
+func isValidBST(_ root: TreeNode?) -> Bool {
+    func dfs(_ root: TreeNode?, _ left: Int, _ right: Int) -> Bool {
+        guard let node = root else {
+            return true
+        }
+        if node.val <= left {
+            return false
+        }
+        if node.val >= right {
+            return false
+        }
+        
+        return dfs(node.left, left, node.val) &&
+        dfs(node.right, node.val, right)
+    }
+    
+    return dfs(root, Int.min, Int.max)
+}
+//--------------------------------------------------------------------------------------
+print(isValidBST(TreeNode(5, TreeNode(1), TreeNode(4, TreeNode(3), TreeNode(6))))) // false
+print(isValidBST(TreeNode(2, TreeNode(1), TreeNode(3)))) // true
