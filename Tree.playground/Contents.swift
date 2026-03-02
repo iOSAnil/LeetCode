@@ -523,3 +523,52 @@ func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
 }
 
 print(sortedArrayToBST([-10,-3,0,5,9]))
+
+//------------------------------Kth Smallest Element in a BST ----------------------
+// Kth Smallest Element in a BST is the inOrder stack of the kth value
+func kthSmallest(_ root: TreeNode?, _ k: Int) -> Int {
+    var stack = [Int]()
+    var value = -1
+    
+    func inOrder(_ root: TreeNode?) {
+        guard let root = root else {
+            return
+        }
+        
+        inOrder(root.left)
+        stack.append(root.val)
+        
+        if stack.count == k {
+            value = stack.last!
+            return
+        }
+        inOrder(root.right)
+    }
+    inOrder(root)
+    return value
+}
+
+    func kthSmallestLowMemory(_ root: TreeNode?, _ k: Int) -> Int {
+        var value = -1
+        var k = k
+        
+        func inOrder(_ root: TreeNode?) {
+            guard let root = root else {
+                return
+            }
+            
+            inOrder(root.left)
+            
+            k -= 1
+        
+            if 0 == k {
+                value = root.val
+                return
+            }
+            inOrder(root.right)
+        }
+        inOrder(root)
+        return value
+    }
+
+print(kthSmallest(TreeNode(3, TreeNode(1, nil, TreeNode(2)), TreeNode(4)), 1)) // 1
