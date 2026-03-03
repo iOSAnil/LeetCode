@@ -132,6 +132,7 @@
   - [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array) 
   - [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst) 
   - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) 
+  - [Minimum Genetic Mutation](https://leetcode.com/problems/minimum-genetic-mutation) 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)

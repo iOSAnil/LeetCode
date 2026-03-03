@@ -3598,3 +3598,50 @@ func minSwaps(_ grid: [[Int]]) -> Int {
     return swapCount
 }
 //--------------------------------------------------------------------------------------
+//----------------------------------433. Minimum Genetic Mutation-----------------------
+/*Input: startGene = "AACCGGTT", endGene = "AACCGGTA", bank = ["AACCGGTA"]
+Output: 1*/
+// put startGene in a queue and iterate every character in startGene
+// Change current character to all new genes character and validate that it is not visited
+// and present in the bank. Put to queue only once it validates above.
+// Also revert the character to original value so that next character valuation is correct as per startString.
+func minMutation(_ startGene: String, _ endGene: String, _ bank: [String]) -> Int {
+    let bankSet = Set(bank)
+    if !bankSet.contains(endGene) {
+        return -1
+    }
+    var visited = Set<String>()
+    var level = 0
+    var queue = [(String, Int)]()
+    queue.append((startGene, level))
+    let validGenes: [Character] = ["A", "C", "G", "T"].map { Character($0) }
+    while !queue.isEmpty {
+        let (gene, level) = queue.removeFirst()
+        if gene == endGene {
+            return level
+        }
+        
+        var charArray = Array(gene)
+        
+        for i in 0..<charArray.count {
+            let oldGene = charArray[i]
+            
+            for gene in validGenes {
+                if String(gene) == String(oldGene) {
+                    continue
+                }
+                charArray[i] = gene
+                let string = String(charArray)
+                
+                if bankSet.contains(string) && !visited.contains(string) {
+                    visited.insert(string)
+                    queue.append((string, level+1))
+                }
+            }
+            charArray[i] = oldGene
+        }
+    }
+    return -1
+}
+print(minMutation("AACCGGTT", "AACCGGTA", ["AACCGGTA"]))
+//--------------------------------------------------------------------------------------
