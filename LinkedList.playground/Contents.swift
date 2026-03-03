@@ -109,4 +109,75 @@ func swapPairs(_ head: ListNode?) -> ListNode? {
     }
     return nextNode
 }
-//-----------------------------------------------------------------------------------
+//--------------------------------------------------- 146. LRU Cache ---------------------------------------
+class LRUCache {
+    var maxCapacity = 0
+    var hashMap: [Int: Node] = [:]
+    var left: Node? // LRU
+    var right: Node? // Most recent used
+    
+    class Node {
+        var key: Int
+        var value: Int
+        var next: Node?
+        var prev: Node?
+        
+        init(_ key: Int, _ value: Int) {
+            self.key = key
+            self.value = value
+        }
+    }
+    
+    init(_ capacity: Int) {
+        maxCapacity = capacity
+        self.left = Node(0, 0)
+        self.right = Node(0, 0)
+        
+        self.left?.next = self.right
+        self.right?.prev = self.left
+    }
+    
+    
+    private func remove(_ node: Node) {
+        let prevNode = node.prev!
+        let nextNode = node.next!
+        prevNode.next = nextNode
+        nextNode.prev = prevNode
+    }
+    
+    //Add the node the right most list
+    private func add(_ node: Node) {
+        let right = self.right!
+        let prevNode = right.prev!
+        
+        prevNode.next = node
+        right.prev = node
+        node.next = right
+        node.prev = prevNode
+    }
+    
+    func get(_ key: Int) -> Int {
+        if let node = hashMap[key] {
+            remove(node) // remove the node
+            add(node)   // add to right
+            return node.value
+        }
+        return -1
+    }
+    
+    func put(_ key: Int, _ value: Int) {
+        if let node = hashMap[key] {
+            remove(node)
+        }
+        hashMap[key] = Node(key, value)
+        add(hashMap[key]!)
+        
+        if hashMap.count > maxCapacity {
+            if let lruNode = left?.next {
+                remove(lruNode)
+                hashMap[lruNode.key] = nil
+            }
+        }
+    }
+}
+//------------------------------------------------------------------------

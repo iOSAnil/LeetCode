@@ -133,6 +133,7 @@
   - [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst) 
   - [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) 
   - [Minimum Genetic Mutation](https://leetcode.com/problems/minimum-genetic-mutation) 
+  - [LRU Cache](https://leetcode.com/problems/lru-cache) 
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)
