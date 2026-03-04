@@ -3645,3 +3645,58 @@ func minMutation(_ startGene: String, _ endGene: String, _ bank: [String]) -> In
 }
 print(minMutation("AACCGGTT", "AACCGGTA", ["AACCGGTA"]))
 //--------------------------------------------------------------------------------------
+//------------------------------------------50. Pow(x, n)---------------------------------
+/*Implement pow(x, n), which calculates x raised to the power n .
+ //https://leetcode.com/problems/powx-n
+ // put startGene in a queue and iterate every character in startGene
+ // Change current character to all new genes character and validate that it is not visited
+ // and present in the bank. Put to queue only once it validates above.
+ // Also revert the character to original value so that next character valuation is correct as per startString.
+ */
+func myPow(_ x: Double, _ n: Int) -> Double {
+    var base = x
+    var exponent = Int64(n)
+    var result: Double = 1
+    
+    if exponent < 0 {
+        exponent = -exponent
+        base = 1/base
+    }
+    
+    while exponent > 0 {
+        if exponent % 2 == 1 {
+            result *= base
+        }
+        base *= base
+        exponent = exponent / 2
+    }
+    
+    return result
+}
+
+print(myPow(2.0, 10))
+
+// 10 = 8 + 2
+/*
+ result = 1      base = 4          exponent = 5 //odd
+ result = 4      base = 16         exponent = 2
+ result = 4      base = 256        exponent = 1  //odd
+ result = 4*256  base = 256        exponent = 0
+ */
+//--------------------------------------------------------------------------------------
+
+func totalMoney(_ n: Int) -> Int {
+    var n = n
+    var sum = 0
+    var weekCounter = 0
+    var incrementSum = 0
+    while n > 0 {
+        let dayThisWeek = min(n, 7)
+        sum += ((dayThisWeek*(dayThisWeek+1))/2)
+        incrementSum += dayThisWeek*weekCounter
+        n -= 7
+        weekCounter += 1
+    }
+    return sum+incrementSum
+}
+//--------------------------------------------------------------------------------------

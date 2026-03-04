@@ -135,6 +135,7 @@
   - [Minimum Genetic Mutation](https://leetcode.com/problems/minimum-genetic-mutation) 
   - [LRU Cache](https://leetcode.com/problems/lru-cache)
   - [Construct Quad Tree](https://leetcode.com/problems/construct-quad-tree)
+  - [Pow(x, n)](https://leetcode.com/problems/powx-n)
 - **HARD**
   - [Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)
   - [Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/)
