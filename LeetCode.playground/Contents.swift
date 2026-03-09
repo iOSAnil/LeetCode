@@ -3699,4 +3699,45 @@ func totalMoney(_ n: Int) -> Int {
     }
     return sum+incrementSum
 }
+//--------------------------------------394. Decode String----------------------------------
+//https://leetcode.com/problems/decode-string/
+func decodeString(_ s: String) -> String {
+    
+    var countStack = [Int]()
+    var stringStack = [String]()
+    
+    var currentString = ""
+    var currentNumber = 0
+    
+    for ch in s {
+        
+        if ch.isNumber {
+            currentNumber = currentNumber * 10 + Int(String(ch))!
+        }
+        
+        else if ch == "[" {
+            countStack.append(currentNumber)
+            stringStack.append(currentString)
+            
+            currentNumber = 0
+            currentString = ""
+        }
+        
+        else if ch == "]" {
+            let repeatCount = countStack.removeLast()
+            let previousString = stringStack.removeLast()
+            
+            currentString = previousString + String(repeating: currentString, count: repeatCount)
+        }
+        
+        else {
+            currentString.append(ch)
+        }
+    }
+    
+    return currentString
+}
 //--------------------------------------------------------------------------------------
+
+print(decodeString("1[acc]10[bc]")) //accbcbcbcbcbcbcbcbcbcbc
+print(decodeString("13[a]2[bc]")) //aaaaaaaaaaaaabcbc
