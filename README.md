@@ -8,7 +8,8 @@
   - [Minimum Swaps to Arrange a Binary Grid](https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid)
   - [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs) 
   - [394. Decode String](https://leetcode.com/problems/decode-string/description) 
- 
+  - [15. 3Sum](https://leetcode.com/problems/3sum/description/) 
+
  - **HARD**
   - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/) 
   - [Number of Steps to Reduce a Number in Binary Representation to One](https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one) 
