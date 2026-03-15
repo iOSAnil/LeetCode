@@ -91,3 +91,31 @@ print(rob([2,1,1,2]))
 print(rob2([2,7,9,3,1])) //12
 print(rob2([1,2,3,1]))
 print(rob2([2,1,1,2]))
+
+// --------------------213. House Robber II -----------------------------------------------------------------------
+//https://leetcode.com/problems/house-robber-ii
+// rob = max(max(dp[0]..dp[n-1]), max(dp[1]..dp[n-2]))
+func robSecond(_ nums: [Int]) -> Int {
+    if nums.count == 1 {
+        return nums[0]
+    } else if nums.count == 2 {
+        return max(nums[0], nums[1])
+    } else {
+        return max(robSum(0, nums.count-1), robSum(1, nums.count))
+    }
+    
+    
+    func robSum(_ start: Int, _ end: Int) -> Int {
+        var dp = nums
+        dp[start] = nums[start]
+        dp[start+1] = max(nums[start], nums[start+1])
+        var maxValue = max(dp[start], dp[start+1])
+        
+        for i in (start+2)..<end {
+            dp[i] = max(dp[i] + dp[i-2], dp[i-1])
+            maxValue = max(dp[i], maxValue)
+        }
+        return maxValue
+    }
+}
+// ---------------------------------------------------------------------------------------------------------------------------

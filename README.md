@@ -9,6 +9,8 @@
   - [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs) 
   - [394. Decode String](https://leetcode.com/problems/decode-string/description) 
   - [15. 3Sum](https://leetcode.com/problems/3sum/description/) 
+  - [213. House Robber II](https://leetcode.com/problems/house-robber-ii) 
+   -----------------------------------------------------------------------
 
  - **HARD**
   - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/description/) 
