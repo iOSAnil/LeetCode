@@ -607,3 +607,67 @@ func isValidBST(_ root: TreeNode?) -> Bool {
 //--------------------------------------------------------------------------------------
 print(isValidBST(TreeNode(5, TreeNode(1), TreeNode(4, TreeNode(3), TreeNode(6))))) // false
 print(isValidBST(TreeNode(2, TreeNode(1), TreeNode(3)))) // true
+
+//--------------------------------------------------------------------------------------
+//https://leetcode.com/problems/recover-binary-search-tree
+/*
+ BST inorder sequence is sorted increasing order. Any voilation found (prev > current) means value needs to be swapped.
+ */
+func recoverTree(_ root: TreeNode?) {
+    var previousNode: TreeNode?
+    var first: TreeNode?
+    var second: TreeNode?
+    
+    func dfs(_ root: TreeNode?) {
+        guard let root = root else {
+            return
+        }
+        dfs(root.left)
+        
+        if let previousNode = previousNode,
+           previousNode.val > root.val {
+            if first == nil {
+                first = previousNode
+            }
+            second = root //Always update second so that if adjacent values are issues, it will be captured.
+        }
+        
+        previousNode = root
+        
+        dfs(root.right)
+    }
+    
+    dfs(root)
+    
+    if let first = first , let second = second {
+        let temp = second.val
+        second.val = first.val
+        first.val = temp
+    }
+}
+//------------------------------------------------------------------------------------------
+//---------------------------------113. Path Sum II-----------------------------------------
+//https://leetcode.com/problems/path-sum-ii
+func pathSum(_ root: TreeNode?, _ targetSum: Int) -> [[Int]] {
+    var result = [[Int]]()
+    
+    func dfs(_ root: TreeNode?, _ currentSum: Int, _ currentResult: [Int]) {
+        var currentSum = currentSum
+        var currentResult = currentResult
+        guard let root = root else {
+            return
+        }
+        currentSum += root.val
+        currentResult.append(root.val)
+        
+        if currentSum == targetSum && root.left == nil && root.right == nil {
+            result.append(currentResult)
+        } else {
+            dfs(root.left, currentSum, currentResult)
+            dfs(root.right, currentSum, currentResult)
+        }
+    }
+    dfs(root, 0, [])
+    return result
+}
+//--------------------------------------------------------------------------------------
