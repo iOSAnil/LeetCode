@@ -12,6 +12,7 @@
   - [213. House Robber II](https://leetcode.com/problems/house-robber-ii) 
   - [Path Sum II](https://leetcode.com/problems/path-sum-ii) 
   - [99. Recover Binary Search Tree](https://leetcode.com/problems/recover-binary-search-tree/description/) 
+  - [494. Target Sum](https://leetcode.com/problems/target-sum/)
   
    -----------------------------------------------------------------------
 

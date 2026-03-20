@@ -118,4 +118,25 @@ func robSecond(_ nums: [Int]) -> Int {
         return maxValue
     }
 }
+// ----------------------------------494. Target Sum------------------------------
+//https://leetcode.com/problems/target-sum/description/
+// Keep cache of ways to reach (index,sum). Each index you can either sum or delete the number at index
+func findTargetSumWays(_ nums: [Int], _ target: Int) -> Int {
+    var dp = [String: Int]()
+    
+    func backTrack(_ index: Int, _ sum: Int) -> Int {
+        if index == nums.count {
+            return (sum == target) ? 1 : 0
+        }
+        if let value = dp["\(index),\(sum)"] {
+            return value
+        }
+        
+        let ways = backTrack(index+1, sum+nums[index]) + backTrack(index+1, sum-nums[index]) // Either + or - nums[i]
+        dp["\(index),\(sum)"] = ways
+        return ways
+    }
+    
+    return backTrack(0, 0)
+}
 // ---------------------------------------------------------------------------------------------------------------------------
