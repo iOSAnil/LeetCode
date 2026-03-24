@@ -671,3 +671,20 @@ func pathSum(_ root: TreeNode?, _ targetSum: Int) -> [[Int]] {
     return result
 }
 //--------------------------------------------------------------------------------------
+//--------------------binary-tree-upside-down-------------------------------------------
+//https://leetcode.com/problems/binary-tree-upside-down/description
+func upsideDownBinaryTree(_ root: TreeNode?) -> TreeNode? {
+    if root?.left == nil || root == nil {
+        return root
+    }
+    
+    let newRoot = upsideDownBinaryTree(root?.left)
+    root?.left?.left = root?.right
+    root?.left?.right = root
+    
+    root?.left = nil
+    root?.right = nil
+    
+    return newRoot
+}
+//--------------------------------------------------------------------------------------
