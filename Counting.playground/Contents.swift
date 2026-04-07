@@ -64,4 +64,36 @@ func majorityElement2(_ nums: [Int]) -> [Int] {
 }
 print("Majority element test \(majorityElement2([3,2,3,2,1,2,3]))")
 
-//-----------------------------------------------------------------------
+//------------------------451 Sort Characters By Frequency-------------------------------------------
+// https://leetcode.com/problems/sort-characters-by-frequency
+func frequencySort(_ s: String) -> String {
+    let dict = Array(s).reduce(into: [Character: Int]()) { result, char in
+        result[char, default: 0] += 1
+    }
+    
+    return dict.sorted { $0.value > $1.value }.map({ String(repeating: $0.key, count: $0.value)}).joined()
+}
+
+frequencySort("tree")
+//----------------------------------------------------------------------------------------------------
+
+//------------------------560. Subarray Sum Equals K-------------------------------------------
+// prefixSum[i] - prefixSum[j] = k then there is way exist to reach k sum from i to j index
+func subarraySum(_ nums: [Int], _ k: Int) -> Int {
+    var result = 0
+    var prefixSum = 0
+    var map = [0 : 1]
+    for num in nums {
+        prefixSum += num
+        if let freq = map[prefixSum-k] {
+            result += freq
+        }
+        map[prefixSum, default: 0] += 1
+    }
+    return result
+}
+
+
+print(subarraySum([1,2,3], 3)) // 2
+
+//----------------------------------------------------------------------------------------------------
